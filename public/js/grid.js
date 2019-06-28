@@ -5,7 +5,7 @@ class Grid
 		this.canvas = document.getElementById(canvasID);
 		this.ctx = this.canvas.getContext("2d");
 		this.squareCoord = [];
-		this.isBlack = [];
+		this.squareStatus = {};
 		this.squareSize;
 
 		this.ctx.beginPath();
@@ -51,7 +51,7 @@ class Grid
         	for (let y = 0 ; y < this.canvas.height ; y += squareSize)
         	{
         		this.squareCoord.push([x, y]);
-        		this.isBlack.push(0);
+        		this.squareStatus[[x, y]] = false;
         	}
 		}
 
@@ -68,15 +68,12 @@ class Grid
 
 	fillRect(x, y, color)
 	{
-		console.log("Appel");
-		console.log(this.squareCoord[10]);
-		console.log(this.squareCoord[11]);
 		for (let i = 0 ; i < this.squareCoord.length ; i++)
 		{
-			if (x > this.squareCoord[i][0] && x < this.squareCoord[i][0] + this.squareSize && 
-				y > this.squareCoord[i][1] && y < this.squareCoord[i][1] + this.squareSize)
+			if (x >= this.squareCoord[i][0] && x < this.squareCoord[i][0] + this.squareSize && 
+				y >= this.squareCoord[i][1] && y < this.squareCoord[i][1] + this.squareSize)
 			{
-				if(color == 'black') {this.isBlack[i] = 1;}
+				if(color == 'black') {this.squareStatus[this.squareCoord[i]] = true;}
 				let beginX = this.squareCoord[i][0];
 				let beginY = this.squareCoord[i][1];
 				this.ctx.beginPath();
@@ -100,14 +97,14 @@ class Grid
 		}
 	}
 
-	countNeighbors(abs, ord)
+	countNeighbors(coord)
 	{
 		let count = 0;
-		for (let x = abs - this.squareSize ; x <= abs + this.squareSize ; x += this.squareSize)
+		for (let x = coord[0] - this.squareSize ; x <= coord[0] + this.squareSize ; x += this.squareSize)
 		{
-			for (let y = ord - this.squareSize ; y <= ord + this.squareSize ; y += this.squareSize)
+			for (let y = coord[1] - this.squareSize ; y <= coord[1] + this.squareSize ; y += this.squareSize)
 			{
-				if (this.isBlack(x, y) && (x != abs || y!= ord))
+				if (this.squareStatus[[x, y]] && (x != coord[0] || y!= coord[1]))
 				{
 					count++;
 				}
@@ -144,9 +141,9 @@ class Grid
 }
 
 let grid = new Grid("canvas");
-// grid.fillRect(30, 60, 'black');
-// grid.fillRect(30, 90, 'black');
-// grid.fillRect(30, 120, 'black');
-// grid.fillRect(30, 150, 'black');
-// grid.fillRect(75, 135, 'black');
-console.log(grid.squareCoord);
+grid.fillRect(30, 60, 'black');
+grid.fillRect(30, 90, 'black');
+grid.fillRect(30, 120, 'black');
+grid.fillRect(30, 150, 'black');
+grid.fillRect(60, 150, 'black');
+console.log(grid.countNeighbors([60, 210]));
