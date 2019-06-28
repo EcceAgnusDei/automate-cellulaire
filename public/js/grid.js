@@ -181,4 +181,30 @@ class Grid
 			this.fillRect(coord[0], coord[1], 'white');
 		}
 	}
+
+	stringToArray(string)
+	{
+		let part1 = "";
+		let part2 = "";
+		let array = [];
+
+		let i = 0;
+		while(string[i] != ',')
+		{
+			part1 += string[i];
+			i++;
+		}
+
+		i++
+
+		for (i ; i < string.length ; i++)
+		{
+			part2 += string[i];
+		}
+
+		array.push(parseInt(part1));
+		array.push(parseInt(part2));
+
+		return array;
+	}
 }
