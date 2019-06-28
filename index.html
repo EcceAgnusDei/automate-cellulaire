@@ -6,7 +6,23 @@
 	<link rel="stylesheet" href="public/css/style.css">
 </head>
 <body>
-	<canvas id="canvas" width="700" height="500"></canvas>
+	<canvas id="canvas"></canvas>
+	<div class="grid-command">
+		<button id="next">Suivant</button>
+		<button id="reload">Recommencer</button>
+		<button id="set-grid">Afficher la grille</button>
+		<button id="play">Lancer</button>
+		<button id="stop">Arrêter</button>
+		<label for="cols">Nombre de colonnes</label>
+		<input type="text" name="cols" id="cols" value="20">
+		<label for="rows">Nombre de lignes</label>
+		<input type="text" name="rows" id="rows" value="20">
+		<label for="square-size">Taille d'un carré</label>
+		<input type="text" name="square-size" id="square-size" value="20">
+		<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
+		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="public/js/grid.js"></script>
+<script src="public/js/main.js"></script>
 </html>
