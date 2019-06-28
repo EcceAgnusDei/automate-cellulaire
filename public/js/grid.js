@@ -115,28 +115,35 @@ class Grid
 
 	next ()
 	{
-		console.log("t++");
-		for (let i=0 ; i < this.squareCoordX.length ; i++)
+		console.log("début");
+		let setBlack = [];
+		let setWhite = [];
+		for (let i=0 ; i < this.squareCoord.length ; i++)
 		{
-			for (let j=0 ; j < this.squareCoordY.length ; j++)
+			if (this.countNeighbors(this.squareCoord[i]) === 3)
 			{
-				let x = this.squareCoordX[i] - this.squareSize / 2;
-				let y = this.squareCoordY[j] - this.squareSize / 2;
-				if (this.countNeighbors(x, y) === 3)
+				setBlack.push(this.squareCoord[i]);
+			}
+			else if (this.squareStatus[this.squareCoord[i]])
+			{
+				if (this.countNeighbors(this.squareCoord[i]) > 3 || this.countNeighbors(this.squareCoord[i]) < 2)
 				{
-					this.fillRect(x, y, 'black');
+					setWhite.push(this.squareCoord[i]);
 				}
-				else if (this.isBlack(x, y))
-				{
-					console.log("black");
-					if (this.countNeighbors(x, y) > 3 || this.countNeighbors(x, y) < 2)
-					{
-						this.fillRect(x, y, 'white');
-					}
-				}
-				
 			}
 		}
+
+		for (let i=0 ; i < setBlack.length ; i++)
+		{
+			this.fillRect(setBlack[i][0], setBlack[i][1], 'black');
+		}
+
+		for (let i=0 ; i < setWhite.length ; i++)
+		{
+			this.fillRect(setWhite[i][0], setWhite[i][1], 'white');
+		}
+
+		console.log("fin")
 	}
 }
 
@@ -146,4 +153,4 @@ grid.fillRect(30, 90, 'black');
 grid.fillRect(30, 120, 'black');
 grid.fillRect(30, 150, 'black');
 grid.fillRect(60, 150, 'black');
-console.log(grid.countNeighbors([60, 210]));
+grid.next();
