@@ -36,7 +36,7 @@ function load($id)
 	$gridManager = new GridManager();
 
 	$grid = $gridManager->load($id);
-	$script = 'save =' . $grid['json'];
+	$script = 'save =' . $grid['json'] . '; setTimeout(function(){grid.load(save);},1);';
 
 	require ('view/frontend/playView.php');
 }
