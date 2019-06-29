@@ -183,6 +183,10 @@ class Grid
 	 	}
 	 }
 
+	 /**
+	  * Enregistre la configuration actuelle
+	  * @return {Array} Tableau de coordonnées
+	  */
 	 save()
 	 {
 	 	let coordsBlack = [];
@@ -194,7 +198,7 @@ class Grid
 	 			coordsBlack.push(this.stringToArray(coord));
 	 		}
 	 	}
-	 	
+
 	 	return coordsBlack;
 	 }
 

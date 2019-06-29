@@ -9,7 +9,7 @@ let squareSize = document.getElementById("square-size");
 let speed = document.getElementById("speed");
 let isPlaying = false;
 
-let saved;
+let save;
 
 window.addEventListener("load", function(){
 	grid.grid(parseInt(squareSize.value), parseInt(cols.value), parseInt(rows.value));
@@ -53,10 +53,11 @@ $('#stop').click(function(){
 	stop();
 });
 $('#load').click(function(){
-	grid.load(saved);
+	grid.load(JSON.parse(save));
 });
 $('#save').click(function(){
-	saved = grid.save();
+	save = JSON.stringify(grid.save());
+	$('#grid-json').val(JSON.stringify(grid.save()));
 });
 $('#speed').change(function(){
 	if(isPlaying)
