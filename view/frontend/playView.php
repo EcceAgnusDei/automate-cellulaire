@@ -10,7 +10,6 @@
 	<canvas id="canvas"></canvas>
 	<div class="grid-command">
 		<button id="next">Suivant</button>
-		<button id="reload">Recommencer</button>
 		<button id="set-grid">Afficher la grille</button>
 		<button id="play">Lancer</button>
 		<button id="stop">Arrêter</button>

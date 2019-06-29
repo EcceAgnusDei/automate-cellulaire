@@ -40,3 +40,11 @@ function load($id)
 
 	require ('view/frontend/playView.php');
 }
+
+function showGrids()
+{
+	$gridManager = new GridManager();
+	$grids = $gridManager->getGrids();
+
+	require('view/frontend/showGridsView.php');
+}
