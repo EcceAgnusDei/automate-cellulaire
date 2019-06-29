@@ -45,6 +45,5 @@ function showGrids()
 {
 	$gridManager = new GridManager();
 	$grids = $gridManager->getGrids();
-
 	require('view/frontend/showGridsView.php');
 }

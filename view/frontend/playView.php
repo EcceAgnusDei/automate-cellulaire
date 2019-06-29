@@ -16,7 +16,10 @@
 		<button id="load">Charger</button>
 		<button id="save">Sauvegarder</button>
 		<form action="index.php?action=save" method="POST">
-			<textarea name="grid-json" id="grid-json"></textarea>
+			<input type="text" name="author" id="author" required>
+			<label for="name">Le nom de l'oeuvre</label>
+			<input type="text" name="name" id="name" required>
+			<textarea name="grid-json" id="grid-json" required></textarea>
 			<input type="submit" value="Enregistrer"/>
 		</form>
 		<button id="db-load" onclick='window.location.href="index.php?action=load&id=1"'>Charger depuis db</button>
