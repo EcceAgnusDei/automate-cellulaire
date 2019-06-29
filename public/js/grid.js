@@ -170,7 +170,8 @@ class Grid
 	}
 
 	/**
-	 * 
+	 * Charge une grille placée en paramètre.
+	 * @param {Array} coords Tableau de coordonnées.
 	 */
 	 load(coords)
 	 {
@@ -181,6 +182,22 @@ class Grid
 	 		this.fillRect(coord[0], coord[1], 'black');
 	 	}
 	 }
+
+	 save()
+	 {
+	 	let coordsBlack = [];
+
+	 	for (let coord of Object.keys(this.squareStatus))
+	 	{
+	 		if (this.squareStatus[coord])
+	 		{
+	 			coordsBlack.push(this.stringToArray(coord));
+	 		}
+	 	}
+	 	
+	 	return coordsBlack;
+	 }
+
 
 	/**
 	 * Méthode transformant une chaine de caractère en array de longueur 2.
