@@ -20,9 +20,7 @@
 			<textarea name="grid-json" id="grid-json"></textarea>
 			<input type="submit" value="Enregistrer"/>
 		</form>
-		<form action="index.php?action=save" method="POST">
-			<textarea name="grid-json" id="grid-json"></textarea>
-			<input type="submit" value="Enregistrer"/>
+		<button id="db-load" onclick='window.location.href="index.php?action=load&id=1"'>Charger depuis db</button>
 		</form>
 		<label for="cols">Nombre de colonnes</label>
 		<input type="text" name="cols" id="cols" value="20">
@@ -34,6 +32,7 @@
 		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
 	</div>
 </section>
+<script><?= $script ?></script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>

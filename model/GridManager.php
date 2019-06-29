@@ -19,4 +19,14 @@ class GridManager extends Manager
 
 		return $succes;
 	}
+
+	public function load($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('SELECT * FROM grids WHERE id = ?');
+		$request->execute(array($id));
+		$grid = $request->fetch();
+
+		return $grid;
+	}
 }

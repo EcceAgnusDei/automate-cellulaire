@@ -24,3 +24,19 @@ function save($json)
 	}
 	require('view/frontend/listPostsView.php');
 }
+
+function playView()
+{
+	$script = '';
+	require ('view/frontend/playView.php');
+}
+
+function load($id)
+{
+	$gridManager = new GridManager();
+
+	$grid = $gridManager->load($id);
+	$script = 'save =' . $grid['json'];
+
+	require ('view/frontend/playView.php');
+}
