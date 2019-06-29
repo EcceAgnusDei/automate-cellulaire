@@ -1,13 +1,16 @@
-let save;
+let save = [];
+let countdown = setInterval (function() {}, 9999999);
+let grid;
 
 window.addEventListener("load", main);
 
 function main()
 {
-	let grid = new Grid("canvas");
+	grid = new Grid("canvas");
+	
 	grid.canvas.width = 1000;
 	grid.canvas.height = 700;
-	let countdown = setInterval (function() {}, 9999999);
+	
 
 	let cols = document.getElementById("cols");
 	let rows = document.getElementById("rows");
@@ -59,7 +62,7 @@ function main()
 	});
 	$('#save').click(function(){
 		save = grid.save();
-		$('#grid-json').val(JSON.stringify(grid.save()));
+		$('#grid-json').val(JSON.stringify(save));
 	});
 	$('#speed').change(function(){
 		if(isPlaying)
