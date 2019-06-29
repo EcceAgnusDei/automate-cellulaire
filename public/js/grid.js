@@ -100,19 +100,6 @@ class Grid
 		}
 	}
 
-	isBlack (x, y)
-	{
-		let pixelData = this.ctx.getImageData(x, y, 1, 1).data;
-		if (pixelData[0] === 0 && pixelData[3] === 255)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	/**
 	 * Compte le nombre de voisins noirs d'un carré
 	 * @param {Array} coord Coordonnées du carré
@@ -172,9 +159,9 @@ class Grid
 	}
 
 	/**
-	 * Recharge une grille
+	 * Réinitialise la grille
 	 */
-	reload()
+	clear()
 	{
 		for (let coord of this.squareCoord)
 		{
@@ -182,6 +169,24 @@ class Grid
 		}
 	}
 
+	/**
+	 * 
+	 */
+	 load(coords)
+	 {
+	 	console.log("loading...");
+	 	this.clear();
+	 	for (let coord of coords)
+	 	{
+	 		this.fillRect(coord[0], coord[1], 'black');
+	 	}
+	 }
+
+	/**
+	 * Méthode transformant une chaine de caractère en array de longueur 2.
+	 * Méthode nécessaire car javascript transforme nativement un array en string 
+	 * lorsque celle-ci est utilisée en tant que clef. 
+	 */
 	stringToArray(string)
 	{
 		let part1 = "";

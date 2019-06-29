@@ -9,9 +9,13 @@ let squareSize = document.getElementById("square-size");
 let speed = document.getElementById("speed");
 let isPlaying = false;
 
+window.addEventListener("load", function(){
+	grid.grid(parseInt(squareSize.value), parseInt(cols.value), parseInt(rows.value));
+});
+
 $('#reload').click(function(){
 	console.log('reload');
-	grid.reload();
+	grid.clear();
 });
 $('#next').click(function(){
 	console.log('next');
@@ -45,6 +49,9 @@ $('#play').click(function(){
 $('#stop').click(function(){
 	stop();
 });
+$('#load').click(function(){
+	grid.load([[0,0],[380, 380]]);
+});
 $('#speed').change(function(){
 	if(isPlaying)
 	{
@@ -52,6 +59,7 @@ $('#speed').change(function(){
 		play(1000/speed.value);
 	}
 });
+
 
 function play(interval)
 {
