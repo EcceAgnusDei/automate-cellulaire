@@ -16,6 +16,9 @@ $title = 'Jouez au jeux de la vie';
 		<button id="stop">Arrêter</button>
 		<button id="load">Charger</button>
 		<button id="save">Sauvegarder</button>
+		<?php if(isset($_SESSION['userid']))
+		{
+		?>
 		<form action="index.php?action=save" method="POST">
 			<input type="text" name="author" id="author" required>
 			<label for="name">Le nom de l'oeuvre</label>
@@ -24,7 +27,9 @@ $title = 'Jouez au jeux de la vie';
 			<input type="submit" value="Enregistrer"/>
 		</form>
 		<button id="db-load" onclick='window.location.href="index.php?action=load&id=1"'>Charger depuis db</button>
-		</form>
+		<?php
+		}
+		?>
 		<label for="cols">Nombre de colonnes</label>
 		<input type="text" name="cols" id="cols" value="20">
 		<label for="rows">Nombre de lignes</label>

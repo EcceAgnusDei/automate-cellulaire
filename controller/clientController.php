@@ -75,7 +75,7 @@ function userIdentifying($login, $password)
 		$_SESSION['login'] = 'error';
 		if ($_SERVER['HTTP_REFERER'] == 'http://localhost/automate-cellulaire/' || $_SERVER['HTTP_REFERER'] == 'http://localhost/automate-cellulaire/index.php')
 		{
-			header('location: index.php?loginerror=1');
+			header('location: index.php');
 		}
 		else
 		{

@@ -26,12 +26,4 @@ class UserManager extends Manager
 
 		return $id;
 	}
-
-	public function getGrids()
-	{
-		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->query('SELECT id, name, author, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY id DESC');
-
-		return $request;
-	}
 }

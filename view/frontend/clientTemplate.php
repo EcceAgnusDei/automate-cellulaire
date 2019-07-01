@@ -27,7 +27,7 @@
                     <?php if(isset($_SESSION['userid']))
                     {
                     ?>
-                    <li><a class="menu-item" href="index.php?action=">Votre espace</a></li>    
+                    <li><a class="menu-item" href="index.php?action=userspace">Votre espace</a></li>    
                     <?php
                     }
                     else
@@ -46,25 +46,6 @@
                     <div></div>
                     <div></div>
                 </div>
-                <!-- <ul class="menu-mobile">
-                    <li><a class="menu-item" href="index.php">Accueil</a></li>
-                    <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
-                    <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
-                     <?php if(true)
-                    {
-                    ?>    
-                    <li><button class="btn menu-item login-btn" href="index.php?action=">Espace perso</button></li>
-                    <?php
-                    }
-                    ?>
-                    <?php if(false)
-                    {
-                    ?>    
-                    <li><a class="menu-item" href="index.php?action=">Espace personnel</a></li>
-                    <?php
-                    }
-                    ?>
-                </ul> -->
             </div>
             <?php if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
             {
