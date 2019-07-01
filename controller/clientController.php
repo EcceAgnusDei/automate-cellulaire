@@ -27,12 +27,19 @@ function save($json)
 	require('view/frontend/listPostsView.php');
 }
 
+/**
+ * Affiche la page du jeu
+ */
 function playView()
 {
 	$script = '';
 	require ('view/frontend/playView.php');
 }
 
+/**
+ * Charge une grille à partir de la base de données
+ * @param  Int $id Id de la grille
+ */
 function load($id)
 {
 	$gridManager = new GridManager();
@@ -43,6 +50,9 @@ function load($id)
 	require ('view/frontend/playView.php');
 }
 
+/**
+ * Affiche les grilles de la base de données
+ */
 function showGrids()
 {
 	$gridManager = new GridManager();
@@ -50,6 +60,12 @@ function showGrids()
 	require('view/frontend/showGridsView.php');
 }
 
+/**
+ * Permet l'enregistrement d'un utilisateur
+ * @param  String $login    Identifient de l'utilisateur
+ * @param  String $password Mot de passe de l'utilisateur
+ * @param  String $email    Email de l'utilisateur
+ */
 function signin($login, $password, $email)
 {
 	$userManager = new UserManager();
@@ -66,6 +82,11 @@ function signin($login, $password, $email)
 	require('view/frontend/listPostsView.php');
 }
 
+/**
+ * Identifie un utilisateur et vérifie si celui-ci existe bien
+ * @param  String $login    Identifiant de l'utilisateur
+ * @param  String $password Mot de passe de l'utilisateur
+ */
 function userIdentifying($login, $password)
 {
 	$userManager = new UserManager();
@@ -84,7 +105,7 @@ function userIdentifying($login, $password)
 	}
 	else
 	{
-		$_SESSION['userid'] = $id;
+		$_SESSION['userid'] = (int)$id['id'];
 		header('location: ' . $_SERVER['HTTP_REFERER']);
 	}
 }
