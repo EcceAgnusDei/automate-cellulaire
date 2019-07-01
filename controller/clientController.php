@@ -68,5 +68,15 @@ function signin($login, $password, $email)
 
 function userIdentifying($login, $password)
 {
-	
+	$userManager = new UserManager();
+	$_SESSION['userid'] = $userManager->getId($login, $password);
+	if(!$_SESSION['userid'])
+	{
+		header('location: ' . $_SERVER['HTTP_REFERER'] . '&loginerror=1');
+	}
+	else
+	{
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+	}
 }
+	

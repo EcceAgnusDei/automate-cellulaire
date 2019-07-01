@@ -1,4 +1,6 @@
-<?php $title = 'Jouez au jeux de la vie'; ?>
+<?php 
+$title = 'Jouez au jeux de la vie';
+?>
 <?php ob_start(); ?>
 <script src="public/js/grid.js"></script>
 <script src="public/js/main.js"></script>

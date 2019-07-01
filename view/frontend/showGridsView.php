@@ -1,6 +1,6 @@
 <?php 
 $title = 'Admirez les créations';
-$head = ''; 
+$head = '';
 ?>
 
 <?php ob_start(); ?>

@@ -24,17 +24,16 @@
     				<li><a class="menu-item" href="index.php">Accueil</a></li>
                     <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
                     <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
-                    <?php if(true)
+                    <?php if(isset($_SESSION['userid']) && $_SESSION['userid'] != false)
                     {
-                    ?>    
-                    <li><button class="btn menu-item login-btn" href="index.php?action=">Espace perso</button></li>
+                    ?>
+                    <li><a class="menu-item" href="index.php?action=">Votre espace</a></li>    
                     <?php
                     }
-                    ?>
-                    <?php if(false)
+                    else
                     {
                     ?>    
-                    <li><a class="menu-item" href="index.php?action=">Espace personnel</a></li>
+                    <li><button class="btn menu-item login-btn">Espace perso</button></li>
                     <?php
                     }
                     ?>
@@ -67,7 +66,14 @@
                     ?>
                 </ul> -->
             </div>
-            <form action="index.php?action=identifying" method="POST" class="user-login-form">
+            <?php if (isset($_GET['loginerror']))
+            {
+            ?>
+            <p> Identifiant ou mot de passe incorrect</p>
+            <?php
+            }
+            ?>
+            <form action="index.php?action=useridentifying" method="POST" class="user-login-form">
                 <label for="user-pseudo">Pseudo</label>
                 <input type="text" name="user-login" id="user-login" required>
                 <label for="user-password">Mot de passe</label>

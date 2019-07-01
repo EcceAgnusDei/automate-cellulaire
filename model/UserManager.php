@@ -17,14 +17,14 @@ class UserManager extends Manager
 		return $succes;
 	}
 
-	public function load($id)
+	public function getId($login, $password)
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->prepare('SELECT * FROM grids WHERE id = ?');
-		$request->execute(array($id));
-		$grid = $request->fetch();
+		$request = $dataBase->prepare('SELECT id FROM users WHERE login = ? AND password = ?');
+		$request->execute(array($login, $password));
+		$id = $request->fetch();
 
-		return $grid;
+		return $id;
 	}
 
 	public function getGrids()
