@@ -37,4 +37,13 @@ class GridManager extends Manager
 
 		return $request;
 	}
+
+	public function getGridsByAuthorId($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('SELECT id, name, author, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids WHERE author_id = ? ORDER BY id DESC');
+		$request->execute(array($id));
+
+		return $request;
+	}
 }

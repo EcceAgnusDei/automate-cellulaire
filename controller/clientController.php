@@ -109,4 +109,18 @@ function userIdentifying($login, $password)
 		header('location: ' . $_SERVER['HTTP_REFERER']);
 	}
 }
-	
+
+function userSpaceView($id)
+{
+	$gridManager = new GridManager();
+	$grids = $gridManager->getGridsByAuthorId($id);
+
+	require ('view/frontend/userSpaceView.php');
+
+}
+
+function userLogout()
+{
+	session_destroy();
+	header('Location: index.php');
+}

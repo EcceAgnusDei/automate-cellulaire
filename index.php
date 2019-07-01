@@ -54,6 +54,18 @@ try
 				userIdentifying($_POST['user-login'],$_POST['user-password']);
 			}
 			break;
+
+			case 'userspace':
+			{
+				userSpaceView($_SESSION['userid']);
+			}
+			break;
+
+			case 'userlogout':
+			{
+				userLogout();
+			}
+			break;
 		}
 	}
 	else
