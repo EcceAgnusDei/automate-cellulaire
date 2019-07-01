@@ -69,13 +69,22 @@ function signin($login, $password, $email)
 function userIdentifying($login, $password)
 {
 	$userManager = new UserManager();
-	$_SESSION['userid'] = $userManager->getId($login, $password);
-	if(!$_SESSION['userid'])
+	$id = $userManager->getId($login, $password);
+	if(!$id)
 	{
-		header('location: ' . $_SERVER['HTTP_REFERER'] . '&loginerror=1');
+		$_SESSION['login'] = 'error';
+		if ($_SERVER['HTTP_REFERER'] == 'http://localhost/automate-cellulaire/' || $_SERVER['HTTP_REFERER'] == 'http://localhost/automate-cellulaire/index.php')
+		{
+			header('location: index.php?loginerror=1');
+		}
+		else
+		{
+			header('location: ' . $_SERVER['HTTP_REFERER']);
+		}
 	}
 	else
 	{
+		$_SESSION['userid'] = $id;
 		header('location: ' . $_SERVER['HTTP_REFERER']);
 	}
 }

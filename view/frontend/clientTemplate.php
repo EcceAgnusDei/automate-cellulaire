@@ -24,7 +24,7 @@
     				<li><a class="menu-item" href="index.php">Accueil</a></li>
                     <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
                     <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
-                    <?php if(isset($_SESSION['userid']) && $_SESSION['userid'] != false)
+                    <?php if(isset($_SESSION['userid']))
                     {
                     ?>
                     <li><a class="menu-item" href="index.php?action=">Votre espace</a></li>    
@@ -66,8 +66,9 @@
                     ?>
                 </ul> -->
             </div>
-            <?php if (isset($_GET['loginerror']))
+            <?php if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
             {
+                $_SESSION['login'] = '';
             ?>
             <p> Identifiant ou mot de passe incorrect</p>
             <?php
