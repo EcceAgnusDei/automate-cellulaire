@@ -1,5 +1,5 @@
 <?php 
-$title = 'Le jeu de la vie ';
+$title = 'Inscription';
 $head = '';
 ?>
 <?php ob_start(); ?>

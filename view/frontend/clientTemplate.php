@@ -27,7 +27,7 @@
                     <?php if(true)
                     {
                     ?>    
-                    <li><button class="btn menu-item" id="login-btn" href="index.php?action=">Connexion</button></li>
+                    <li><button class="btn menu-item login-btn" href="index.php?action=">Espace perso</button></li>
                     <?php
                     }
                     ?>
@@ -47,14 +47,14 @@
                     <div></div>
                     <div></div>
                 </div>
-                <ul class="menu-mobile">
+                <!-- <ul class="menu-mobile">
                     <li><a class="menu-item" href="index.php">Accueil</a></li>
                     <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
                     <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
                      <?php if(true)
                     {
                     ?>    
-                    <li><button class="btn menu-item" id="login-btn" href="index.php?action=">Connexion</button></li>
+                    <li><button class="btn menu-item login-btn" href="index.php?action=">Espace perso</button></li>
                     <?php
                     }
                     ?>
@@ -65,13 +65,15 @@
                     <?php
                     }
                     ?>
-                </ul>
+                </ul> -->
             </div>
-            <form action="index.php?action=" class="user-login-form">
-                <label for="pseudo">Pseudo</label>
-                <input type="text" name="pseudo" id="pseudo">
+            <form action="index.php?action=identifying" method="POST" class="user-login-form">
+                <label for="user-pseudo">Pseudo</label>
+                <input type="text" name="user-login" id="user-login" required>
                 <label for="user-password">Mot de passe</label>
-                <input type="password" name="user-password" id="user-password">
+                <input type="password" name="user-password" id="user-password" required>
+                <input type="submit" value="Go">
+                <a href="index.php?action=signinview">Inscription</a>
             </form>
     	</header>
         <?= $content ?>
@@ -80,7 +82,7 @@
         </footer>
     </body>
     <script>
-        $('#login-btn').click(function(){
+        $('.login-btn').click(function(){
             if ($('.user-login-form').css('display') === 'none')
             {
                 $('.user-login-form').css('display','flex');

@@ -4,6 +4,8 @@ if(session_status() == PHP_SESSION_NONE)
     session_start();
 }
 require_once('model/GridManager.php');
+require_once('model/UserManager.php');
+require_once('model/CommentManager.php');
 
 /**
  * Affiche la liste des articles
@@ -46,4 +48,25 @@ function showGrids()
 	$gridManager = new GridManager();
 	$grids = $gridManager->getGrids();
 	require('view/frontend/showGridsView.php');
+}
+
+function signin($login, $password, $email)
+{
+	$userManager = new UserManager();
+	$succes = $userManager->saveUser($login, $password, $email);
+
+	if ($succes)
+	{
+		header('location: index.php');
+	}
+	else
+	{
+		throw new Exception('Désolé, l\'inscription n\'a peu se faire');
+	}
+	require('view/frontend/listPostsView.php');
+}
+
+function userIdentifying($login, $password)
+{
+	
 }

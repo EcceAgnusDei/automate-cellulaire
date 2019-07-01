@@ -36,6 +36,24 @@ try
 			{
 				showGrids();
 			}
+
+			case 'signinview':
+			{
+				require('view/frontend/signinView.php');
+			}
+			break;
+
+			case 'signin':
+			{
+				signin($_POST['signin-login'], $_POST['signin-password'], $_POST['signin-email']);
+			}
+			break;
+
+			case 'useridentifying':
+			{
+				userIdentifying($_POST['user-login'],$_POST['user-password']);
+			}
+			break;
 		}
 	}
 	else
