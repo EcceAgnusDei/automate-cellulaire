@@ -1,6 +1,5 @@
 <?php $title = 'Jouez au jeux de la vie'; ?>
 <?php ob_start(); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="public/js/grid.js"></script>
 <script src="public/js/main.js"></script>
 <?php $head = ob_get_clean(); ?>

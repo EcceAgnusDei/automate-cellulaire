@@ -11,3 +11,8 @@ body
 {
 	border: 1px black solid;
 }
+
+.user-login-form
+{
+	display: none;
+}
