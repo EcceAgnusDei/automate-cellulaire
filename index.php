@@ -89,7 +89,7 @@ try
 				{
 					if (isset($_SESSION['userid']))
 					{
-						addComment($_GET['id'], $_SESSION['userid'], $_POST['comment-content']);
+						addComment($_GET['id'], $_SESSION['userid'], htmlspecialchars($_POST['comment-content']));
 					}
 				}
 				else 
@@ -99,7 +99,19 @@ try
 			}
 			break;
 		
-			case 'like':
+			case 'gridlike':
+			{
+				
+			}
+			break;
+
+			case 'commentlike':
+			{
+				
+			}
+			break;
+
+			case 'commentdislike':
 			{
 				
 			}

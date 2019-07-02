@@ -45,9 +45,10 @@ function load($id)
 	$commentManager = new CommentManager();
 	$userManager = new UserManager();
 
+	
 	$comments = $commentManager->getComments($id);
 	$grid = $gridManager->load($id);
-	
+
 	$script = 'save =' . $grid['json'] . '; setTimeout(function(){grid.load(save);},1);';
 
 	require ('view/frontend/playView.php');

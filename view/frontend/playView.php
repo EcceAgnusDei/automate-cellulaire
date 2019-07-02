@@ -8,9 +8,25 @@ $title = 'Jouez au jeux de la vie';
 
 <?php ob_start(); ?>
 <section>
+	<?php
+	if (!$gridManager)
+	{
+	?>
+		<h1>A vous de jouer au Jeu de la Vie !</h1>
+	<?php
+	}
+	else
+	{
+		$gridAuthor = $userManager->getLoginById($grid['author_id']);
+		$gridAuthor = $gridAuthor[0];
+	?>
+		<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
+	<?php
+	}
+	?>
 	<canvas id="canvas"></canvas>
 	<?php
-	if (isset($_GET['id']))
+	if (isset($gridManager))
 	{
 	?>
 	<button onclick='window.location.href="index.php?action=gridlike"'>like</button>
@@ -33,6 +49,10 @@ $title = 'Jouez au jeux de la vie';
 		<div class="comment">
 			<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
 			<p><?= $data['comment'] ?></p>
+			<div>
+				<button onclick='window.location.href="index.php?action=commentlike"'>like</button>
+				<button onclick='window.location.href="index.php?action=commentdislike"'>dislike</button>
+			</div>
 		</div>
 		<?php
 		}
