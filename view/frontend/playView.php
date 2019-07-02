@@ -25,10 +25,15 @@ $title = 'Jouez au jeux de la vie';
 	?>
 	<canvas id="canvas"></canvas>
 	<?php
-	if (isset($gridManager) && isset($_SESSION['userid']))
+	if (isset($gridManager, $_SESSION['userid']))
 	{
-	?>
+		if (!$isLiked)
+		{
+		?>
 	<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like</button>
+		<?php
+		}
+		?>
 	<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
 		<label for="comment">Laissez un commentaire</label>
 		<textarea name="comment-content" id="comment-content"></textarea>

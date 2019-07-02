@@ -6,6 +6,7 @@ if(session_status() == PHP_SESSION_NONE)
 require_once('model/GridManager.php');
 require_once('model/UserManager.php');
 require_once('model/CommentManager.php');
+require_once('model/LikeManager.php');
 
 /**
  * Affiche la liste des articles
@@ -44,7 +45,14 @@ function load($id)
 	$gridManager = new GridManager();
 	$commentManager = new CommentManager();
 	$userManager = new UserManager();
+	$likeManager = new LikeManager();
 
+	$isLiked = false;
+
+	if (isset($_SESSION['userid']))
+	{
+		$isLiked = $likeManager->gridIsLiked($id, $_SESSION['userid']);
+	}
 
 	$comments = $commentManager->getComments($id);
 	$grid = $gridManager->load($id);
@@ -154,10 +162,12 @@ function gridDelete($id, $userId)
 	}
 }
 
-function gridLike($gridId)
+function gridLike($gridId, $userId)
 {
 	$gridManager = new GridManager();
-	$succes = $gridManager->like($gridId);
+	$likeManager = new LikeManager();
+
+	$succes = $likeManager->gridLike($gridId, $userId);
 
 	if ($succes)
 	{
