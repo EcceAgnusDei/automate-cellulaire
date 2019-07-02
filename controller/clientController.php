@@ -125,17 +125,26 @@ function userLogout()
 	header('Location: index.php');
 }
 
-function gridDelete($id)
+function gridDelete($id, $userId)
 {
 	$gridManager = new GridManager();
-	$succes = $gridManager->delete($id);
+	var_dump($gridManager->getAuthorIdById($userId));
 
-	if ($succes)
+	if ($userId == $gridManager->getAuthorIdById($id))
 	{
-		header('location: index.php?action=userspace');
+		$succes = $gridManager->delete($id);
+
+		if ($succes)
+		{
+			header('location: index.php?action=userspace');
+		}
+		else
+		{
+			throw new Exception('Désolé, la suppression n\'a peu se faire');
+		}
 	}
 	else
 	{
-		throw new Exception('Désolé, la suppression n\'a peu se faire');
+		throw new Exception('Vous n\'êtes pas autorisé à supprimer cette création');
 	}
 }

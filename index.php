@@ -71,12 +71,21 @@ try
 			{
 				if (isset($_GET['id']) && $_GET['id'] > 0) 
 				{
-					gridDelete($_GET['id']);
+					if (isset($_SESSION['userid']))
+					{
+						gridDelete($_GET['id'], $_SESSION['userid']);
+					}
 				}
 				else 
 				{
 					throw new Exception('Aucun identifiant de grid envoyé');
 				}
+			}
+			break;
+
+			case 'like':
+			{
+				
 			}
 			break;
 		}

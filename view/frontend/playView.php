@@ -9,6 +9,14 @@ $title = 'Jouez au jeux de la vie';
 <?php ob_start(); ?>
 <section>
 	<canvas id="canvas"></canvas>
+	<?php
+	if (isset($_GET['id']))
+	{
+	?>
+	<button onclick='window.location.href="index.php?action=gridlike"'>like</button>
+	<?php	
+	}
+	?>
 	<div class="grid-command">
 		<button id="next">Suivant</button>
 		<button id="set-grid">Afficher la grille</button>
@@ -16,7 +24,7 @@ $title = 'Jouez au jeux de la vie';
 		<button id="stop">Arrêter</button>
 		<button id="load">Charger</button>
 		<button id="save">Sauvegarder</button>
-		<?php if(isset($_SESSION['userid']))
+		<?php if(isset($_SESSION['userid']) && !isset($_GET['id']))
 		{
 		?>
 		<form action="index.php?action=save" method="POST">
