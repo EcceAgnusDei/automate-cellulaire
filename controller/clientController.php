@@ -42,8 +42,12 @@ function playView()
 function load($id)
 {
 	$gridManager = new GridManager();
+	$commentManager = new CommentManager();
+	$userManager = new UserManager();
 
+	$comments = $commentManager->getComments($id);
 	$grid = $gridManager->load($id);
+	
 	$script = 'save =' . $grid['json'] . '; setTimeout(function(){grid.load(save);},1);';
 
 	require ('view/frontend/playView.php');
@@ -148,3 +152,20 @@ function gridDelete($id, $userId)
 		throw new Exception('Vous n\'êtes pas autorisé à supprimer cette création');
 	}
 }
+
+function addComment($gridId, $userId, $content)
+{
+	$commentManager = new CommentManager();
+	$succes = $commentManager->addComment($gridId, $userId, $content);
+
+	if ($succes)
+	{
+		header('location: index.php?action=load&id=' . $gridId);
+	}
+	else
+	{
+		throw new Exception('Désolé, le commentaire n\'a peu être ajouté');
+	}
+}
+
+

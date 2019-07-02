@@ -42,7 +42,7 @@ class UserManager extends Manager
 	/**
 	 * Obtient le nom de l'utilisateur grace à son id
 	 * @param  int $id id de l'utilisateur
-	 * @return $login     
+	 * @return $login PDOstatement    
 	 */
 	public function getLoginById($id)
 	{

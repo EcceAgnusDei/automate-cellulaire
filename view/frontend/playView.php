@@ -14,7 +14,28 @@ $title = 'Jouez au jeux de la vie';
 	{
 	?>
 	<button onclick='window.location.href="index.php?action=gridlike"'>like</button>
-	<?php	
+		<?php 
+		if(isset($_SESSION['userid']))
+		{
+		?>
+		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
+			<label for="comment">Laissez un commentaire</label>
+			<textarea name="comment-content" id="comment-content"></textarea>
+			<input type="submit" value="Envoyer" class="btn">
+		</form>
+		<?php
+		}
+		while ($data = $comments->fetch())
+		{
+			$commentAuthor = $userManager->getLoginById($data['author_id']);
+			$commentAuthor = $commentAuthor[0];
+		?>
+		<div class="comment">
+			<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
+			<p><?= $data['comment'] ?></p>
+		</div>
+		<?php
+		}
 	}
 	?>
 	<div class="grid-command">

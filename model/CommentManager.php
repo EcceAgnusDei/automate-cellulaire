@@ -9,13 +9,14 @@ class CommentManager extends Manager
 {
 	/**
 	 * Méthode permettant d'obtenir les commentaires d'un article.
+	 * @param int $gridId Id de la création dont on souhaite obtenir les commentaires
 	 * @return PDOStatement Requête obtenue à partir de la table comment.
 	 */
-	public function getComments($postId)
+	public function getComments($gridId)
 	{
-		$dataBase = $this->dbConnect('projet4');
-		$comments = $dataBase->prepare('SELECT id, signalement, author, post_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY id DESC');
-		$comments->execute(array($postId));
+		$dataBase = $this->dbConnect('projet5');
+		$comments = $dataBase->prepare('SELECT id, likes, dislikes, author_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE grid_id = ? ORDER BY id DESC');
+		$comments->execute(array($gridId));
 
 		return $comments;
 	}
@@ -54,11 +55,11 @@ class CommentManager extends Manager
 	 * @param  string $comment Le commentaire
 	 * @return bool          Retourne true si l'enregistrement s'est bien effectué
 	 */
-	public function postComment($postId, $author, $comment)
+	public function addComment($GridId, $authorId, $comment)
 	{
-		$dataBase = $this->dbConnect('projet4');
-		$comments = $dataBase->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?,?,?, NOW())');
-		$succes = $comments->execute(array($postId, $author, $comment));
+		$dataBase = $this->dbConnect('projet5');
+		$comments = $dataBase->prepare('INSERT INTO comments(grid_id, author_id, comment, comment_date) VALUES(?,?,?, NOW())');
+		$succes = $comments->execute(array($GridId, $authorId, $comment));
 
 		return $succes;
 	}
