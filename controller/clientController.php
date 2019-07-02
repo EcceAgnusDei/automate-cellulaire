@@ -125,7 +125,7 @@ function userLogout()
 	header('Location: index.php');
 }
 
-function deleteGrid($id)
+function gridDelete($id)
 {
 	$gridManager = new GridManager();
 	$succes = $gridManager->delete($id);

@@ -14,7 +14,7 @@ while ($data = $grids->fetch())
 	<div>
 		<p><?= $data['name'] ?></p>
 		<a href="index.php?action=load&amp;id=<?= $data['id'] ?>">Voir</a>
-		<button>Supprimer</button>
+		<button onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
 	</div>
 <?php
 }
