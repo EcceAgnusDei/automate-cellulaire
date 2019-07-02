@@ -12,14 +12,14 @@ $title = 'Jouez au jeux de la vie';
 	if (!$gridManager)
 	{
 	?>
-	<h1>A vous de jouer au Jeu de la Vie !</h1>
+		<h1>A vous de jouer au Jeu de la Vie !</h1>
 	<?php
 	}
 	else
 	{
-	$gridAuthor = $userManager->getLoginById($grid['author_id']);
+		$gridAuthor = $userManager->getLoginById($grid['author_id']);
 	?>
-	<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
+		<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
 	<?php
 	}
 	?>
@@ -27,39 +27,54 @@ $title = 'Jouez au jeux de la vie';
 	<?php
 	if (isset($gridManager, $_SESSION['userid']))
 	{
-		if (!$isLiked)
+		if (!$gridIsLiked)
 		{
 		?>
-	<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like</button>
+			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like</button>
 		<?php
 		}
 		?>
-	<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
-		<label for="comment">Laissez un commentaire</label>
-		<textarea name="comment-content" id="comment-content"></textarea>
-		<input type="submit" value="Envoyer" class="btn">
-	</form>
+		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
+			<label for="comment">Laissez un commentaire</label>
+			<textarea name="comment-content" id="comment-content"></textarea>
+			<input type="submit" value="Envoyer" class="btn">
+		</form>
 	<?php
 	}
 	while ($data = $comments->fetch())
 	{
 		$commentAuthor = $userManager->getLoginById($data['author_id']);
 	?>
-	<div class="comment">
-		<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
-		<p><?= $data['comment'] ?></p>
-		<?php
-		if(isset($_SESSION['userid']))
-		{
-		?>
-		<div>
-			<button onclick='window.location.href="index.php?action=commentlike"'>like</button>
-			<button onclick='window.location.href="index.php?action=commentdislike"'>dislike</button>
+		<div class="comment">
+			<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
+			<p><?= $data['comment'] ?></p>
+			<?php
+			if(isset($_SESSION['userid']))
+			{
+				if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
+				{
+			?>
+					<p>Liked</p>
+			<?php
+				}
+				elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
+				{
+			?>
+					<p>Disliked</p>
+			<?php
+				}
+				else
+				{
+			?>
+					<div>
+						<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'>like</button>
+						<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'>dislike</button>
+					</div>
+			<?php
+				}
+			}
+			?>
 		</div>
-		<?php
-		}
-		?>
-	</div>
 	<?php
 	}
 	?>
@@ -70,16 +85,17 @@ $title = 'Jouez au jeux de la vie';
 		<button id="stop">Arrêter</button>
 		<button id="load">Charger</button>
 		<button id="save">Sauvegarder</button>
-		<?php if(isset($_SESSION['userid']) && !isset($_GET['id']))
+		<?php 
+		if(isset($_SESSION['userid']) && !isset($_GET['id']))
 		{
 		?>
-		<form action="index.php?action=save" method="POST">
-			<label for="name">Le nom de l'oeuvre</label>
-			<input type="text" name="name" id="name" required>
-			<textarea name="grid-json" id="grid-json" required></textarea>
-			<input type="submit" value="Enregistrer"/>
-		</form>
-		<button id="db-load" onclick='window.location.href="index.php?action=load&id=1"'>Charger depuis db</button>
+			<form action="index.php?action=save" method="POST">
+				<label for="name">Le nom de l'oeuvre</label>
+				<input type="text" name="name" id="name" required>
+				<textarea name="grid-json" id="grid-json" required></textarea>
+				<input type="submit" value="Enregistrer"/>
+			</form>
+			<button id="db-load" onclick='window.location.href="index.php?action=load&id=1"'>Charger depuis db</button>
 		<?php
 		}
 		?>

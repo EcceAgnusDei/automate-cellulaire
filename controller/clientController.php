@@ -47,11 +47,13 @@ function load($id)
 	$userManager = new UserManager();
 	$likeManager = new LikeManager();
 
-	$isLiked = false;
+	$gridIsLiked = false;
+	$commentIsLiked = false;
+	$commentIsDisliked = false;
 
 	if (isset($_SESSION['userid']))
 	{
-		$isLiked = $likeManager->gridIsLiked($id, $_SESSION['userid']);
+		$gridIsLiked = $likeManager->gridIsLiked($id, $_SESSION['userid']);
 	}
 
 	$comments = $commentManager->getComments($id);
@@ -175,7 +177,7 @@ function gridLike($gridId, $userId)
 	}
 	else
 	{
-		throw new Exception('Désolé, le commentaire n\'a peu être liké');
+		throw new Exception('Désolé, la grille n\'a peu être likée');
 	}
 }
 
@@ -194,4 +196,37 @@ function addComment($gridId, $userId, $content)
 	}
 }
 
+function commentLike($commentId, $userId)
+{
+	$commentManager = new CommentManager();
+	$likeManager = new LikeManager();
+
+	$succes = $likeManager->commentLike($commentId, $userId);
+
+	if ($succes)
+	{
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+	}
+	else
+	{
+		throw new Exception('Désolé, le commentaire n\'a peu être liké');
+	}
+}
+
+function commentdisLike($commentId, $userId)
+{
+	$commentManager = new CommentManager();
+	$likeManager = new LikeManager();
+
+	$succes = $likeManager->commentDislike($commentId, $userId);
+
+	if ($succes)
+	{
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+	}
+	else
+	{
+		throw new Exception('Désolé, le commentaire n\'a peu être liké');
+	}
+}
 

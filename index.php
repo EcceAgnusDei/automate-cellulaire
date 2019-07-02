@@ -114,13 +114,27 @@ try
 
 			case 'commentlike':
 			{
-				
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+				{
+					commentLike($_GET['id'], $_SESSION['userid']);
+				}
+				else 
+				{
+					throw new Exception('Aucun identifiant de commentaire envoyé');
+				}
 			}
 			break;
 
 			case 'commentdislike':
 			{
-				
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+				{
+					commentDislike($_GET['id'], $_SESSION['userid']);
+				}
+				else 
+				{
+					throw new Exception('Aucun identifiant de commentaire envoyé');
+				}
 			}
 			break;
 		}
