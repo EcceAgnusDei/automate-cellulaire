@@ -16,9 +16,6 @@ while ($data = $grids->fetch())
 }
 ?>
 </section>
-<?php
-$grids->closeCursor();
-$content = ob_get_clean(); 
-?>
+<?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>

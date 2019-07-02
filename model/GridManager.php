@@ -7,15 +7,11 @@ require_once("Manager.php");
  */
 class GridManager extends Manager
 {
-	/**
-	 * Méthode permettant d'obtenir l'ensemble des articles.
-	 * @return PDOStatement Requête obtenue à partir de la table posts.
-	 */
-	public function save($json)
+	public function save($json, $id, $name)
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->prepare('INSERT INTO grids(json,grid_date) VALUES (?, NOW())');
-		$succes = $request->execute(array($json));
+		$request = $dataBase->prepare('INSERT INTO grids(json,author_id, name,grid_date) VALUES (?,?,?, NOW())');
+		$succes = $request->execute(array($json, $id, $name));
 
 		return $succes;
 	}

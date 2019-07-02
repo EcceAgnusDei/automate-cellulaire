@@ -15,7 +15,7 @@ try
 		
 			case 'save':
 			{
-				save($_POST['grid-json']);
+				save($_POST['grid-json'], $_SESSION['userid'], $_POST['name']);
 			}
 			break;
 
@@ -36,7 +36,7 @@ try
 			{
 				showGrids();
 			}
-
+			break;
 			case 'signinview':
 			{
 				require('view/frontend/signinView.php');

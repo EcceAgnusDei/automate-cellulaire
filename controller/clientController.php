@@ -11,10 +11,10 @@ require_once('model/CommentManager.php');
  * Affiche la liste des articles
  * 
  */
-function save($json)
+function save($json, $authorId, $name)
 {
 	$gridManager = new GridManager();
-	$succes = $gridManager->save($json);
+	$succes = $gridManager->save($json, $authorId, $name);
 
 	if ($succes)
 	{

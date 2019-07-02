@@ -20,7 +20,6 @@ $title = 'Jouez au jeux de la vie';
 		{
 		?>
 		<form action="index.php?action=save" method="POST">
-			<input type="text" name="author" id="author" required>
 			<label for="name">Le nom de l'oeuvre</label>
 			<input type="text" name="name" id="name" required>
 			<textarea name="grid-json" id="grid-json" required></textarea>
