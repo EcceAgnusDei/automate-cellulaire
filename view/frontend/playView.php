@@ -12,15 +12,14 @@ $title = 'Jouez au jeux de la vie';
 	if (!$gridManager)
 	{
 	?>
-		<h1>A vous de jouer au Jeu de la Vie !</h1>
+	<h1>A vous de jouer au Jeu de la Vie !</h1>
 	<?php
 	}
 	else
 	{
-		$gridAuthor = $userManager->getLoginById($grid['author_id']);
-		$gridAuthor = $gridAuthor[0];
+	$gridAuthor = $userManager->getLoginById($grid['author_id']);
 	?>
-		<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
+	<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
 	<?php
 	}
 	?>
@@ -29,7 +28,7 @@ $title = 'Jouez au jeux de la vie';
 	if (isset($gridManager))
 	{
 	?>
-	<button onclick='window.location.href="index.php?action=gridlike"'>like</button>
+	<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like</button>
 		<?php 
 		if(isset($_SESSION['userid']))
 		{
@@ -44,7 +43,6 @@ $title = 'Jouez au jeux de la vie';
 		while ($data = $comments->fetch())
 		{
 			$commentAuthor = $userManager->getLoginById($data['author_id']);
-			$commentAuthor = $commentAuthor[0];
 		?>
 		<div class="comment">
 			<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>

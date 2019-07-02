@@ -42,7 +42,7 @@ class UserManager extends Manager
 	/**
 	 * Obtient le nom de l'utilisateur grace à son id
 	 * @param  int $id id de l'utilisateur
-	 * @return $login PDOstatement    
+	 * @return String Pseudo de l'utilisateur    
 	 */
 	public function getLoginById($id)
 	{
@@ -50,6 +50,7 @@ class UserManager extends Manager
 		$request = $dataBase->prepare('SELECT login FROM users WHERE id = ?');
 		$request->execute(array($id));
 		$login = $request->fetch();
+		$login = $login[0];
 
 		return $login;
 	}

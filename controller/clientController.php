@@ -45,7 +45,7 @@ function load($id)
 	$commentManager = new CommentManager();
 	$userManager = new UserManager();
 
-	
+
 	$comments = $commentManager->getComments($id);
 	$grid = $gridManager->load($id);
 
@@ -151,6 +151,21 @@ function gridDelete($id, $userId)
 	else
 	{
 		throw new Exception('Vous n\'êtes pas autorisé à supprimer cette création');
+	}
+}
+
+function gridLike($gridId)
+{
+	$gridManager = new GridManager();
+	$succes = $gridManager->like($gridId);
+
+	if ($succes)
+	{
+		header('location: index.php?action=load&id=' . $gridId);
+	}
+	else
+	{
+		throw new Exception('Désolé, le commentaire n\'a peu être liké');
 	}
 }
 

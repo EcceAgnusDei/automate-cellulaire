@@ -59,10 +59,16 @@ class GridManager extends Manager
 		$request->execute(array($id));
 
 		$author_id = $request->fetch();
-		var_dump($author_id);
 		$author_id = $author_id[0];
-		var_dump($author_id);
-
 		return $author_id;
+	}
+
+	public function like($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('UPDATE grids SET likes=likes+1 WHERE id = ?');
+		$succes = $request->execute(array($id));
+
+		return $succes;
 	}
 }

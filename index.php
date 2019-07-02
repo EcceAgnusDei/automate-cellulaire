@@ -101,7 +101,14 @@ try
 		
 			case 'gridlike':
 			{
-				
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+				{
+					gridLike($_GET['id']);
+				}
+				else 
+				{
+					throw new Exception('Aucun identifiant de grid envoyé');
+				}
 			}
 			break;
 
