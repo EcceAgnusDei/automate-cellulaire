@@ -25,35 +25,37 @@ $title = 'Jouez au jeux de la vie';
 	?>
 	<canvas id="canvas"></canvas>
 	<?php
-	if (isset($gridManager))
+	if (isset($gridManager) && isset($_SESSION['userid']))
 	{
 	?>
 	<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like</button>
-		<?php 
+	<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
+		<label for="comment">Laissez un commentaire</label>
+		<textarea name="comment-content" id="comment-content"></textarea>
+		<input type="submit" value="Envoyer" class="btn">
+	</form>
+	<?php
+	}
+	while ($data = $comments->fetch())
+	{
+		$commentAuthor = $userManager->getLoginById($data['author_id']);
+	?>
+	<div class="comment">
+		<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
+		<p><?= $data['comment'] ?></p>
+		<?php
 		if(isset($_SESSION['userid']))
 		{
 		?>
-		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
-			<label for="comment">Laissez un commentaire</label>
-			<textarea name="comment-content" id="comment-content"></textarea>
-			<input type="submit" value="Envoyer" class="btn">
-		</form>
-		<?php
-		}
-		while ($data = $comments->fetch())
-		{
-			$commentAuthor = $userManager->getLoginById($data['author_id']);
-		?>
-		<div class="comment">
-			<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
-			<p><?= $data['comment'] ?></p>
-			<div>
-				<button onclick='window.location.href="index.php?action=commentlike"'>like</button>
-				<button onclick='window.location.href="index.php?action=commentdislike"'>dislike</button>
-			</div>
+		<div>
+			<button onclick='window.location.href="index.php?action=commentlike"'>like</button>
+			<button onclick='window.location.href="index.php?action=commentdislike"'>dislike</button>
 		</div>
 		<?php
 		}
+		?>
+	</div>
+	<?php
 	}
 	?>
 	<div class="grid-command">
