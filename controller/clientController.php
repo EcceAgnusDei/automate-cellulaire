@@ -24,7 +24,6 @@ function save($json)
 	{
 		throw new Exception('La grille n\'a pas peu être enregistrée');
 	}
-	require('view/frontend/listPostsView.php');
 }
 
 /**
@@ -56,6 +55,8 @@ function load($id)
 function showGrids()
 {
 	$gridManager = new GridManager();
+	$userManager = new UserManager();
+
 	$grids = $gridManager->getGrids();
 	require('view/frontend/showGridsView.php');
 }
@@ -79,7 +80,6 @@ function signin($login, $password, $email)
 	{
 		throw new Exception('Désolé, l\'inscription n\'a peu se faire');
 	}
-	require('view/frontend/listPostsView.php');
 }
 
 /**
@@ -123,4 +123,19 @@ function userLogout()
 {
 	session_destroy();
 	header('Location: index.php');
+}
+
+function deleteGrid($id)
+{
+	$gridManager = new GridManager();
+	$succes = $gridManager->delete($id);
+
+	if ($succes)
+	{
+		header('location: index.php?action=userspace');
+	}
+	else
+	{
+		throw new Exception('Désolé, la suppression n\'a peu se faire');
+	}
 }

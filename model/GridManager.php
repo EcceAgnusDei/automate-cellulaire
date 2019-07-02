@@ -33,7 +33,7 @@ class GridManager extends Manager
 	public function getGrids()
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->query('SELECT id, name, author, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY id DESC');
+		$request = $dataBase->query('SELECT id, name, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY id DESC');
 
 		return $request;
 	}
@@ -41,9 +41,18 @@ class GridManager extends Manager
 	public function getGridsByAuthorId($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->prepare('SELECT id, name, author, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids WHERE author_id = ? ORDER BY id DESC');
+		$request = $dataBase->prepare('SELECT id, name, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids WHERE author_id = ? ORDER BY id DESC');
 		$request->execute(array($id));
 
 		return $request;
+	}
+
+	public function delete($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$del = $dataBase->prepare('DELETE FROM grids WHERE id = ?');
+		$succes = $del->execute(array($id));
+
+		return $succes;
 	}
 }

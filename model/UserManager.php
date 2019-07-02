@@ -38,4 +38,19 @@ class UserManager extends Manager
 
 		return $id;
 	}
+
+	/**
+	 * Obtient le nom de l'utilisateur grace à son id
+	 * @param  int $id id de l'utilisateur
+	 * @return $login     
+	 */
+	public function getLoginById($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('SELECT login FROM users WHERE id = ?');
+		$request->execute(array($id));
+		$login = $request->fetch();
+
+		return $login;
+	}
 }
