@@ -24,69 +24,6 @@ $title = 'Jouez au jeux de la vie';
 	}
 	?>
 	<canvas id="canvas"></canvas>
-	<?php
-	if (isset($gridManager, $_SESSION['userid']))
-	{
-		if (!$gridIsLiked)
-		{
-		?>
-			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like <?= $grid['likes'] ?></button>
-		<?php
-		}
-		else
-		{
-		?>
-			<p>Liked <span><?= $grid['likes'] ?></span></p>	
-		<?php
-		}
-		?>
-		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
-			<label for="comment">Laissez un commentaire</label>
-			<textarea name="comment-content" id="comment-content"></textarea>
-			<input type="submit" value="Envoyer" class="btn">
-		</form>
-	<?php
-	}
-	if (isset($comments))
-	{
-		while ($data = $comments->fetch())
-		{
-			$commentAuthor = $userManager->getLoginById($data['author_id']);
-			?>
-			<div class="comment">
-				<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
-				<p><?= $data['comment'] ?></p>
-				<?php
-				if(isset($_SESSION['userid']))
-				{
-					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
-					{
-						?>
-						<p>Liked <span> <?= $data['likes'] ?></span></p>
-						<?php
-					}
-					elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
-					{
-						?>
-						<p>Disliked <span> <?= $data['dislikes'] ?></span></p>
-						<?php
-					}
-					else
-					{
-						?>
-						<div>
-							<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'>like <span><?= $data['likes'] ?></span></button>
-							<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'>dislike <span> <?= $data['dislikes'] ?></span></button>
-						</div>
-						<?php
-					}
-				}
-				?>
-			</div>
-			<?php
-		}
-	}
-	?>
 	<div class="grid-command">
 		<button id="next">Suivant</button>
 		<button id="set-grid">Afficher la grille</button>
@@ -117,6 +54,69 @@ $title = 'Jouez au jeux de la vie';
 		<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
 		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
 	</div>
+	<?php
+	if (isset($gridManager, $_SESSION['userid']))
+	{
+		if (!$gridIsLiked)
+		{
+		?>
+			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
+		<?php
+		}
+		else
+		{
+		?>
+			<p><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
+		<?php
+		}
+		?>
+		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
+			<label for="comment">Laissez un commentaire</label>
+			<textarea name="comment-content" id="comment-content"></textarea>
+			<input type="submit" value="Envoyer" class="btn">
+		</form>
+	<?php
+	}
+	if (isset($comments))
+	{
+		while ($data = $comments->fetch())
+		{
+			$commentAuthor = $userManager->getLoginById($data['author_id']);
+			?>
+			<div class="comment">
+				<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
+				<p><?= $data['comment'] ?></p>
+				<?php
+				if(isset($_SESSION['userid']))
+				{
+					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
+					{
+						?>
+						<p><i class="fas fa-thumbs-up" color="green"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></p>
+						<?php
+					}
+					elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
+					{
+						?>
+						<p><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down" color="red"></i> <span> <?= $data['dislikes'] ?></span></p>
+						<?php
+					}
+					else
+					{
+						?>
+						<div>
+							<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
+							<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
+						</div>
+						<?php
+					}
+				}
+				?>
+			</div>
+			<?php
+		}
+	}
+	?>
 </section>
 <script><?= $script ?></script>
 <?php $content = ob_get_clean(); ?>

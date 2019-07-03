@@ -12,7 +12,7 @@ while ($data = $grids->fetch())
 {
 ?>
 	<div>
-		<p><?= $data['name'] ?><span> <?= $data['likes'] ?></span></p>
+		<p><?= $data['name'] ?><span> <i class="fas fa-thumbs-up"></i><?= $data['likes'] ?></span></p>
 		<div>
 			<a href="index.php?action=load&amp;id=<?= $data['id'] ?>">Voir</a>
 			<button onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
