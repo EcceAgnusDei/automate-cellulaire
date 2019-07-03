@@ -44,7 +44,7 @@ try
 			break;
 			case 'signinview':
 			{
-				require('view/frontend/signinView.php');
+				signinView();
 			}
 			break;
 

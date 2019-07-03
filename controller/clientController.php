@@ -80,6 +80,14 @@ function showGrids()
 	require('view/frontend/showGridsView.php');
 }
 
+function signinView()
+{
+	$userManager = new UserManager();
+	$request = $userManager->getLogin();
+
+	require('view/frontend/signinView.php');
+}
+
 /**
  * Permet l'enregistrement d'un utilisateur
  * @param  String $login    Identifient de l'utilisateur

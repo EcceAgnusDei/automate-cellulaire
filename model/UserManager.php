@@ -54,4 +54,12 @@ class UserManager extends Manager
 
 		return $login;
 	}
+
+	public function getLogin()
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->query('SELECT login FROM users');
+
+		return $request;
+	}
 }
