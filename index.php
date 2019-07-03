@@ -158,12 +158,19 @@ try
 
 			case 'adminlogin':
 			{
-				adminLogin();
+				if(isset($_SESSION['admin']))
+				{
+					adminGridView();
+				}
+				else
+				{
+					adminLogin();
+				}
 			}
 			break;
 		}
 	}
-	if (isset($_GET['adminaction']))
+	elseif (isset($_GET['adminaction']))
 	{
 		if (isset($_SESSION['admin']))
 		{
@@ -175,7 +182,7 @@ try
 				}
 				break;
 
-				case 'commentsbyidview':
+				case 'commentsbydateview':
 				{
 
 				}

@@ -23,7 +23,7 @@
     		<nav class="menu grid">
     			<ul>
     				<li><a class="menu-item" href="index.php?adminaction=gridsview">Les créations</a></li>
-                    <li><a class="menu-item" href="index.php?adminaction=commentsbyidview">Les commentaires</a></li>
+                    <li><a class="menu-item" href="index.php?adminaction=commentsbydateview">Les commentaires</a></li>
     			</ul>
     		</nav>
             <div class="menu-burger">

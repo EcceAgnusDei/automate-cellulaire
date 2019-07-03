@@ -12,7 +12,17 @@ require_once('model/LikeManager.php');
 function admin()
 {
 	$_SESSION['admin'] = true;
-	header('Location: admin.php');
+	header('Location: index.php?adminaction=gridsview');
+}
+
+function adminGridView()
+{
+	$gridManager = new GridManager();
+	$userManager = new userManager();
+
+	$grids = $gridManager->getGridsByDate();
+
+	require('view/backend/adminGridsView.php');
 }
 
 ?>

@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 <section class="grid last-section">
 	<h1>Administration</h1>
-	<form action="./index.php?action=adminidentifying" method="post" class="login-form">
+	<form action="index.php?action=adminidentifying" method="post" class="login-form">
 		<label for="login">Identifiant</label>
 		<input type="text" name="login" id="login">
 		<label for="password">Mot de passe</label>

@@ -68,7 +68,7 @@ function showGrids()
 	$gridManager = new GridManager();
 	$userManager = new UserManager();
 
-	$grids = $gridManager->getGrids();
+	$grids = $gridManager->getGridsByDate();
 	require('view/frontend/showGridsView.php');
 }
 
