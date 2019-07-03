@@ -25,4 +25,23 @@ function adminGridView()
 	require('view/backend/adminGridsView.php');
 }
 
+function commentsByDateView()
+{
+	$commentManager = new CommentManager();
+	$userManager = new userManager();
+
+	$comments = $commentManager->getAllByDate();
+
+	require('view/backend/adminCommentsView.php');
+}
+
+function commentsByDislikesView()
+{
+	$commentManager = new CommentManager();
+	$userManager = new userManager();
+
+	$comments = $commentManager->getAllByDislikes();
+
+	require('view/backend/adminCommentsView.php');
+}
 ?>

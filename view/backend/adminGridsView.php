@@ -20,4 +20,4 @@
 </section>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('view/frontend/clientTemplate.php'); ?>
+<?php require('view/backend/adminTemplate.php'); ?>

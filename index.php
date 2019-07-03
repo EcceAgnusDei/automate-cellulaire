@@ -160,7 +160,7 @@ try
 			{
 				if(isset($_SESSION['admin']))
 				{
-					adminGridView();
+					header('location: index.php?adminaction=gridsview');
 				}
 				else
 				{
@@ -184,13 +184,13 @@ try
 
 				case 'commentsbydateview':
 				{
-
+					commentsByDateView();
 				}
 				break;
 
 				case 'commentsbydislikesview':
 				{
-
+					commentsByDislikesView();
 				}
 				break;
 			}

@@ -26,10 +26,10 @@ class CommentManager extends Manager
 	 * au plus récent
 	 * @return PDOStatement Requête obtenue à partir de la table comment
 	 */
-	public function getAllById()
+	public function getAllByDate()
 	{
-		$dataBase = $this->dbConnect('projet4');
-		$comments = $dataBase->query('SELECT id, post_id, author, comment, signalement, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments ORDER BY id DESC');
+		$dataBase = $this->dbConnect('projet5');
+		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
 
 		return $comments;
 	}
@@ -39,10 +39,10 @@ class CommentManager extends Manager
 	 * par nombre de signalement décroissant
 	 * @return PDOStatement Requête obtenue à partir de la table comment
 	 */
-	public function getAllBySignal()
+	public function getAllByDislikes()
 	{
-		$dataBase = $this->dbConnect('projet4');
-		$comments = $dataBase->query('SELECT id, post_id, author, comment, signalement, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE signalement > 0 ORDER BY signalement DESC');
+		$dataBase = $this->dbConnect('projet5');
+		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE dislikes > 0 ORDER BY dislikes DESC');
 
 		return $comments;
 	}
