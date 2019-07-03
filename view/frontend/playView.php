@@ -9,7 +9,7 @@ $title = 'Jouez au jeux de la vie';
 <?php ob_start(); ?>
 <section>
 	<?php
-	if (!$gridManager)
+	if (!isset($gridManager))
 	{
 	?>
 		<h1>A vous de jouer au Jeu de la Vie !</h1>
@@ -41,41 +41,44 @@ $title = 'Jouez au jeux de la vie';
 		</form>
 	<?php
 	}
-	while ($data = $comments->fetch())
+	if (isset($comments))
 	{
-		$commentAuthor = $userManager->getLoginById($data['author_id']);
-	?>
-		<div class="comment">
-			<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
-			<p><?= $data['comment'] ?></p>
-			<?php
-			if(isset($_SESSION['userid']))
-			{
-				if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
+		while ($data = $comments->fetch())
+		{
+			$commentAuthor = $userManager->getLoginById($data['author_id']);
+			?>
+			<div class="comment">
+				<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
+				<p><?= $data['comment'] ?></p>
+				<?php
+				if(isset($_SESSION['userid']))
 				{
-			?>
-					<p>Liked</p>
-			<?php
+					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
+					{
+						?>
+						<p>Liked</p>
+						<?php
+					}
+					elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
+					{
+						?>
+						<p>Disliked</p>
+						<?php
+					}
+					else
+					{
+						?>
+						<div>
+							<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'>like</button>
+							<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'>dislike</button>
+						</div>
+						<?php
+					}
 				}
-				elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
-				{
-			?>
-					<p>Disliked</p>
+				?>
+			</div>
 			<?php
-				}
-				else
-				{
-			?>
-					<div>
-						<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'>like</button>
-						<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'>dislike</button>
-					</div>
-			<?php
-				}
-			}
-			?>
-		</div>
-	<?php
+		}
 	}
 	?>
 	<div class="grid-command">

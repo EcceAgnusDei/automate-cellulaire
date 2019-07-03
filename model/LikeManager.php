@@ -11,18 +11,24 @@ class LikeManager extends Manager
 	{
 		$dataBase = $this->dbConnect('projet5');
 		$request = $dataBase->prepare('INSERT INTO grid_likes (grid_id, user_id) VALUES (?, ?)');
-		$succes = $request->execute(array($gridId, $userId));
+		$succes1 = $request->execute(array($gridId, $userId));
 
-		return $succes;
+		$request = $dataBase->prepare('UPDATE grids SET likes = likes + 1 WHERE id = ?');
+		$succes2 = $request->execute(array($gridId));
+
+		return $succes1 && $succes2;
 	}
 
 	public function commentLike($commentId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
 		$request = $dataBase->prepare('INSERT INTO comment_likes (comment_id, user_id) VALUES (?, ?)');
-		$succes = $request->execute(array($commentId, $userId));
+		$succes1 = $request->execute(array($commentId, $userId));
 
-		return $succes;
+		$request = $dataBase->prepare('UPDATE comments SET likes = likes + 1 WHERE id = ?');
+		$succes2 = $request->execute(array($commentId));
+
+		return $succes1 && $succes2;
 	}
 
 	public function commentDislike($commentId, $userId)
@@ -31,7 +37,10 @@ class LikeManager extends Manager
 		$request = $dataBase->prepare('INSERT INTO comment_dislikes (comment_id, user_id) VALUES (?, ?)');
 		$succes = $request->execute(array($commentId, $userId));
 
-		return $succes;
+		$request = $dataBase->prepare('UPDATE comments SET dislikes = dislikes + 1 WHERE id = ?');
+		$succes2 = $request->execute(array($commentId));
+
+		return $succes1 && $succes2;
 	}
 
 	public function gridIsLiked($gridId, $userId)
