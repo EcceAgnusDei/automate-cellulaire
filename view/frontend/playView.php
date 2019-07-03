@@ -90,7 +90,7 @@ $title = 'Jouez au jeux de la vie';
 				<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
 				<p><?= $data['comment'] ?></p>
 				<?php
-				if(isset($_SESSION['userid']))
+				if (isset($_SESSION['userid']))
 				{
 					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
 					{
@@ -113,6 +113,12 @@ $title = 'Jouez au jeux de la vie';
 						</div>
 						<?php
 					}
+				}
+				if (isset($_SESSION['admin']))
+				{
+				?>
+					<button onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
+				<?php
 				}
 				?>
 			</div>

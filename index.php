@@ -212,6 +212,19 @@ try
 					}	
 				}
 				break;
+
+				case 'commentdelete':
+				{
+					if (isset($_GET['id']) && $_GET['id'] > 0) 
+					{
+						adminCommentDelete($_GET['id']);
+					}
+					else 
+					{
+						throw new Exception('Aucun identifiant de commentaire envoyé');
+					}
+				}
+				break;
 			}
 		}
 		else

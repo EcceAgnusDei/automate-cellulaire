@@ -60,4 +60,19 @@ function adminGridDelete($id)
 		throw new Exception('Désolé, la suppression n\'a peu se faire');
 	}
 }
+
+function adminCommentDelete($id)
+{
+	$commentManager = new CommentManager();
+	$succes = $commentManager->delete($id);
+
+	if ($succes)
+	{
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+	}
+	else
+	{
+		throw new Exception('Désolé, la suppression n\'a peu se faire');
+	}
+}
 ?>

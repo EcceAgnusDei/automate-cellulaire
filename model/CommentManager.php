@@ -105,7 +105,7 @@ class CommentManager extends Manager
 	 */
 	public function delete($id)
 	{
-		$dataBase = $this->dbConnect('projet4');
+		$dataBase = $this->dbConnect('projet5');
 		$del = $dataBase->prepare('DELETE FROM comments WHERE id = ?');
 		$succes = $del->execute(array($id));
 
