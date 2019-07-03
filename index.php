@@ -1,5 +1,10 @@
 <?php
+if(session_status() == PHP_SESSION_NONE)
+{
+    session_start();
+}
 require('controller/clientController.php');
+require('controller/adminController.php');
 
 try
 {
@@ -45,7 +50,7 @@ try
 
 			case 'signin':
 			{
-				signin($_POST['signin-login'], $_POST['signin-password'], $_POST['signin-email']);
+				signin(htmlspecialchars($_POST['signin-login']), htmlspecialchars($_POST['signin-password']), htmlspecialchars($_POST['signin-email']));
 			}
 			break;
 
@@ -137,6 +142,55 @@ try
 				}
 			}
 			break;
+
+			case 'adminidentifying':
+			{
+				if ($_POST['login'] == 'admin' && $_POST['password'] == 'admin')
+				{
+					admin();
+				}
+				else
+				{
+					adminLogingError();
+				}
+			}
+			break;
+
+			case 'adminlogin':
+			{
+				adminLogin();
+			}
+			break;
+		}
+	}
+	if (isset($_GET['adminaction']))
+	{
+		if (isset($_SESSION['admin']))
+		{
+			switch ($_GET['adminaction'])
+			{
+				case 'gridsview':
+				{
+					adminGridView();
+				}
+				break;
+
+				case 'commentsbyidview':
+				{
+
+				}
+				break;
+
+				case 'commentsbydislikesview':
+				{
+
+				}
+				break;
+			}
+		}
+		else
+		{
+			throw new Exception('Vous n\'avez pas les droits nécessaires');
 		}
 	}
 	else

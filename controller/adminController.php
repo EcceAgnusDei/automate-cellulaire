@@ -1,0 +1,18 @@
+<?php
+require_once('model/GridManager.php');
+require_once('model/UserManager.php');
+require_once('model/CommentManager.php');
+require_once('model/LikeManager.php');
+
+/**
+ * Ouvre la session admin
+ * @param  string $user     identifiant
+ * @param  string $password mot de passe
+ */
+function admin()
+{
+	$_SESSION['admin'] = true;
+	header('Location: admin.php');
+}
+
+?>

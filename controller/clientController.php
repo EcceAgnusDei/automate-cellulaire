@@ -1,8 +1,4 @@
 <?php
-if(session_status() == PHP_SESSION_NONE)
-{
-    session_start();
-}
 require_once('model/GridManager.php');
 require_once('model/UserManager.php');
 require_once('model/CommentManager.php');
@@ -19,7 +15,7 @@ function save($json, $authorId, $name)
 
 	if ($succes)
 	{
-		header('location: index.php');
+		header('location: index.php?action=userspace');
 	}
 	else
 	{
@@ -228,5 +224,24 @@ function commentdisLike($commentId, $userId)
 	{
 		throw new Exception('Désolé, le commentaire n\'a peu être liké');
 	}
+}
+
+/**
+ * Redirige vers la page de connexion
+ * @return [type] [description]
+ */
+function adminLogin()
+{
+	$error = '';
+	require('view/backend/adminLoginView.php');
+}
+
+/**
+ * Redirige vers la page de connexion lorsque les identifiant/mot de passe ne sont pas bons.
+ */
+function adminLogingError()
+{
+	$error = "<p style='color: red'>Identifiant ou mot de passe incorrect</p>";
+	require('view/backend/adminLoginView.php');
 }
 
