@@ -56,14 +56,21 @@
             <?php
             }
             ?>
-            <form action="index.php?action=useridentifying" method="POST" class="user-login-form">
-                <label for="user-pseudo">Pseudo</label>
-                <input type="text" name="user-login" id="user-login" required>
-                <label for="user-password">Mot de passe</label>
-                <input type="password" name="user-password" id="user-password" required>
-                <input type="submit" value="Go">
-                <a href="index.php?action=signinview">Inscription</a>
-            </form>
+            <div class="user-login-form">
+                <form action="index.php?action=useridentifying" method="POST" >
+                    <label for="user-pseudo">Pseudo</label>
+                    <input type="text" name="user-login" id="user-login" required>
+                    <label for="user-password">Mot de passe</label>
+                    <input type="password" name="user-password" id="user-password" required>
+                    <input type="submit" value="Go">
+                    <a href="index.php?action=signinview">Inscription</a>
+                </form>
+                <button id="forgotten-btn">Mot de passe oublié</button>
+                <form style="display: none;" action="index?action=passwordforgotten" method="POST" id="forgotten-form">
+                    <label for="forgotten-email">Votre email</label>
+                    <input type="email" name="forgotten-email" id="forgotten-email">
+                </form>
+            </div>
     	</header>
         <?= $content ?>
         <footer class="client-footer">
@@ -79,6 +86,17 @@
             else
             {
                 $('.user-login-form').css('display','none');
+            }
+        });
+
+        $('#forgotten-btn').click(function(){
+            if ($('#forgotten-form').css('display') === 'none')
+            {
+                $('#forgotten-form').css('display','block');
+            }
+            else
+            {
+                $('#forgotten-form').css('display','none');
             }
         });
     </script>
