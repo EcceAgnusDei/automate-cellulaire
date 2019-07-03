@@ -35,7 +35,7 @@ class LikeManager extends Manager
 	{
 		$dataBase = $this->dbConnect('projet5');
 		$request = $dataBase->prepare('INSERT INTO comment_dislikes (comment_id, user_id) VALUES (?, ?)');
-		$succes = $request->execute(array($commentId, $userId));
+		$succes1 = $request->execute(array($commentId, $userId));
 
 		$request = $dataBase->prepare('UPDATE comments SET dislikes = dislikes + 1 WHERE id = ?');
 		$succes2 = $request->execute(array($commentId));

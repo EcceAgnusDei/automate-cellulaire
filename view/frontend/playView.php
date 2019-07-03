@@ -30,7 +30,13 @@ $title = 'Jouez au jeux de la vie';
 		if (!$gridIsLiked)
 		{
 		?>
-			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like</button>
+			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'>like <?= $grid['likes'] ?></button>
+		<?php
+		}
+		else
+		{
+		?>
+			<p>Liked <span><?= $grid['likes'] ?></span></p>	
 		<?php
 		}
 		?>
@@ -56,21 +62,21 @@ $title = 'Jouez au jeux de la vie';
 					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
 					{
 						?>
-						<p>Liked</p>
+						<p>Liked <span> <?= $data['likes'] ?></span></p>
 						<?php
 					}
 					elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
 					{
 						?>
-						<p>Disliked</p>
+						<p>Disliked <span> <?= $data['dislikes'] ?></span></p>
 						<?php
 					}
 					else
 					{
 						?>
 						<div>
-							<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'>like</button>
-							<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'>dislike</button>
+							<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'>like <span><?= $data['likes'] ?></span></button>
+							<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'>dislike <span> <?= $data['dislikes'] ?></span></button>
 						</div>
 						<?php
 					}
