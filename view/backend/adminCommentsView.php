@@ -22,7 +22,7 @@
 			<p>
 				<?= nl2br($data['comment']) ?>
 			</p>
-			<p class="show-post"><a href="#">Afficher</a></p>
+			<p class="show-post"><a href="index.php?action=load&amp;id=<?= $data['grid_id'] ?>&amp;commentid=<?= $data['id'] ?>">Afficher la création</a></p>
 		</div>
 		<div class="comment-info">
 			<p> Nombre de dislikes : <?= $data['dislikes'] ?>

@@ -21,6 +21,15 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+	public function getCommentById($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$comment = $dataBase->prepare('SELECT id, likes, dislikes, author_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE id = ?');
+		$comment->execute(array($id));
+
+		return $comment;
+	}
+
 	/**
 	 * Selectionne tous les commentaires et les classe du plus ancien
 	 * au plus récent

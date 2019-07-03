@@ -52,7 +52,15 @@ function load($id)
 		$gridIsLiked = $likeManager->gridIsLiked($id, $_SESSION['userid']);
 	}
 
-	$comments = $commentManager->getComments($id);
+	if (isset($_GET['commentid']))
+	{
+		$comments = $commentManager->getCommentById($_GET['commentid']);
+	}
+	else
+	{
+		$comments = $commentManager->getComments($id);
+	}
+	
 	$grid = $gridManager->load($id);
 
 	$script = 'save =' . $grid['json'] . '; setTimeout(function(){grid.load(save);},1);';
