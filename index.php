@@ -176,6 +176,12 @@ try
 		{
 			switch ($_GET['adminaction'])
 			{
+				case 'adminlogout':
+				{
+					userLogout();
+				}
+				break;
+
 				case 'gridsview':
 				{
 					adminGridView();
@@ -191,6 +197,19 @@ try
 				case 'commentsbydislikesview':
 				{
 					commentsByDislikesView();
+				}
+				break;
+
+				case 'griddelete':
+				{
+					if (isset($_GET['id']) && $_GET['id'] > 0) 
+					{
+						adminGridDelete($_GET['id']);
+					}
+					else 
+					{
+						throw new Exception('Aucun identifiant de grid envoyé');
+					}	
 				}
 				break;
 			}

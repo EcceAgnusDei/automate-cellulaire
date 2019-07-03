@@ -24,6 +24,7 @@
     			<ul>
     				<li><a class="menu-item" href="index.php?adminaction=gridsview">Les créations</a></li>
                     <li><a class="menu-item" href="index.php?adminaction=commentsbydateview">Les commentaires</a></li>
+                    <li><a class="menu-item" href="index.php">Accueil</a></li>
     			</ul>
     		</nav>
             <div class="menu-burger">
@@ -37,7 +38,7 @@
     	</header>
         <?= $content ?>
         <footer class="client-footer">
-            <p class="footer-content">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?action=adminlogin">Admin</a></p>
+            <p class="footer-content">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?adminaction=adminlogout">Deconnexion</a></p>
         </footer>
     </body>
 </html>

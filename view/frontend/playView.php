@@ -55,7 +55,7 @@ $title = 'Jouez au jeux de la vie';
 		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
 	</div>
 	<?php
-	if (isset($gridManager, $_SESSION['userid']))
+	if (isset($gridManager, $_SESSION['userid']) || isset($gridManager, $_SESSION['admin']))
 	{
 		if (!$gridIsLiked)
 		{
@@ -69,16 +69,19 @@ $title = 'Jouez au jeux de la vie';
 			<p><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
 		<?php
 		}
+		if (isset($_SESSION['admin']))
+		{
+		?>
+			<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
+		<?php
+		}
 		?>
 		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
 			<label for="comment">Laissez un commentaire</label>
 			<textarea name="comment-content" id="comment-content"></textarea>
 			<input type="submit" value="Envoyer" class="btn">
 		</form>
-	<?php
-	}
-	if (isset($comments))
-	{
+		<?php
 		while ($data = $comments->fetch())
 		{
 			$commentAuthor = $userManager->getLoginById($data['author_id']);
@@ -113,10 +116,10 @@ $title = 'Jouez au jeux de la vie';
 				}
 				?>
 			</div>
-			<?php
+		<?php
 		}
 	}
-	?>
+		?>
 </section>
 <script><?= $script ?></script>
 <?php $content = ob_get_clean(); ?>

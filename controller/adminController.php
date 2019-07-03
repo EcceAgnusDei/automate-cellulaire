@@ -12,6 +12,7 @@ require_once('model/LikeManager.php');
 function admin()
 {
 	$_SESSION['admin'] = true;
+	$_SESSION['userid'] = 1;
 	header('Location: index.php?adminaction=gridsview');
 }
 
@@ -43,5 +44,20 @@ function commentsByDislikesView()
 	$comments = $commentManager->getAllByDislikes();
 
 	require('view/backend/adminCommentsView.php');
+}
+
+function adminGridDelete($id)
+{
+	$gridManager = new GridManager();
+	$succes = $gridManager->delete($id);
+
+	if ($succes)
+	{
+		header('location: index.php?adminaction=gridsview');
+	}
+	else
+	{
+		throw new Exception('Désolé, la suppression n\'a peu se faire');
+	}
 }
 ?>
