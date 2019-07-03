@@ -10,8 +10,8 @@
 	<div>
 		<p><?= $data['name'] ?> de <?= $userManager->getLoginById($data['author_id']) ?></p>
 		<div>
-			<a href="#">Voir</a>
-			<button>Supprimer</button>
+			<a href="index.php?action=load&amp;id=<?= $data['id'] ?>">Voir</a>
+			<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
 		</div>
 	</div>
 	<?php
