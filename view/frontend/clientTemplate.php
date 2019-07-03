@@ -66,9 +66,10 @@
                     <a href="index.php?action=signinview">Inscription</a>
                 </form>
                 <button id="forgotten-btn">Mot de passe oublié</button>
-                <form style="display: none;" action="index?action=passwordforgotten" method="POST" id="forgotten-form">
+                <form style="display: none;" action="index.php?action=passwordforgotten" method="POST" id="forgotten-form">
                     <label for="forgotten-email">Votre email</label>
                     <input type="email" name="forgotten-email" id="forgotten-email">
+                    <input type="submit" value="Envoyer">
                 </form>
             </div>
     	</header>

@@ -83,7 +83,7 @@ function showGrids()
 function signinView()
 {
 	$userManager = new UserManager();
-	$request = $userManager->getLogin();
+	$request = $userManager->getUsers();
 
 	require('view/frontend/signinView.php');
 }
@@ -261,3 +261,37 @@ function adminLogingError()
 	require('view/backend/adminLoginView.php');
 }
 
+function passwordForgotten($email)
+{
+	$userManager = new UserManager();
+	$request = $userManager->getUserByEmail($email);
+
+	if ($request->fetch() === false)
+	{
+		throw new Exception('Le mail indiqué n\'existe pas');
+	}
+	else
+	{
+		$data = $request->fetch();
+		$login = $data['login'];
+		$password = $data['password'];
+
+		$header = "MIME-Version: 1.0\r\n";
+		$header.="From:'mondoloni-dev.fr'<support@mondoloni-dev.fr>"."\n";
+		$header.='Content-Type:text/html; charset="utf-8"'."\n"
+		$header.='Content-Transfert-Encoding: 8bit';
+
+		$message='
+		<html>
+			<body>
+				<div align="center">
+					Votre pseudo : $login
+					Votre mot de passe : $password
+				</div>
+			</body>
+		</html>';
+		mail($email, "Votre pseudo et mot de passe", $message);
+	}
+}
+
+		

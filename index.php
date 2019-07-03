@@ -74,7 +74,7 @@ try
 
 			case 'passwordforgotten':
 			{
-				
+				passwordForgotten($_POST['forgotten-email']);
 			}
 			break;
 			
