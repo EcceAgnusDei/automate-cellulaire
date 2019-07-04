@@ -62,8 +62,34 @@ function load($id)
 	}
 	
 	$grid = $gridManager->load($id);
+	?>
+	<?php ob_start();?>
+	<script>
+		save = <?= $grid['json'] ?>;
 
-	$script = 'save =' . $grid['json'] . '; setTimeout(function(){grid.load(save);},1);';
+		const squareCoords = <?= $grid['json'] ?>;
+		let maxX = 0;
+		let maxY = 0;
+
+		for (let coord of squareCoords)
+		{
+			if (coord[0] > maxX)
+			{
+				maxX = coord[0];
+			}
+			if (coord[1] > maxY)
+			{
+				maxY = coord[1];
+			}
+		}
+
+		setTimeout(function(){
+			grid.grid(20, maxX + 7, maxY + 7);
+			grid.load(save);
+		},10);
+	</script>
+	<?php $script = ob_get_clean(); ?>
+	<?php
 
 	require ('view/frontend/playView.php');
 }
