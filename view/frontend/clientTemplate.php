@@ -16,12 +16,8 @@
         
     <body>
     	<header>
-    		<div class="header-title">
-    			<h1></h1>
-    		    <h2></h2>
-    		</div>
-    		<nav class="menu grid">
-    			<ul>
+    		<nav>
+    			<ul class="menu grid">
     				<li><a class="menu-item" href="index.php">Accueil</a></li>
                     <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
                     <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
@@ -52,53 +48,54 @@
             {
                 $_SESSION['login'] = '';
             ?>
-            <p> Identifiant ou mot de passe incorrect</p>
+                <p class="login-error grid"> Identifiant ou mot de passe incorrect</p>
+            <?php
+            }
+            if(!isset($_SESSION['userid']))
+            {
+            ?>
+                <div class="header-forms grid">
+                    <form action="index.php?action=useridentifying" method="POST" class="user-login-form header-forms-item">
+                        <label for="user-pseudo">Pseudo</label>
+                        <input type="text" name="user-login" id="user-login" required>
+                        <label for="user-password">Mot de passe</label>
+                        <input type="password" name="user-password" id="user-password" required>
+                        <input type="submit" value="Go" class="btn">
+                        <a href="index.php?action=signinview" class="header-forms-item">Inscription</a>
+                    </form>
+                    <form style="display: none;" action="index.php?action=passwordforgotten" method="POST" id="forgotten-form" class="header-forms-item">
+                        <label for="forgotten-email">Votre email</label>
+                        <input type="email" name="forgotten-email" id="forgotten-email">
+                        <input type="submit" value="Envoyer" class="btn">
+                    </form>
+                    <button id="forgotten-btn" class="header-forms-item">Mot de passe oublié</button>  
+                </div>
             <?php
             }
             ?>
-            <div class="user-login-form">
-                <form action="index.php?action=useridentifying" method="POST" >
-                    <label for="user-pseudo">Pseudo</label>
-                    <input type="text" name="user-login" id="user-login" required>
-                    <label for="user-password">Mot de passe</label>
-                    <input type="password" name="user-password" id="user-password" required>
-                    <input type="submit" value="Go">
-                    <a href="index.php?action=signinview">Inscription</a>
-                </form>
-                <button id="forgotten-btn">Mot de passe oublié</button>
-                <form style="display: none;" action="index.php?action=passwordforgotten" method="POST" id="forgotten-form">
-                    <label for="forgotten-email">Votre email</label>
-                    <input type="email" name="forgotten-email" id="forgotten-email">
-                    <input type="submit" value="Envoyer">
-                </form>
-            </div>
     	</header>
         <?= $content ?>
         <footer class="client-footer">
-            <p class="footer-content">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?action=adminlogin">Admin</a></p>
+            <p class="footer-content grid">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?action=adminlogin">Admin</a></p>
         </footer>
     </body>
     <script>
         $('.login-btn').click(function(){
-            if ($('.user-login-form').css('display') === 'none')
+            $('.user-login-form').css('display','block'); 
+            $('#forgotten-form').css('display','none');
+            if ($('.header-forms').css('display') === 'none')
             {
-                $('.user-login-form').css('display','flex');
+                $('.header-forms').css('display','flex');
             }
             else
             {
-                $('.user-login-form').css('display','none');
+                $('.header-forms').css('display','none');
             }
         });
 
         $('#forgotten-btn').click(function(){
-            if ($('#forgotten-form').css('display') === 'none')
-            {
-                $('#forgotten-form').css('display','block');
-            }
-            else
-            {
-                $('#forgotten-form').css('display','none');
-            }
+            $('#forgotten-form').css('display','block');
+            $('.user-login-form').css('display','none');   
         });
     </script>
 </html>
