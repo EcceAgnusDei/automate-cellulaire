@@ -49,7 +49,18 @@ function commentsByDislikesView()
 function adminGridDelete($id)
 {
 	$gridManager = new GridManager();
+	$likeManager = new LikeManager();
+	$commentManager = new CommentManager();
+
+	$ids = $commentManager->commentIdByGrid($id);
+
+	foreach ($ids as $commentId)
+	{
+		adminCommentDelete($commentId);
+	}
+	
 	$succes = $gridManager->delete($id);
+	$likeManager->deleteGridLikes($id);
 
 	if ($succes)
 	{
@@ -64,6 +75,9 @@ function adminGridDelete($id)
 function adminCommentDelete($id)
 {
 	$commentManager = new CommentManager();
+	$likeManager = new LikeManager();
+	$likeManager->deleteCommentLikes($id);
+	$likeManager->deleteCommentDislikes($id);
 	$succes = $commentManager->delete($id);
 
 	if ($succes)

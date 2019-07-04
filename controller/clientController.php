@@ -164,11 +164,22 @@ function userLogout()
 function gridDelete($id, $userId)
 {
 	$gridManager = new GridManager();
+	$likeManager = new LikeManager();
+	$commentManager = new CommentManager();
+
+	$ids = $commentManager->commentIdByGrid($id);
+
+	foreach ($ids as $commentId)
+	{
+		commentDelete($commentId);
+	}
+
 	var_dump($gridManager->getAuthorIdById($userId));
 
 	if ($userId == $gridManager->getAuthorIdById($id))
 	{
 		$succes = $gridManager->delete($id);
+		$likeManager->deleteGridLikes($id);
 
 		if ($succes)
 		{
@@ -182,6 +193,24 @@ function gridDelete($id, $userId)
 	else
 	{
 		throw new Exception('Vous n\'êtes pas autorisé à supprimer cette création');
+	}
+}
+
+function commentDelete($id)
+{
+	$commentManager = new CommentManager();
+	$likeManager = new LikeManager();
+	$likeManager->deleteCommentLikes($id);
+	$likeManager->deleteCommentDislikes($id);
+	$succes = $commentManager->delete($id);
+
+	if ($succes)
+	{
+		header('location: ' . $_SERVER['HTTP_REFERER']);
+	}
+	else
+	{
+		throw new Exception('Désolé, la suppression n\'a peu se faire');
 	}
 }
 

@@ -20,6 +20,14 @@ while ($data = $grids->fetch())
 ?>
 	<p><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span><?= $data['likes'] ?></span></p>
 	<canvas id="canvas<?= $data['id'] ?>"></canvas>
+	<?php
+	if (isset($_SESSION['admin']))
+	{
+	?>
+		<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
+	<?php	
+	}
+	?>
 	<script>
 		const squareCoords<?= $data['id'] ?> = <?= $data['json'] ?>;
 		let maxX<?= $data['id'] ?> = 0;

@@ -122,6 +122,26 @@ class CommentManager extends Manager
 	}
 
 	/**
+	 * Permet d'obtenir l'ensemble des id des commentaires d'un grid
+	 * @param  Int $gridId Id du grid
+	 * @return Array        Tableau contenant les id des commentaires
+	 */
+	public function commentIdByGrid($gridId)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('SELECT id FROM comments WHERE grid_id = ?');
+		$request->execute(array($gridId));
+		$ids = [];
+
+		while ($data = $request->fetch())
+		{
+			array_push($ids, $data['id']);
+		}
+
+		return $ids;
+	}
+
+	/**
 	 * Permet de compter le nombre de commentaires d'un article
 	 * @param  int $id Id de l'article dont l'on veut compter le nombre de commentaires
 	 * @return int     Le nombre de commentaires

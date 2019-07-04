@@ -93,4 +93,31 @@ class LikeManager extends Manager
 			return true;
 		}
 	}
+
+	public function deleteGridLikes($gridId)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('DELETE FROM grid_likes WHERE grid_id = ?');
+		$succes = $request->execute(array($gridId));
+
+		return $succes;
+	}
+
+	public function deleteCommentLikes($commentId)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('DELETE FROM comment_likes WHERE comment_id = ?');
+		$succes = $request->execute(array($commentId));
+
+		return $succes;
+	}
+
+	public function deleteCommentDislikes($commentId)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('DELETE FROM comment_dislikes WHERE comment_id = ?');
+		$succes = $request->execute(array($commentId));
+
+		return $succes;
+	}
 }

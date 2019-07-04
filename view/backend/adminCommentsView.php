@@ -28,7 +28,7 @@
 			<p> Nombre de dislikes : <?= $data['dislikes'] ?>
 			</p>
 			<div class="comment-info-btn">
-				<button class="btn del-btn" onclick='window.location.href="index.php"'>Supprimer</button>
+				<button class="btn del-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
 				<button class="btn" onclick='window.location.href="index.php"'>Approuver</button>
 			</div>
 		</div>
