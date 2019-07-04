@@ -58,7 +58,7 @@ function adminGridDelete($id)
 	{
 		adminCommentDelete($commentId);
 	}
-	
+
 	$succes = $gridManager->delete($id);
 	$likeManager->deleteGridLikes($id);
 
@@ -88,5 +88,13 @@ function adminCommentDelete($id)
 	{
 		throw new Exception('Désolé, la suppression n\'a peu se faire');
 	}
+}
+
+function commentInvisible($id)
+{
+	$commentManager = new CommentManager();
+	$commentManager->invisible($id);
+
+	header('location: ' . $_SERVER['HTTP_REFERER']);
 }
 ?>

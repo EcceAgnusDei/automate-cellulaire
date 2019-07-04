@@ -29,7 +29,7 @@
 			</p>
 			<div class="comment-info-btn">
 				<button class="btn del-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
-				<button class="btn" onclick='window.location.href="index.php"'>Approuver</button>
+				<button class="btn" onclick='window.location.href="index.php?adminaction=commentinvisible&id=<?= $data['id'] ?>"'>Retirer de la liste</button>
 			</div>
 		</div>
 	</div>

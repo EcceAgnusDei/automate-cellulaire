@@ -239,9 +239,16 @@ try
 				}
 				break;
 
-				case 'commentwithgrid':
+				case 'commentinvisible':
 				{
-					
+					if (isset($_GET['id']) && $_GET['id'] > 0) 
+					{
+						commentInvisible($_GET['id']);
+					}
+					else 
+					{
+						throw new Exception('Aucun identifiant de commentaire envoyé');
+					}
 				}
 			}
 		}

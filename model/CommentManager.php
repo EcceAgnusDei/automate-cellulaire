@@ -38,7 +38,7 @@ class CommentManager extends Manager
 	public function getAllByDate()
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments ORDER BY comment_date DESC');
+		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE visibility = 1 ORDER BY comment_date DESC');
 
 		return $comments;
 	}
@@ -51,7 +51,7 @@ class CommentManager extends Manager
 	public function getAllByDislikes()
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE dislikes > 0 ORDER BY dislikes DESC');
+		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE dislikes > 0 AND visibility = 1 ORDER BY dislikes DESC');
 
 		return $comments;
 	}
@@ -154,5 +154,16 @@ class CommentManager extends Manager
 		$data = $request->fetch();
 
 		return $data['nb_comments'];
+	}
+
+	/**
+	 * Rende le commentaire invisible pour l'admin
+	 * @param Int $id Id du commentaire que l'on souhaite rendre invisible
+	 */
+	public function invisible($id)
+	{
+		$dataBase = $this->dbConnect('Projet5');
+		$request = $dataBase->prepare('UPDATE comments SET visibility = 0 WHERE id = ?');
+		$request->execute(array($id));
 	}
 }
