@@ -29,7 +29,7 @@ class GridManager extends Manager
 	public function getGridsByDate()
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->query('SELECT id, name, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY grid_date DESC');
+		$request = $dataBase->query('SELECT id, name,json, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY grid_date DESC');
 
 		return $request;
 	}
@@ -37,7 +37,7 @@ class GridManager extends Manager
 	public function getGridsByLikes()
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->query('SELECT id, name, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY likes DESC');
+		$request = $dataBase->query('SELECT id, name,json, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY likes DESC');
 
 		return $request;
 	}

@@ -7,15 +7,6 @@ class Grid
 		this.squareCoord = [];
 		this.squareStatus = {};
 		this.squareSize;
-
-		this.canvas.addEventListener("mousemove", function(evt) {
-			let mousePos = this.getMousePos(this.canvas, evt);
-		}.bind(this));
-
-		this.canvas.addEventListener("click", function(evt){
-			let mousePos = this.getMousePos(this.canvas, evt);
-			this.fillRect(mousePos.x, mousePos.y, 'black');
-		}.bind(this));
 	}
 
 	/**
@@ -179,7 +170,7 @@ class Grid
 	 	this.clear();
 	 	for (let coord of coords)
 	 	{
-	 		this.fillRect(coord[0], coord[1], 'black');
+	 		this.fillRect(coord[0]*this.squareSize, coord[1]*this.squareSize, 'black');
 	 	}
 	 }
 
@@ -195,7 +186,7 @@ class Grid
 	 	{
 	 		if (this.squareStatus[coord])
 	 		{
-	 			coordsBlack.push(this.stringToArray(coord));
+	 			coordsBlack.push([this.stringToArray(coord)[0]/this.squareSize, this.stringToArray(coord)[1]/this.squareSize]);
 	 		}
 	 	}
 
@@ -232,5 +223,20 @@ class Grid
 		array.push(parseInt(part2));
 
 		return array;
+	}
+
+	/**
+	 * Ajoute les évènements nécessaires
+	 */
+	addEvents()
+	{
+		this.canvas.addEventListener("mousemove", function(evt) {
+			let mousePos = this.getMousePos(this.canvas, evt);
+		}.bind(this));
+
+		this.canvas.addEventListener("click", function(evt){
+			let mousePos = this.getMousePos(this.canvas, evt);
+			this.fillRect(mousePos.x, mousePos.y, 'black');
+		}.bind(this));
 	}
 }

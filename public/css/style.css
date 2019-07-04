@@ -7,12 +7,12 @@ body
 	align-items: center;
 }
 
-#canvas
-{
-	border: 1px black solid;
-}
-
 .user-login-form
 {
 	display: none;
+}
+
+canvas
+{
+	border: 1px black solid;
 }
