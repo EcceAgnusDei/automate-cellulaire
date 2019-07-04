@@ -42,6 +42,13 @@ try
 				showGrids();
 			}
 			break;
+
+			case 'showgridsbylikes':
+			{
+				showGridsByLikes();
+			}
+			break;
+
 			case 'signinview':
 			{
 				signinView();

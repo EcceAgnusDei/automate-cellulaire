@@ -80,6 +80,15 @@ function showGrids()
 	require('view/frontend/showGridsView.php');
 }
 
+function showGridsByLikes()
+{
+	$gridManager = new GridManager();
+	$userManager = new UserManager();
+
+	$grids = $gridManager->getGridsByLikes();
+	require('view/frontend/showGridsView.php');
+}
+
 function signinView()
 {
 	$userManager = new UserManager();
@@ -278,7 +287,7 @@ function passwordForgotten($email)
 
 		$header = "MIME-Version: 1.0\r\n";
 		$header.="From:'mondoloni-dev.fr'<support@mondoloni-dev.fr>"."\n";
-		$header.='Content-Type:text/html; charset="utf-8"'."\n"
+		$header.='Content-Type:text/html; charset="utf-8"'."\n";
 		$header.='Content-Transfert-Encoding: 8bit';
 
 		$message='

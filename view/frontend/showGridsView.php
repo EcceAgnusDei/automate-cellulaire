@@ -5,6 +5,12 @@ $head = '';
 
 <?php ob_start(); ?>
 <section>
+	<nav class="grid-sort">
+		<ul>
+			<li><a href="index.php?action=showgrids" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #348ffe;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
+			<li><a href="index.php?action=showgridsbylikes" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #348ffe;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
+		</ul>
+	</nav>
 <?php
 while ($data = $grids->fetch())
 {
