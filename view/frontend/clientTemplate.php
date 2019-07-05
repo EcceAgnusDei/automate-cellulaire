@@ -16,73 +16,78 @@
         
     <body>
     	<header>
-    		<nav>
-    			<ul class="menu grid">
-    				<li><a class="menu-item" href="index.php">Accueil</a></li>
-                    <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
-                    <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
-                    <?php if(isset($_SESSION['userid']))
-                    {
-                    ?>
-                    <li><a class="menu-item" href="index.php?action=userspace">Votre espace</a></li>    
-                    <?php
-                    }
-                    else
-                    {
-                    ?>    
-                    <li><button class="btn menu-item login-btn">Espace perso</button></li>
-                    <?php
-                    }
-                    ?>
-    			</ul>
-    		</nav>
-            <?php
-            if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
-            {
-                $_SESSION['login'] = '';
-                ?>
-                <p class="login-error"> Identifiant ou mot de passe incorrect !</p>
-                <?php
-            }
-            if (isset($_SESSION['login']) && $_SESSION['login'] == "erroremail")
-            {
-                $_SESSION['login'] = '';
-                ?>
-                <p class="login-error">Cet email n'est pas inscrit !</p>
-                <?php
-            }
-            ?>
-            <div class="menu-burger">
-                <input type="checkbox" class="toggler">
-                <div class="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
+            <div class="header-content grid">
+                <div class="header-head">
+                    <a href="index.php"><img class="logo" src="public/css/img/logo.png" alt=""></a>
+            		<nav>
+            			<ul class="menu">
+            				<li><a class="menu-item" href="index.php">Accueil</a></li>
+                            <li><a class="menu-item" href="index.php?action=play">Jouer</a></li>
+                            <li><a class="menu-item" href="index.php?action=showgrids">Les créations</a></li>
+                            <?php if(isset($_SESSION['userid']))
+                            {
+                            ?>
+                            <li><a class="menu-item" href="index.php?action=userspace">Votre espace</a></li>    
+                            <?php
+                            }
+                            else
+                            {
+                            ?>    
+                            <li><button class="btn menu-item login-btn">Espace perso</button></li>
+                            <?php
+                            }
+                            ?>
+            			</ul>
+            		</nav>
                 </div>
+                <?php
+                if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
+                {
+                    $_SESSION['login'] = '';
+                    ?>
+                    <p class="login-error"> Identifiant ou mot de passe incorrect !</p>
+                    <?php
+                }
+                if (isset($_SESSION['login']) && $_SESSION['login'] == "erroremail")
+                {
+                    $_SESSION['login'] = '';
+                    ?>
+                    <p class="login-error">Cet email n'est pas inscrit !</p>
+                    <?php
+                }
+                ?>
+                <div class="menu-burger">
+                    <input type="checkbox" class="toggler">
+                    <div class="hamburger">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <?php
+                if(!isset($_SESSION['userid']))
+                {
+                ?>
+                    <div class="header-forms">
+                        <form action="index.php?action=useridentifying" method="POST" class="user-login-form header-forms-item">
+                            <label for="user-pseudo">Pseudo</label>
+                            <input type="text" name="user-login" id="user-login" required>
+                            <label for="user-password">Mot de passe</label>
+                            <input type="password" name="user-password" id="user-password" required>
+                            <input type="submit" value="Go" class="btn">
+                            <a href="index.php?action=signinview" class="header-forms-item">Inscription</a>
+                        </form>
+                        <form style="display: none;" action="index.php?action=passwordforgotten" method="POST" id="forgotten-form" class="header-forms-item">
+                            <label for="forgotten-email">Votre email</label>
+                            <input type="email" name="forgotten-email" id="forgotten-email">
+                            <input type="submit" value="Envoyer" class="btn">
+                        </form>
+                        <button id="forgotten-btn" class="header-forms-item">Mot de passe oublié</button>  
+                    </div>
+                <?php
+                }
+                ?>
             </div>
-            <?php
-            if(!isset($_SESSION['userid']))
-            {
-            ?>
-                <div class="header-forms grid">
-                    <form action="index.php?action=useridentifying" method="POST" class="user-login-form header-forms-item">
-                        <label for="user-pseudo">Pseudo</label>
-                        <input type="text" name="user-login" id="user-login" required>
-                        <label for="user-password">Mot de passe</label>
-                        <input type="password" name="user-password" id="user-password" required>
-                        <input type="submit" value="Go" class="btn">
-                        <a href="index.php?action=signinview" class="header-forms-item">Inscription</a>
-                    </form>
-                    <form style="display: none;" action="index.php?action=passwordforgotten" method="POST" id="forgotten-form" class="header-forms-item">
-                        <label for="forgotten-email">Votre email</label>
-                        <input type="email" name="forgotten-email" id="forgotten-email">
-                        <input type="submit" value="Envoyer" class="btn">
-                    </form>
-                    <button id="forgotten-btn" class="header-forms-item">Mot de passe oublié</button>  
-                </div>
-            <?php
-            }
-            ?>
     	</header>
         <?= $content ?>
         <footer class="client-footer">
