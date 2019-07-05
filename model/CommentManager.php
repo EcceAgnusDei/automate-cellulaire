@@ -143,13 +143,13 @@ class CommentManager extends Manager
 
 	/**
 	 * Permet de compter le nombre de commentaires d'un article
-	 * @param  int $id Id de l'article dont l'on veut compter le nombre de commentaires
+	 * @param  int $id Id du grid dont on veut compter le nombre de commentaires
 	 * @return int     Le nombre de commentaires
 	 */
 	public function countComments($id)
 	{
-		$dataBase = $this->dbConnect('projet4');
-		$request = $dataBase->prepare('SELECT COUNT(*) AS nb_comments FROM comments WHERE post_id = ?');
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('SELECT COUNT(*) AS nb_comments FROM comments WHERE grid_id = ?');
 		$request->execute(array($id));
 		$data = $request->fetch();
 

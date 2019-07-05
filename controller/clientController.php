@@ -47,6 +47,8 @@ function load($id)
 	$commentIsLiked = false;
 	$commentIsDisliked = false;
 
+	$nbComments = $commentManager->countComments($id);
+
 	if (isset($_SESSION['userid']))
 	{
 		$gridIsLiked = $likeManager->gridIsLiked($id, $_SESSION['userid']);

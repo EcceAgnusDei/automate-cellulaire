@@ -42,7 +42,6 @@ h3
 {
     color: #f38320;
     font-size: 1.2em;
-    margin-bottom: 0px;
     font-weight: bold;
 }
 
@@ -121,6 +120,12 @@ ul, li
 {
 	color: red;
 }
+
+.orange
+{
+	color: #f38320;
+}
+
 /*****header*****/
 
 header
@@ -272,4 +277,50 @@ footer
 #grid-json
 {
 	display: none;
+}
+
+.comment-section
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.comment
+{
+	border-radius: 3px;
+	background-color: white;
+	margin: 5px auto;
+	padding: 10px;
+	width: 70%;
+}
+
+.comment p:first-child
+{
+	margin-top: 0;
+}
+
+.comment-form
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 70%;
+	margin-bottom: 15px;
+}
+
+#comment-content
+{
+	width: 100%;
+}
+
+.comment-form label
+{
+	display: block;
+}
+
+.comment-form .btn
+{
+	align-self: flex-start;
+	margin-top: 7px;
 }

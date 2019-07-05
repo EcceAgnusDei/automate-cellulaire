@@ -7,7 +7,7 @@ $title = 'Jouez au jeux de la vie';
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-<section class="last-section game grid">
+<section class="game grid <?php if(!isset($gridManager)){ echo 'last-section';} ?>">
 	<?php
 	if (!isset($gridManager))
 	{
@@ -22,23 +22,26 @@ $title = 'Jouez au jeux de la vie';
 		<h3><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h3>
 	<?php
 	}
-	if (!$gridIsLiked)
+	if(isset($gridManager))
 	{
-	?>
-		<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"' class="like-btn"><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
-	<?php
-	}
-	else
-	{
-	?>
-		<p class="blue"><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
-	<?php
-	}
-	if (isset($_SESSION['admin']))
-	{
-	?>
-		<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
-	<?php
+		if (!$gridIsLiked)
+		{
+		?>
+			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"' class="like-btn"><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
+		<?php
+		}
+		else
+		{
+		?>
+			<p class="blue"><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
+		<?php
+		}
+		if (isset($_SESSION['admin']))
+		{
+		?>
+			<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
+		<?php
+		}
 	}
 	?>
 	<canvas id="canvas"></canvas>
@@ -79,61 +82,66 @@ $title = 'Jouez au jeux de la vie';
 		<?php
 		}
 		?>
-	<?php
-	if (isset($gridManager, $_SESSION['userid']))
-	{
-	?>
-		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
-			<label for="comment">Laissez un commentaire</label>
-			<textarea name="comment-content" id="comment-content"></textarea>
-			<input type="submit" value="Envoyer" class="btn">
-		</form>
-		<?php
-		while ($data = $comments->fetch())
-		{
-			$commentAuthor = $userManager->getLoginById($data['author_id']);
-			?>
-			<div class="comment">
-				<p><?= $commentAuthor ?> <em>le <?= $data['comment_date_fr'] ?></em></p>
-				<p><?= $data['comment'] ?></p>
-				<?php
-				if (isset($_SESSION['userid']))
-				{
-					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
-					{
-						?>
-						<p><i class="fas fa-thumbs-up blue"></i> <span class="blue"> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></p>
-						<?php
-					}
-					elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
-					{
-						?>
-						<p><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></span></p>
-						<?php
-					}
-					else
-					{
-						?>
-						<div>
-							<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
-							<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
-						</div>
-						<?php
-					}
-				}
-				if (isset($_SESSION['admin']))
-				{
-				?>
-					<button onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
-				<?php
-				}
-				?>
-			</div>
-		<?php
-		}
-	}
-		?>
 </section>
+<?php
+if (isset($gridManager, $_SESSION['userid']))
+{
+?>
+<section class="comment-section grid last-section">
+	<h3>Commentaires (<?= $nbComments ?>)</h3>
+	<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
+		<label for="comment">Laissez un commentaire</label>
+		<textarea name="comment-content" id="comment-content" required></textarea>
+		<input type="submit" value="Envoyer" class="btn">
+	</form>
+	<?php
+	while ($data = $comments->fetch())
+	{
+		$commentAuthor = $userManager->getLoginById($data['author_id']);
+		?>
+		<div class="comment">
+			<p><strong class="orange"><?= $commentAuthor ?></strong> <em>le <?= $data['comment_date_fr'] ?></em> : </p>
+			<p><?= nl2br($data['comment']) ?></p>
+			<?php
+			if (isset($_SESSION['userid']))
+			{
+				if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
+				{
+					?>
+					<p><i class="fas fa-thumbs-up blue"></i> <span class="blue"> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></p>
+					<?php
+				}
+				elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
+				{
+					?>
+					<p><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></span></p>
+					<?php
+				}
+				else
+				{
+					?>
+					<div>
+						<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
+						<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
+					</div>
+					<?php
+				}
+			}
+			if (isset($_SESSION['admin']))
+			{
+			?>
+				<button onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
+			<?php
+			}
+			?>
+		</div>
+	<?php
+	}
+	?>
+</section>
+<?php
+}
+?>
 <?= $script ?>
 <?php $content = ob_get_clean(); ?>
 
