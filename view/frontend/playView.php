@@ -7,7 +7,7 @@ $title = 'Jouez au jeux de la vie';
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-<section>
+<section class="last-section">
 	<?php
 	if (!isset($gridManager))
 	{
