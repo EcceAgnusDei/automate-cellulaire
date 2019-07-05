@@ -1,6 +1,7 @@
 let save = [];
 let countdown = setInterval (function() {}, 9999999);
 let grid;
+let isPlaying = false;
 
 window.addEventListener("load", main);
 
@@ -17,7 +18,6 @@ function main()
 	let rows = document.getElementById("rows");
 	let squareSize = document.getElementById("square-size");
 	let speed = document.getElementById("speed");
-	let isPlaying = false;
 	grid.grid(parseInt(squareSize.value), parseInt(cols.value), parseInt(rows.value));
 	
 
@@ -65,13 +65,6 @@ function main()
 		save = grid.save();
 		$('#grid-json').val(JSON.stringify(save));
 	});
-	$('#speed').change(function(){
-		if(isPlaying)
-		{
-			stop();
-			play(1000/speed.value);
-		}
-	});
 	$('#save-db').click(function(){
 		if($('#grid-json').val() == '')
 		{
@@ -79,11 +72,18 @@ function main()
 			$('#grid-json').val(JSON.stringify(save));
 		}
 	});
+	$('#speed').change(function(){
+		console.log(isPlaying);
+		if(isPlaying)
+		{
+			stop();
+			play(1000/speed.value);
+		}
+	});
 }
 
 function play(interval)
 {
-	console.log("play");
 	isPlaying = true;
 	countdown = setInterval(function(){
 		grid.next() }, interval);
@@ -91,7 +91,6 @@ function play(interval)
 
 function stop()
 {
-	console.log("stop");
 	isPlaying = false;
 	clearInterval(countdown);
 }

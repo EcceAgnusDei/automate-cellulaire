@@ -18,7 +18,7 @@ $title = 'Jouez au jeux de la vie';
 	else
 	{
 		$gridAuthor = $userManager->getLoginById($grid['author_id']);
-	?>-item
+	?>
 		<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
 	<?php
 	}
