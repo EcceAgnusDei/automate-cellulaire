@@ -34,7 +34,7 @@ input, textarea
 h1, h2
 {
     text-align: center;
-    color: #42f42f;
+    color: black;
 }
 
 h3
@@ -143,11 +143,7 @@ header
 	color: #f38320;
 	width: 350px;
 	text-align: right;
-	margin: 0;
-	position: absolute;
-	top:50%;
-	left: 0;
-	transform: translateY(-50%);
+	margin: 0 auto;
 }
 
 /*****footer*****/

@@ -33,23 +33,25 @@
                     <li><button class="btn menu-item login-btn">Espace perso</button></li>
                     <?php
                     }
-                    if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
-                    {
-                        $_SESSION['login'] = '';
-                        ?>
-                        <p class="login-error"> Identifiant ou mot de passe incorrect !</p>
-                        <?php
-                    }
-                    if (isset($_SESSION['login']) && $_SESSION['login'] == "erroremail")
-                    {
-                        $_SESSION['login'] = '';
-                        ?>
-                        <p class="login-error">Cet email n'est pas inscrit !</p>
-                        <?php
-                    }
                     ?>
     			</ul>
     		</nav>
+            <?php
+            if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
+            {
+                $_SESSION['login'] = '';
+                ?>
+                <p class="login-error"> Identifiant ou mot de passe incorrect !</p>
+                <?php
+            }
+            if (isset($_SESSION['login']) && $_SESSION['login'] == "erroremail")
+            {
+                $_SESSION['login'] = '';
+                ?>
+                <p class="login-error">Cet email n'est pas inscrit !</p>
+                <?php
+            }
+            ?>
             <div class="menu-burger">
                 <input type="checkbox" class="toggler">
                 <div class="hamburger">
