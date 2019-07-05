@@ -180,3 +180,44 @@ footer
 }
 
 
+/*****Jeu*****/
+
+#canvas
+{
+	margin-bottom: 10px;
+}
+
+.game
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.command
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+.command-input
+{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.command-input label
+{
+	transform: translateY(3px);
+}
+
+.command-input-item
+{
+	width: 40px;
+	margin-left: 7px;
+	margin-right: 7px;
+}

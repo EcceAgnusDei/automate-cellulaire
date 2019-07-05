@@ -7,7 +7,7 @@ $title = 'Jouez au jeux de la vie';
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-<section class="last-section">
+<section class="last-section game grid">
 	<?php
 	if (!isset($gridManager))
 	{
@@ -18,20 +18,33 @@ $title = 'Jouez au jeux de la vie';
 	else
 	{
 		$gridAuthor = $userManager->getLoginById($grid['author_id']);
-	?>
+	?>-item
 		<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
 	<?php
 	}
 	?>
 	<canvas id="canvas"></canvas>
-	<div class="grid-command">
-		<button id="next">Suivant</button>
-		<button id="set-grid">Afficher la grille</button>
-		<button id="play">Lancer</button>
-		<button id="stop">Arrêter</button>
-		<button id="load">Charger</button>
-		<button id="save">Sauvegarder</button>
-		<?php 
+	<div class="command">
+		<div class="command-btn">
+			<button class="command-btn-item btn" id="next">Suivant</button>
+			<button class="command-btn-item btn" id="play">Lancer</button>
+			<button class="command-btn-item btn" id="stop">Arrêter</button>
+			<button class="command-btn-item btn" id="load">Charger</button>
+			<button class="command-btn-item btn" id="save">Sauvegarder</button>
+		</div>
+		<div class="command-input">
+			<label for="cols">Colonnes</label>
+			<input type="text" class="command-input-item" name="cols" id="cols" value="20">
+			<label for="rows">Lignes</label>
+			<input type="text" class="command-input-item" name="rows" id="rows" value="20">
+			<label for="square-size">Taille d'un carré</label>
+			<input type="text" class="command-input-item" name="square-size" id="square-size" value="20">
+			<button class="btn" id="set-grid">Afficher la grille</button>
+		</div>
+		<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
+		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
+	</div>
+	<?php 
 		if(isset($_SESSION['userid']) && !isset($_GET['id']))
 		{
 		?>
@@ -41,19 +54,9 @@ $title = 'Jouez au jeux de la vie';
 				<textarea name="grid-json" id="grid-json" required></textarea>
 				<input type="submit" value="Enregistrer"/>
 			</form>
-			<button id="db-load" onclick='window.location.href="index.php?action=load&id=1"'>Charger depuis db</button>
 		<?php
 		}
 		?>
-		<label for="cols">Nombre de colonnes</label>
-		<input type="text" name="cols" id="cols" value="20">
-		<label for="rows">Nombre de lignes</label>
-		<input type="text" name="rows" id="rows" value="20">
-		<label for="square-size">Taille d'un carré</label>
-		<input type="text" name="square-size" id="square-size" value="20">
-		<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
-		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
-	</div>
 	<?php
 	if (isset($gridManager, $_SESSION['userid']) || isset($gridManager, $_SESSION['admin']))
 	{

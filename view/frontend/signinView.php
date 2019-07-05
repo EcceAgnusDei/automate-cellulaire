@@ -8,9 +8,9 @@ $head = '';
 	<form action="index.php?action=signin" method="post">
 		<p style="color: red;" id="error"></p>
 		<label for="signin-login">Pseudo</label>
-		<input type="text" name="signin-login" id="signin-login" required>
+		<input type="text" name="signin-login" id="signin-login" maxlength="20" required>
 		<label for="signin-password">Mot de passe</label>
-		<input type="password" name="signin-password" id="signin-password" required>
+		<input type="password" name="signin-password" id="signin-password" maxlength="20" required>
 		<label for="signin-email">Email</label>
 		<input type="email" name="signin-email" id="signin-email" required>
 		<input type="submit" class="btn" value="S'inscrire">
