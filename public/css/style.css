@@ -14,6 +14,7 @@ body
     font-size: 1.3em;
     min-height: 100%;
     position: relative;
+    color: #242424;
 }
 
 .header-forms
@@ -39,11 +40,10 @@ h1, h2
 
 h3
 {
-    background-color: black;
-    color: #42f42f;
-    font-size: 1.1em;
+    color: #f38320;
+    font-size: 1.2em;
     margin-bottom: 0px;
-    padding: 5px 10px;
+    font-weight: bold;
 }
 
 a
@@ -91,7 +91,36 @@ ul, li
 	padding-bottom: 80px;
 }
 
+.like-btn, .dislike-btn
+{
+	background-color: rgba(0,0,0,0);
+	border: none;
+	height: 30px;
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0;
+	color: #242424;
+}
 
+.like-btn:hover
+{
+	color: #42b0ff;
+}
+
+.dislike-btn:hover
+{
+	color: red;
+}
+
+.blue
+{
+	color: #42b0ff;
+}
+
+.red
+{
+	color: red;
+}
 /*****header*****/
 
 header

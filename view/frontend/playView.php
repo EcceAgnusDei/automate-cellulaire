@@ -19,7 +19,25 @@ $title = 'Jouez au jeux de la vie';
 	{
 		$gridAuthor = $userManager->getLoginById($grid['author_id']);
 	?>
-		<h1><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h1>
+		<h3><em><?= $grid['name'] ?></em> de <?= $gridAuthor ?></h3>
+	<?php
+	}
+	if (!$gridIsLiked)
+	{
+	?>
+		<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"' class="like-btn"><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
+	<?php
+	}
+	else
+	{
+	?>
+		<p class="blue"><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
+	<?php
+	}
+	if (isset($_SESSION['admin']))
+	{
+	?>
+		<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
 	<?php
 	}
 	?>
@@ -62,27 +80,9 @@ $title = 'Jouez au jeux de la vie';
 		}
 		?>
 	<?php
-	if (isset($gridManager, $_SESSION['userid']) || isset($gridManager, $_SESSION['admin']))
+	if (isset($gridManager, $_SESSION['userid']))
 	{
-		if (!$gridIsLiked)
-		{
-		?>
-			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"'><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
-		<?php
-		}
-		else
-		{
-		?>
-			<p><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
-		<?php
-		}
-		if (isset($_SESSION['admin']))
-		{
-		?>
-			<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
-		<?php
-		}
-		?>
+	?>
 		<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
 			<label for="comment">Laissez un commentaire</label>
 			<textarea name="comment-content" id="comment-content"></textarea>
@@ -102,21 +102,21 @@ $title = 'Jouez au jeux de la vie';
 					if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
 					{
 						?>
-						<p><i class="fas fa-thumbs-up" color="green"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></p>
+						<p><i class="fas fa-thumbs-up blue"></i> <span class="blue"> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></p>
 						<?php
 					}
 					elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
 					{
 						?>
-						<p><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down" color="red"></i> <span> <?= $data['dislikes'] ?></span></p>
+						<p><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></span></p>
 						<?php
 					}
 					else
 					{
 						?>
 						<div>
-							<button onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
-							<button onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
+							<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
+							<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
 						</div>
 						<?php
 					}
