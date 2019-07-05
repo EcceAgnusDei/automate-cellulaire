@@ -104,6 +104,7 @@ header
 	justify-content: flex-end;
 	height: 50px;
 	background-color: white;
+	position: relative;
 }
 
 .menu-item
@@ -128,10 +129,8 @@ header
 .header-forms 
 {
 	height: 50px;
-	display: flex;
 	align-items: center;
 	justify-content: flex-end;
-	position: relative;
 }
 
 .header-forms-item
@@ -141,12 +140,14 @@ header
 
 .login-error
 {
-	color: red;
+	color: #f38320;
+	width: 350px;
 	text-align: right;
 	margin: 0;
 	position: absolute;
-	top:100%;
-	right: 0;
+	top:50%;
+	left: 0;
+	transform: translateY(-50%);
 }
 
 /*****footer*****/

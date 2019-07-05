@@ -33,6 +33,20 @@
                     <li><button class="btn menu-item login-btn">Espace perso</button></li>
                     <?php
                     }
+                    if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
+                    {
+                        $_SESSION['login'] = '';
+                        ?>
+                        <p class="login-error"> Identifiant ou mot de passe incorrect !</p>
+                        <?php
+                    }
+                    if (isset($_SESSION['login']) && $_SESSION['login'] == "erroremail")
+                    {
+                        $_SESSION['login'] = '';
+                        ?>
+                        <p class="login-error">Cet email n'est pas inscrit !</p>
+                        <?php
+                    }
                     ?>
     			</ul>
     		</nav>
@@ -62,15 +76,7 @@
                         <input type="email" name="forgotten-email" id="forgotten-email">
                         <input type="submit" value="Envoyer" class="btn">
                     </form>
-                    <button id="forgotten-btn" class="header-forms-item">Mot de passe oublié</button> 
-                    <?php if (isset($_SESSION['login']) && $_SESSION['login'] == "error")
-                    {
-                        $_SESSION['login'] = '';
-                        ?>
-                        <p class="login-error grid"> Identifiant ou mot de passe incorrect</p>
-                        <?php
-                    }
-                    ?> 
+                    <button id="forgotten-btn" class="header-forms-item">Mot de passe oublié</button>  
                 </div>
             <?php
             }

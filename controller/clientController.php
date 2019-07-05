@@ -332,7 +332,8 @@ function passwordForgotten($email)
 
 	if ($request->fetch() === false)
 	{
-		throw new Exception('Le mail indiqué n\'existe pas');
+		$_SESSION['login'] = 'erroremail';
+		header('location: ' . $_SERVER['HTTP_REFERER']);
 	}
 	else
 	{
