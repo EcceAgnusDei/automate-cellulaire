@@ -72,6 +72,13 @@ function main()
 			play(1000/speed.value);
 		}
 	});
+	$('#save-db').click(function(){
+		if($('#grid-json').val() == '')
+		{
+			save = grid.save();
+			$('#grid-json').val(JSON.stringify(save));
+		}
+	});
 }
 
 function play(interval)

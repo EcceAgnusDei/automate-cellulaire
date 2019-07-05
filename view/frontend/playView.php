@@ -26,9 +26,11 @@ $title = 'Jouez au jeux de la vie';
 	<canvas id="canvas"></canvas>
 	<div class="command">
 		<div class="command-btn">
-			<button class="command-btn-item btn" id="next">Suivant</button>
-			<button class="command-btn-item btn" id="play">Lancer</button>
-			<button class="command-btn-item btn" id="stop">Arrêter</button>
+			<button class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>
+			<button class="command-btn-item btn" id="play"><i class="fas fa-play"></i></button>
+			<button class="command-btn-item btn" id="stop"><i class="fas fa-pause"></i></button>
+		</div>
+		<div class="save-btn">
 			<button class="command-btn-item btn" id="load">Charger</button>
 			<button class="command-btn-item btn" id="save">Sauvegarder</button>
 		</div>
@@ -41,18 +43,20 @@ $title = 'Jouez au jeux de la vie';
 			<input type="text" class="command-input-item" name="square-size" id="square-size" value="20">
 			<button class="btn" id="set-grid">Afficher la grille</button>
 		</div>
-		<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
-		<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
+		<div class="speed-selector">
+			<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
+			<input type="range" name="speed" id="speed" min="0.5" max="50" value="1">
+		</div>
 	</div>
 	<?php 
 		if(isset($_SESSION['userid']) && !isset($_GET['id']))
 		{
 		?>
 			<form action="index.php?action=save" method="POST">
-				<label for="name">Le nom de l'oeuvre</label>
-				<input type="text" name="name" id="name" required>
+				<label for="name">Nom de l'oeuvre</label>
+				<input type="text" name="name" id="name" maxlength="30" required>
 				<textarea name="grid-json" id="grid-json" required></textarea>
-				<input type="submit" value="Enregistrer"/>
+				<input type="submit" class="btn" value="Enregistrer" id="save-db"/>
 			</form>
 		<?php
 		}

@@ -221,3 +221,26 @@ footer
 	margin-left: 7px;
 	margin-right: 7px;
 }
+
+.save-btn
+{
+	margin-top: 10px;
+}
+
+.speed-selector
+{
+	color: #f38320;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.speed-selector label
+{
+	transform: translateY(10px);
+}
+
+#grid-json
+{
+	display: none;
+}
