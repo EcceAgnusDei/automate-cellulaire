@@ -53,7 +53,10 @@ function main()
 		}
 	});
 	$('#play').click(function(){
-		play(1000/speed.value);
+		if(!isPlaying)
+		{
+			play(1000/speed.value);
+		}
 	});
 	$('#stop').click(function(){
 		stop();
