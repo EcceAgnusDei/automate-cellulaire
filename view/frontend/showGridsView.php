@@ -6,9 +6,10 @@ $title = 'Admirez les créations';
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-<section>
-	<nav class="grid-sort">
-		<ul>
+<section class="grid last-section grids-view">
+	<h3>Les créations</h3>
+	<nav>
+		<ul class="grids-sort">
 			<li><a href="index.php?action=showgrids" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
 			<li><a href="index.php?action=showgridsbylikes" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
 		</ul>
@@ -16,15 +17,14 @@ $title = 'Admirez les créations';
 <?php
 while ($data = $grids->fetch())
 {
-	$author = $userManager->getLoginById($data['author_id']);
-?>
-	<p><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span><?= $data['likes'] ?></span></p>
+	$author = $userManager->getLoginById($data['author_id']); ?>
+	<p class="grids-title"><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
 	<canvas id="canvas<?= $data['id'] ?>"></canvas>
 	<?php
 	if (isset($_SESSION['admin']))
 	{
 	?>
-		<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
+		<button class="btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
 	<?php	
 	}
 	?>

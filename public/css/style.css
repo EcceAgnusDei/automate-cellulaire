@@ -41,7 +41,7 @@ h1, h2
 h3
 {
     color: #f38320;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 }
 
@@ -109,6 +109,12 @@ ul, li
 	cursor: pointer;
 	padding: 0;
 	color: #242424;
+}
+
+.grid-like-btn
+{
+	margin-bottom: 20px;
+	font-size: 1.2em;
 }
 
 .like-btn:hover
@@ -245,6 +251,16 @@ footer
 	text-align: center;
 }
 
+footer a
+{
+	color: #42f42f;
+}
+
+footer a:hover
+{
+	color: #169608;
+}
+
 
 /*****Jeu*****/
 
@@ -355,4 +371,33 @@ footer
 {
 	align-self: flex-start;
 	margin-top: 7px;
+}
+
+.comments-title
+{
+	margin-top: 0;
+}
+
+/*****Grids view*****/
+
+.grids-view
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.grids-sort
+{
+	display: flex;
+}
+
+.grids-sort li:first-child
+{
+	margin-right: 30px;
+}
+
+.grids-title
+{
+	font-weight: bold;
 }

@@ -7,12 +7,12 @@ $title = 'Jouez au jeux de la vie';
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-<section class="game grid <?php if(!isset($gridManager)){ echo 'last-section';} ?>">
+<section class="game grid last-section">
 	<?php
 	if (!isset($gridManager))
 	{
 	?>
-		<h1>A vous de jouer au Jeu de la Vie !</h1>
+		<h3>A vous de jouer au Jeu de la Vie !</h3>
 	<?php
 	}
 	else
@@ -27,7 +27,7 @@ $title = 'Jouez au jeux de la vie';
 		if (!$gridIsLiked)
 		{
 		?>
-			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"' class="like-btn"><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
+			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"' class="like-btn grid-like-btn"><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
 		<?php
 		}
 		else
@@ -39,7 +39,7 @@ $title = 'Jouez au jeux de la vie';
 		if (isset($_SESSION['admin']))
 		{
 		?>
-			<button onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
+			<button class="btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
 		<?php
 		}
 	}
@@ -88,7 +88,7 @@ if (isset($gridManager, $_SESSION['userid']))
 {
 ?>
 <section class="comment-section grid last-section">
-	<h3>Commentaires (<?= $nbComments ?>)</h3>
+	<h3 class="comments-title">Commentaires (<?= $nbComments ?>)</h3>
 	<form action="index.php?action=addcomment&amp;id=<?= $_GET['id'] ?>" method="POST" class="comment-form">
 		<label for="comment">Laissez un commentaire</label>
 		<textarea name="comment-content" id="comment-content" required></textarea>
@@ -99,6 +99,7 @@ if (isset($gridManager, $_SESSION['userid']))
 	{
 		$commentAuthor = $userManager->getLoginById($data['author_id']);
 		?>
+		<script>console.log("coucou");</script>
 		<div class="comment">
 			<p><strong class="orange"><?= $commentAuthor ?></strong> <em>le <?= $data['comment_date_fr'] ?></em> : </p>
 			<p><?= nl2br($data['comment']) ?></p>
@@ -130,7 +131,7 @@ if (isset($gridManager, $_SESSION['userid']))
 			if (isset($_SESSION['admin']))
 			{
 			?>
-				<button onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
+				<button class="btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
 			<?php
 			}
 			?>
