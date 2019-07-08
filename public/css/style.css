@@ -390,6 +390,7 @@ footer a:hover
 .grids-sort
 {
 	display: flex;
+	margin-bottom: 20px;
 }
 
 .grids-sort li:first-child
@@ -400,4 +401,14 @@ footer a:hover
 .grids-title
 {
 	font-weight: bold;
+	margin-top: 3px;
+	margin-bottom: 30px; 
+}
+
+.artwork
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }

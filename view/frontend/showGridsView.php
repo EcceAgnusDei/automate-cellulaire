@@ -18,16 +18,16 @@ $title = 'Admirez les créations';
 while ($data = $grids->fetch())
 {
 	$author = $userManager->getLoginById($data['author_id']); ?>
-	<p class="grids-title"><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
-	<canvas id="canvas<?= $data['id'] ?>"></canvas>
-	<?php
-	if (isset($_SESSION['admin']))
-	{
-	?>
-		<button class="btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
-	<?php	
-	}
-	?>
+	<div class="artwork"><canvas id="canvas<?= $data['id'] ?>"></canvas>
+		<p class="grids-title"><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
+		<?php
+		if (isset($_SESSION['admin']))
+		{
+		?>
+			<button class="btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
+		<?php	
+		}
+		?></div>
 	<script>
 		const squareCoords<?= $data['id'] ?> = <?= $data['json'] ?>;
 		let maxX<?= $data['id'] ?> = 0;
