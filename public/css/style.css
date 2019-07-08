@@ -43,6 +43,7 @@ h3
     color: #f38320;
     font-size: 1.4em;
     font-weight: bold;
+    text-align: center;
 }
 
 a
@@ -93,6 +94,21 @@ ul, li
 .btn:active
 {
 	transform: scale(0.98);
+}
+
+.link-btn
+{
+	background-color: rgba(0,0,0,0);
+	color: #f38320;
+	font-size: 1em;
+	border: none;
+	cursor: pointer;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.link-btn:hover
+{
+	color: #aa5409;
 }
 
 .last-section
@@ -195,21 +211,6 @@ header
 #user-login, #user-password
 {
 	width: 120px;
-}
-
-#forgotten-btn
-{
-	background-color: white;
-	color: #f38320;
-	font-size: 1em;
-	border: none;
-	cursor: pointer;
-	font-family: 'Montserrat', sans-serif;
-}
-
-#forgotten-btn:hover
-{
-	color: #aa5409;
 }
 
 .header-forms 
@@ -419,4 +420,36 @@ footer a:hover
 .user-comments
 {
 	display: none;
+}
+
+.userspace-nav
+{
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.userspace-nav li:last-child
+{
+	margin-left: 10px;
+}
+
+.user-artwork, .user-comments
+{
+	flex-direction: column;
+	align-items: center;
+}
+
+.user-artwork-item
+{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 0;
+}
+
+.user-artwork-item p
+{
+	margin-bottom: 5px;
 }

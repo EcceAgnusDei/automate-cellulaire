@@ -4,10 +4,10 @@ $head = '';
 ?>
 
 <?php ob_start(); ?>
-<nav class="user-space-nav grid">
-	<ul>
-		<li><button id="show-artwork">Vos oeuvres</button></li>
-		<li><button id="show-comments">Vos commentaires</button></li>
+<nav class="grid">
+	<ul class="userspace-nav">
+		<li><button id="show-artwork" class="link-btn">Vos oeuvres</button></li>
+		<li><button id="show-comments" class="link-btn">Vos commentaires</button></li>
 		<li><button class="btn" onclick='window.location.href="index.php?action=userlogout"'>Déconnexion</button></li>
 	</ul>
 </nav>
@@ -17,11 +17,11 @@ $head = '';
 while ($data = $grids->fetch())
 {
 ?>
-	<div>
+	<div class=user-artwork-item>
 		<p><?= $data['name'] ?><span class="blue"> <i class="fas fa-thumbs-up"></i><?= $data['likes'] ?></span></p>
 		<div>
 			<a href="index.php?action=load&amp;id=<?= $data['id'] ?>">Voir</a>
-			<button onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
+			<button class="btn" onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
 		</div>
 	</div>
 <?php
@@ -48,11 +48,11 @@ while ($data = $grids->fetch())
 <script>
 	$("#show-artwork").click(function(){
 		$(".user-comments").css('display','none');
-		$(".user-artwork").css('display', 'block');
+		$(".user-artwork").css('display', 'flex');
 	});
 
 	$("#show-comments").click(function(){
-		$(".user-comments").css('display','block');
+		$(".user-comments").css('display','flex');
 		$(".user-artwork").css('display', 'none');
 	});
 </script>

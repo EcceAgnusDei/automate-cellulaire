@@ -83,7 +83,7 @@
                             <input type="email" name="forgotten-email" id="forgotten-email">
                             <input type="submit" value="Envoyer" class="btn">
                         </form>
-                        <button id="forgotten-btn" class="header-forms-item">Mot de passe oublié</button>  
+                        <button id="forgotten-btn" class="header-forms-item link-btn">Mot de passe oublié</button>  
                     </div>
                 <?php
                 }
