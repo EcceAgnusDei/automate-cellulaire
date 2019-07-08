@@ -39,7 +39,7 @@ $title = 'Jouez au jeux de la vie';
 		if (isset($_SESSION['admin']))
 		{
 		?>
-			<button class="btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
+			<button class="btn grid-delete-btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $_GET['id'] ?>"'>Supprimer</button>
 		<?php
 		}
 	}
@@ -106,39 +106,39 @@ if (isset($gridManager, $_SESSION['userid']))
 			<?php
 			if (isset($_SESSION['userid']))
 			{
+			?>
+				<div class="comment-btns">
+				<?php
 				if($likeManager->commentIsLiked($data['id'], $_SESSION['userid']))
 				{
-					?>
-					<p><i class="fas fa-thumbs-up blue"></i> <span class="blue"> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></p>
-					<?php
+				?>
+					<div><i class="fas fa-thumbs-up blue"></i> <span class="blue"> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></div>
+				<?php
 				}
 				elseif($likeManager->commentIsDisliked($data['id'], $_SESSION['userid']))
 				{
-					?>
-					<p><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></span></p>
-					<?php
+				?>
+					<div><i class="fas fa-thumbs-up"></i> <span> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></span></div>
+				<?php
 				}
 				else
 				{
-					?>
-					<div class="comment-btns">
-						<div>
-							<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
-							<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
-						</div>
-						<?php
-						if (isset($_SESSION['admin']))
-						{
-						?>
-							<button class="btn comment-delete-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
-						<?php
-						}
-						?>
+				?>
+					<div>
+						<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
+						<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
 					</div>
-					<?php
+				<?php
+				}
+				if (isset($_SESSION['admin']))
+				{
+				?>
+					<button class="btn comment-delete-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
+				<?php
 				}
 			}
 			?>
+			</div>
 		</div>
 	<?php
 	}

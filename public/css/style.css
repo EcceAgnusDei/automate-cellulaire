@@ -401,10 +401,14 @@ footer a:hover
 	align-items: center;
 }
 
+.grids-view nav
+{
+	margin-bottom: 50px;
+}
+
 .grids-sort
 {
 	display: flex;
-	margin-bottom: 20px;
 }
 
 .grids-sort li:first-child
@@ -419,6 +423,11 @@ footer a:hover
 	margin-bottom: 30px; 
 }
 
+.grid-delete-btn
+{
+	margin-bottom: 30px;
+	transform: translateY(-20px);
+}
 
 /*****Userspace view*****/
 

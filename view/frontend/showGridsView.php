@@ -24,7 +24,7 @@ while ($data = $grids->fetch())
 		if (isset($_SESSION['admin']))
 		{
 		?>
-			<button class="btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
+			<button class="btn grid-delete-btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
 		<?php	
 		}
 		?></div>
