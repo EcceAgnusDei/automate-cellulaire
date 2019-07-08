@@ -177,7 +177,11 @@ function userIdentifying($login, $password)
 function userSpaceView($id)
 {
 	$gridManager = new GridManager();
+	$commentManager = new CommentManager();
+	$userManager = new UserManager();
+
 	$grids = $gridManager->getGridsByAuthorId($id);
+	$comments = $commentManager->getCommentsByUserId($id);
 
 	require ('view/frontend/userSpaceView.php');
 

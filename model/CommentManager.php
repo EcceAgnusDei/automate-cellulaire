@@ -157,7 +157,7 @@ class CommentManager extends Manager
 	}
 
 	/**
-	 * Rende le commentaire invisible pour l'admin
+	 * Rend le commentaire invisible pour l'admin
 	 * @param Int $id Id du commentaire que l'on souhaite rendre invisible
 	 */
 	public function invisible($id)
@@ -165,5 +165,19 @@ class CommentManager extends Manager
 		$dataBase = $this->dbConnect('Projet5');
 		$request = $dataBase->prepare('UPDATE comments SET visibility = 0 WHERE id = ?');
 		$request->execute(array($id));
+	}
+
+	/**
+	 * Permet d'obtenir l'ensemble des commentaire d'un même auteur.
+	 * @param  Id $userId Id de l'auteur.
+	 * @return Pdostatment         Commentaires de l'auteur.
+	 */
+	public function getCommentsByUserId($userId)
+	{
+		$dataBase = $this->dbConnect('Projet5');
+		$comments = $dataBase->prepare('SELECT id, likes, author_id, dislikes, grid_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE author_id = ? ORDER BY comment_date DESC');
+		$comments->execute(array($userId));
+
+		return $comments;
 	}
 }
