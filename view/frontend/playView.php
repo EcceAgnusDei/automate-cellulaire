@@ -121,18 +121,22 @@ if (isset($gridManager, $_SESSION['userid']))
 				else
 				{
 					?>
-					<div>
-						<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
-						<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
+					<div class="comment-btns">
+						<div>
+							<button class="like-btn" onclick='window.location.href="index.php?action=commentlike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-up"></i> <span><?= $data['likes'] ?></span></button>
+							<button class="dislike-btn" onclick='window.location.href="index.php?action=commentdislike&id=<?= $data['id'] ?>"'><i class="fas fa-thumbs-down"></i> <span> <?= $data['dislikes'] ?></span></button>
+						</div>
+						<?php
+						if (isset($_SESSION['admin']))
+						{
+						?>
+							<button class="btn comment-delete-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
+						<?php
+						}
+						?>
 					</div>
 					<?php
 				}
-			}
-			if (isset($_SESSION['admin']))
-			{
-			?>
-				<button class="btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
-			<?php
 			}
 			?>
 		</div>
