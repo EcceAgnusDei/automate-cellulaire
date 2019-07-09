@@ -1,21 +1,21 @@
 <?php $head = ''; ?>
 <?php ob_start(); ?>
-<section class="grid last-section">
-	<h2>La liste des commentaires</h2>
-	<nav class="comment-sort">
-		<ul>
-			<li><a href="index.php?adminaction=commentsbydateview" <?php if($_GET['adminaction']=='commentsbydateview'){echo "style= 'border-top: 1px solid #348ffe;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
-			<li><a href="index.php?adminaction=commentsbydislikesview" <?php if($_GET['adminaction']=='commentsbydislikesview'){echo "style= 'border-top: 1px solid #348ffe;'";} ?> >Trier par impopularité <i class="fas fa-sort-down"></i></a></li>
+<section class="comment-section grid last-section">
+	<h3>La liste des commentaires</h3>
+	<nav>
+		<ul class="sort">
+			<li><a href="index.php?adminaction=commentsbydateview" <?php if($_GET['adminaction']=='commentsbydateview'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
+			<li><a href="index.php?adminaction=commentsbydislikesview" <?php if($_GET['adminaction']=='commentsbydislikesview'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par impopularité <i class="fas fa-sort-down"></i></a></li>
 		</ul>
 	</nav>
 	<?php
 	while($data = $comments->fetch())
 	{
 	?>
-	<div class="comments">
+	<div class="comment">
 		<div class="comment-body">
 			<p>
-				<strong><?= $userManager->getLoginById($data['author_id']); ?></strong>
+				<strong class="orange"><?= $userManager->getLoginById($data['author_id']); ?></strong>
 				<em>le <?= $data['comment_date_fr'] ?> :</em>
 			</p>
 
@@ -24,10 +24,9 @@
 			</p>
 			<p class="show-post"><a href="index.php?action=load&amp;id=<?= $data['grid_id'] ?>&amp;commentid=<?= $data['id'] ?>">Afficher la création</a></p>
 		</div>
-		<div class="comment-info">
-			<p> Nombre de dislikes : <?= $data['dislikes'] ?>
-			</p>
-			<div class="comment-info-btn">
+		<div class="comment-btns">
+			<div><i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></div>
+			<div>
 				<button class="btn del-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
 				<button class="btn" onclick='window.location.href="index.php?adminaction=commentinvisible&id=<?= $data['id'] ?>"'>Retirer de la liste</button>
 			</div>

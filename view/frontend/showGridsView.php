@@ -9,7 +9,7 @@ $title = 'Admirez les créations';
 <section class="grid last-section grids-view">
 	<h3>Les créations</h3>
 	<nav>
-		<ul class="grids-sort">
+		<ul class="sort">
 			<li><a href="index.php?action=showgrids" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
 			<li><a href="index.php?action=showgridsbylikes" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
 		</ul>

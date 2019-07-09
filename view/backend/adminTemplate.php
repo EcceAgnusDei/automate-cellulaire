@@ -37,7 +37,7 @@
     	</header>
         <?= $content ?>
         <footer class="client-footer">
-            <p class="footer-content">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?adminaction=adminlogout">Deconnexion</a></p>
+            <p class="footer-content grid">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?adminaction=adminlogout">Deconnexion</a></p>
         </footer>
     </body>
 </html>

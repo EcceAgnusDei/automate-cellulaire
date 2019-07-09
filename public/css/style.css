@@ -406,12 +406,12 @@ footer a:hover
 	margin-bottom: 50px;
 }
 
-.grids-sort
+.sort
 {
 	display: flex;
 }
 
-.grids-sort li:first-child
+.sort li:first-child
 {
 	margin-right: 30px;
 }
