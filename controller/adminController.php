@@ -21,7 +21,7 @@ function adminGridView()
 	$gridManager = new GridManager();
 	$userManager = new userManager();
 
-	$grids = $gridManager->getGridsByDate();
+	$grids = $gridManager->getVisible();
 
 	require('view/backend/adminGridsView.php');
 }
@@ -94,6 +94,14 @@ function commentInvisible($id)
 {
 	$commentManager = new CommentManager();
 	$commentManager->invisible($id);
+
+	header('location: ' . $_SERVER['HTTP_REFERER']);
+}
+
+function gridApproval($id)
+{
+	$gridManager = new GridManager();
+	$gridManager->invisible($id);
 
 	header('location: ' . $_SERVER['HTTP_REFERER']);
 }

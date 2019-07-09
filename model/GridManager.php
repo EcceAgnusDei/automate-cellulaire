@@ -3,7 +3,7 @@
 require_once("Manager.php");
 
 /**
- * Classe permetant de gérer les articles.
+ * Classe permetant de gérer les créations.
  */
 class GridManager extends Manager
 {
@@ -78,5 +78,20 @@ class GridManager extends Manager
 		$succes = $request->execute(array($id));
 
 		return $succes;
+	}
+
+	public function invisible($id)
+	{
+		$dataBase = $this->dbConnect('Projet5');
+		$request = $dataBase->prepare('UPDATE grids SET visibility = 0 WHERE id = ?');
+		$request->execute(array($id));
+	}
+
+	public function getVisible()
+	{
+		$dataBase = $this->dbConnect('Projet5');
+		$grids = $dataBase->query('SELECT * FROM grids WHERE visibility = 1 ORDER BY grid_date DESC');
+
+		return $grids;
 	}
 }

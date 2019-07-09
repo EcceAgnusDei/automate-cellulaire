@@ -475,3 +475,11 @@ footer a:hover
 {
 	margin-bottom: 5px;
 }
+
+
+/*****Admin des création*****/
+
+.grid-approval-btn
+{
+	transform: translateY(-25px);
+}

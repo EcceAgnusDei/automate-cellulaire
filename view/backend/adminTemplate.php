@@ -16,17 +16,16 @@
         
     <body>
     	<header>
-    		<div class="header-title">
-    			<h1></h1>
-    		    <h2></h2>
-    		</div>
-    		<nav class="menu grid">
-    			<ul>
-    				<li><a class="menu-item" href="index.php?adminaction=gridsview">Les créations</a></li>
-                    <li><a class="menu-item" href="index.php?adminaction=commentsbydateview">Les commentaires</a></li>
-                    <li><a class="menu-item" href="index.php">Accueil</a></li>
-    			</ul>
-    		</nav>
+            <div class="header-head grid">
+                    <a href="index.php"><img class="logo" src="public/css/img/logo.png" alt=""></a>
+                    <nav>
+                        <ul class="menu">
+                            <li><a class="menu-item" href="index.php?adminaction=gridsview">Les créations</a></li>
+                            <li><a class="menu-item" href="index.php?adminaction=commentsbydateview">Les commentaires</a></li>
+                            <li><a class="menu-item" href="index.php">Accueil</a></li>
+                        </ul>
+                    </nav>
+                </div>
             <div class="menu-burger">
                 <input type="checkbox" class="toggler">
                 <div class="hamburger">
