@@ -55,6 +55,10 @@ class UserManager extends Manager
 		return $login;
 	}
 
+	/**
+	 * Permet d'obtenir les infos de tous les utilisateurs
+	 * @return PDOStatment Les utilisateurs
+	 */
 	public function getUsers()
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -63,6 +67,11 @@ class UserManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Permet de retrouver un utilisateur grace à son mail
+	 * @param  String $email L'email de l'utilisateur
+	 * @return PDOStatment        L'utilisateur
+	 */
 	public function getUserByEmail($email)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -72,6 +81,12 @@ class UserManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Permet d'identifier l'administrateur
+	 * @param  String $login    Identifiant
+	 * @param  String $password Mot de passe
+	 * @return Bool           Renvoie true si l'identifiant et le mot de passe sont corrects.
+	 */
 	public function adminIdentifying($login, $password)
 	{
 		$dataBase = $this->dbConnect('projet5');

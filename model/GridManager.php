@@ -7,6 +7,13 @@ require_once("Manager.php");
  */
 class GridManager extends Manager
 {
+	/**
+	 * Permet de Sauvegarder une création dans la base de données
+	 * @param  String $json Version littérale d'un array comportant les coordonnées des carrés noirs
+	 * @param  Int $id   Id de l'auteur
+	 * @param  String $name Nom de l'oeuvre
+	 * @return Bool       Renvoie true si l'enregistrement s'est bien effectué
+	 */
 	public function save($json, $id, $name)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -16,6 +23,11 @@ class GridManager extends Manager
 		return $succes;
 	}
 
+	/**
+	 * Charge un création à partir de la base de données
+	 * @param  Int $id Id de la création
+	 * @return PDOStatment     Création
+	 */
 	public function load($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -26,6 +38,10 @@ class GridManager extends Manager
 		return $grid;
 	}
 
+	/**
+	 * Permet de charger toutes les créations et les classe du plus récent au plus ancien
+	 * @return PDOStatment L'ensemble des créations
+	 */
 	public function getGridsByDate()
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -34,6 +50,10 @@ class GridManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Permet de charger toutes les créations et les classe en fonction de leur nombre de likes
+	 * @return PDOStatment Les créations
+	 */
 	public function getGridsByLikes()
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -42,6 +62,11 @@ class GridManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Permet d'obtenir toutes les créations d'un même auteur
+	 * @param  Int $id Id de l'auteur
+	 * @return PDOStatment     Les créations de l'auteur
+	 */
 	public function getGridsByAuthorId($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -51,6 +76,11 @@ class GridManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Supprime une création
+	 * @param  Int $id Id de la création à supprimer
+	 * @return Bool     Renvoie true si la suppression s'est bien effectuée
+	 */
 	public function delete($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -60,6 +90,11 @@ class GridManager extends Manager
 		return $succes;
 	}
 
+	/**
+	 * Permet d'obtenir l'id de l'auteur à partir de celui de la création
+	 * @param  Int $id Id de la création
+	 * @return int     Id de l'auteur
+	 */
 	public function getAuthorIdById($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -71,6 +106,11 @@ class GridManager extends Manager
 		return $author_id;
 	}
 
+	/**
+	 * Permet de liker une création
+	 * @param  Int $id Id de la création likée
+	 * @return Bool     Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function like($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -80,6 +120,10 @@ class GridManager extends Manager
 		return $succes;
 	}
 
+	/**
+	 * Rend la création invisible pour le dashbord de l'administrateur
+	 * @param  Int $id Id de la création
+	 */
 	public function invisible($id)
 	{
 		$dataBase = $this->dbConnect('Projet5');
@@ -87,6 +131,10 @@ class GridManager extends Manager
 		$request->execute(array($id));
 	}
 
+	/**
+	 * Permet d'obtenir toutes les créations visibles
+	 * @return PDOStatment Les créations visibles
+	 */
 	public function getVisible()
 	{
 		$dataBase = $this->dbConnect('Projet5');

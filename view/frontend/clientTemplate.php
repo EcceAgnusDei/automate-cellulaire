@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
         <title><?= $title ?></title>
 
         <link href="/automate-cellulaire/public/css/style.css" rel="stylesheet" />
-        <link rel="shortcut icon" type="image/png" href="/billet-simple/public/css/img/favicon.png">
+        <link rel="shortcut icon" type="image/png" href="/automate-cellulaire/public/css/img/favicon.png">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

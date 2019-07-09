@@ -8,11 +8,11 @@ $head = '';
 	<form action="index.php?action=signin" method="post" class="signin-form">
 		<p style="color: red;" id="error"></p>
 		<label class="block" for="signin-login">Pseudo</label>
-		<input type="text" name="signin-login" id="signin-login" maxlength="20" required>
+		<input type="text" title="Entrez votre pseudo." name="signin-login" id="signin-login" maxlength="20" required>
 		<label class="block" for="signin-password">Mot de passe</label>
-		<input type="password" name="signin-password" id="signin-password" maxlength="20" required>
+		<input type="password" title="Votre mot de passe doit contenir au moins 8 caractères." name="signin-password" id="signin-password" maxlength="20" required>
 		<label class="block" for="signin-email">Email</label>
-		<input type="email" name="signin-email" id="signin-email" required>
+		<input type="email" title="Entre votre mail." name="signin-email" id="signin-email" required>
 		<input type="submit" class="btn" value="S'inscrire">
 	</form>
 </section>

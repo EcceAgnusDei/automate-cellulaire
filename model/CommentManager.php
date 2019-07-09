@@ -21,6 +21,11 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+	/**
+	 * Permet d'obtenir un commentaire à partir de son id
+	 * @param  Int $id id du commentaire
+	 * @return PDOStatment     Le commentaire
+	 */
 	public function getCommentById($id)
 	{
 		$dataBase = $this->dbConnect('projet5');

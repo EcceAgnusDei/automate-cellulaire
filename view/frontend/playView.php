@@ -47,14 +47,14 @@ $title = 'Jouez au jeux de la vie';
 	<canvas id="canvas"></canvas>
 	<div class="command">
 		<div class="command-btn">
-			<button aria-label="Etape suivante"class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>
-			<button aria-label="Lancer"class="command-btn-item btn" id="play"><i class="fas fa-play"></i></button>
-			<button aria-label="Pause"class="command-btn-item btn" id="stop"><i class="fas fa-pause"></i></button>
+			<button title="Suivant" aria-label="Etape suivante" class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>
+			<button title="Play" aria-label="Lancer" class="command-btn-item btn" id="play"><i class="fas fa-play"></i></button>
+			<button title="Pause" aria-label="Pause" class="command-btn-item btn" id="stop"><i class="fas fa-pause"></i></button>
 		</div>
-		<button aria-label="Gomme" class="command-btn-item btn" id="rubber"><i class="fas fa-eraser"></i></button>
+		<button title="Retoucher" aria-label="Gomme" class="command-btn-item btn" id="rubber"><i class="fas fa-eraser"></i></button>
 		<div class="save-btn">
-			<button class="command-btn-item btn" id="load">Charger</button>
-			<button class="command-btn-item btn" id="save">Sauvegarder</button>
+			<button title="Charger le motif" class="command-btn-item btn" id="load">Charger</button>
+			<button title="Sauvegarder temporairement le motif" class="command-btn-item btn" id="save">Sauvegarder</button>
 		</div>
 		<div class="command-input">
 			<label for="cols">Colonnes</label>
@@ -63,7 +63,7 @@ $title = 'Jouez au jeux de la vie';
 			<input type="text" class="command-input-item" name="rows" id="rows" value="20">
 			<label for="square-size">Taille d'un carré</label>
 			<input type="text" class="command-input-item" name="square-size" id="square-size" value="20">
-			<button class="btn" id="set-grid">Afficher la grille</button>
+			<button title="Réinitialiser la grille" class="btn" id="set-grid">Afficher la grille</button>
 		</div>
 		<div class="speed-selector">
 			<label for="speed" min="0.5" max="50" step="0.5">Vitesse</label>
@@ -78,7 +78,7 @@ $title = 'Jouez au jeux de la vie';
 				<label for="name">Nom de l'oeuvre</label>
 				<input type="text" name="name" id="name" maxlength="30" required>
 				<textarea name="grid-json" id="grid-json" required></textarea>
-				<input type="submit" class="btn" value="Enregistrer" id="save-db"/>
+				<input title="Enregistrer votre oeuvre sur le site" type="submit" class="btn" value="Enregistrer" id="save-db"/>
 			</form>
 		<?php
 		}

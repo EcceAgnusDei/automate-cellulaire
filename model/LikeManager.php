@@ -3,10 +3,16 @@
 require_once("Manager.php");
 
 /**
- * Classe permetant de gérer les articles.
+ * Classe permetant de gérer les likes.
  */
 class LikeManager extends Manager
-{
+{	
+	/**
+	 * Permet de liker une création
+	 * @param  Int $gridId Id de la création
+	 * @param  Int $userId Id de l'utilisateur qui like
+	 * @return [type]         [description]
+	 */
 	public function gridLike($gridId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -19,6 +25,12 @@ class LikeManager extends Manager
 		return $succes1 && $succes2;
 	}
 
+	/**
+	 * Like un commentaire
+	 * @param  Int $commentId Id du commentaire
+	 * @param  Int $userId    Id de l'utilisateur qui like
+	 * @return Bool            Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function commentLike($commentId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -31,6 +43,12 @@ class LikeManager extends Manager
 		return $succes1 && $succes2;
 	}
 
+	/**
+	 * Dislike un commentaire
+	 * @param  Int $commentId Id du commentaire
+	 * @param  Int $userId    Id de l'utilisateur qui dislike
+	 * @return Bool            Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function commentDislike($commentId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -43,6 +61,12 @@ class LikeManager extends Manager
 		return $succes1 && $succes2;
 	}
 
+	/**
+	 * Permet de savoir si une création est liké d'un utilisateur
+	 * @param  Int $gridId Id de la création
+	 * @param  Int $userId id de l'utilisateur
+	 * @return Bool         Retourne true si la création est likée de l'utilisateur
+	 */
 	public function gridIsLiked($gridId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -60,6 +84,12 @@ class LikeManager extends Manager
 		}
 	}
 
+	/**
+	 * Permet de savoir si un commentaire a été liké par un utilisateur
+	 * @param  Int $commentId Id du commentaire
+	 * @param  Int $userId    Id de l'utilisateur
+	 * @return Bool            Renvoie true si le commentaire est liké par l'utilisateur
+	 */
 	public function commentIsLiked($commentId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -77,6 +107,12 @@ class LikeManager extends Manager
 		}
 	}
 
+	/**
+	 * Permet de savoir si un commentaire a été disliké par un utilisateur
+	 * @param  Int $commentId Id du commentaire
+	 * @param  Int $userId    Id de l'utilisateur
+	 * @return Bool            Renvoie true si le commentaire a été disliké par l'utilisateur
+	 */
 	public function commentIsDisliked($commentId, $userId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -94,6 +130,11 @@ class LikeManager extends Manager
 		}
 	}
 
+	/**
+	 * Supprime les likes d'une création
+	 * @param  Int $gridId Id de la création
+	 * @return Bool         Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function deleteGridLikes($gridId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -103,6 +144,11 @@ class LikeManager extends Manager
 		return $succes;
 	}
 
+	/**
+	 * Supprime les likes d'un commentaire
+	 * @param  Int $commentId Id du commentaire
+	 * @return Bool           Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function deleteCommentLikes($commentId)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -112,6 +158,11 @@ class LikeManager extends Manager
 		return $succes;
 	}
 
+	/**
+	 * Supprime les dislikes d'un commentaire
+	 * @param  Int $commentId Id du commentaire
+	 * @return Bool           Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function deleteCommentDislikes($commentId)
 	{
 		$dataBase = $this->dbConnect('projet5');
