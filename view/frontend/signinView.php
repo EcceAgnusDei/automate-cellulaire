@@ -3,7 +3,7 @@ $title = 'Signin';
 $head = '';
 ?>
 <?php ob_start(); ?>
-<section>
+<section class="grid">
 	<h1>Inscrivez-vous</h1>
 	<form action="index.php?action=signin" method="post">
 		<p style="color: red;" id="error"></p>
@@ -17,16 +17,14 @@ $head = '';
 	</form>
 </section>
 <script>
-	const logins = [];
+	let logins = [];
 
-	<?php
-	while($data = $request->fetch())
-	{
-	?>
-		logins.push('<?= $data['login'] ?>');
-	<?php	
-	}
-	?>
+	$.get(
+		'public/ajax/getLogins.php',
+		'false',
+		callback,
+		'text'
+		);
 
 	$('#signin-login').keyup(function()
 	{
@@ -50,6 +48,18 @@ $head = '';
 		}
 	});
 
+	$('#signin-password').keyup(function()
+	{
+		if ($('#signin-password').val().length < 8)
+		{
+			$('#signin-password').css('background-color', 'red');
+		}
+		else
+		{
+			$('#signin-password').css('background-color', 'green');
+		}
+	});
+
 	$('form').submit(function(evt){
 		let exists2;
 		for (let login of logins)
@@ -64,7 +74,18 @@ $head = '';
 			evt.preventDefault();
 			$('#error').text('Ce pseudo existe déjà !');
 		}
+		else if ($('#signin-password').val().length < 8)
+		{
+			evt.preventDefault();
+			$('#error').text('Mot de passe trop court');
+		}
 	});
+
+	function callback(result)
+	{
+		console.log('coucou');
+		logins = JSON.parse(result);
+	}
 
 </script>
 <?php $content = ob_get_clean(); ?>

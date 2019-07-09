@@ -153,6 +153,11 @@ function signinView()
 	$userManager = new UserManager();
 	$request = $userManager->getUsers();
 
+	$home = false;
+	$play = false;
+	$artwork = false;
+	$userspace = false;
+
 	require('view/frontend/signinView.php');
 }
 
