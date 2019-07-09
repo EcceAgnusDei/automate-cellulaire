@@ -7,6 +7,7 @@ class Grid
 		this.squareCoord = [];
 		this.squareStatus = {};
 		this.squareSize;
+		this.rubber = false;
 	}
 
 	/**
@@ -239,7 +240,14 @@ class Grid
 
 		this.canvas.addEventListener("click", function(evt){
 			let mousePos = this.getMousePos(this.canvas, evt);
+			if(this.rubber)
+			{
+				this.fillRect(mousePos.x, mousePos.y, 'white');
+			}
+			else
+			{
 			this.fillRect(mousePos.x, mousePos.y, 'black');
+			}
 		}.bind(this));
 	}
 }

@@ -47,10 +47,11 @@ $title = 'Jouez au jeux de la vie';
 	<canvas id="canvas"></canvas>
 	<div class="command">
 		<div class="command-btn">
-			<button aria-label="Next step"class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>
-			<button aria-label="Play"class="command-btn-item btn" id="play"><i class="fas fa-play"></i></button>
+			<button aria-label="Etape suivante"class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>
+			<button aria-label="Lancer"class="command-btn-item btn" id="play"><i class="fas fa-play"></i></button>
 			<button aria-label="Pause"class="command-btn-item btn" id="stop"><i class="fas fa-pause"></i></button>
 		</div>
+		<button aria-label="Gomme" class="command-btn-item btn" id="rubber"><i class="fas fa-eraser"></i></button>
 		<div class="save-btn">
 			<button class="command-btn-item btn" id="load">Charger</button>
 			<button class="command-btn-item btn" id="save">Sauvegarder</button>

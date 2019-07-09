@@ -75,6 +75,18 @@ function main()
 			$('#grid-json').val(JSON.stringify(save));
 		}
 	});
+	$('#rubber').click(function(){
+		if (grid.rubber)
+		{
+			grid.rubber = false;
+			$('#rubber').html('<i class="fas fa-eraser"></i>');
+		}
+		else
+		{
+			grid.rubber = true;
+			$('#rubber').html('<i class="fas fa-pencil-alt"></i>');
+		}
+	});
 	$('#speed').change(function(){
 		console.log(isPlaying);
 		if(isPlaying)

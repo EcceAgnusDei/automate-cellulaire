@@ -289,9 +289,16 @@ footer a:hover
 .command
 {
 	display: flex;
+	min-height: 250px;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	width: 100%;
+}
+
+#rubber
+{
+	font-size: 1.8em;
 }
 
 .command-input
@@ -312,11 +319,6 @@ footer a:hover
 	width: 40px;
 	margin-left: 7px;
 	margin-right: 7px;
-}
-
-.save-btn
-{
-	margin-top: 10px;
 }
 
 .speed-selector
