@@ -57,6 +57,9 @@ function adminLogingError()
 	require('view/backend/adminLoginView.php');
 }
 
+/**
+ * Affiche la page d'administration des créations
+ */
 function adminGridView()
 {
 	$gridManager = new GridManager();
@@ -67,6 +70,9 @@ function adminGridView()
 	require('view/backend/adminGridsView.php');
 }
 
+/**
+ * Affiche les commentaires du plus récent au plus ancien
+ */
 function commentsByDateView()
 {
 	$commentManager = new CommentManager();
@@ -77,6 +83,9 @@ function commentsByDateView()
 	require('view/backend/adminCommentsView.php');
 }
 
+/**
+ * Affiche les commentaires impopulaires par ordre d'impopularité
+ */
 function commentsByDislikesView()
 {
 	$commentManager = new CommentManager();
@@ -87,6 +96,10 @@ function commentsByDislikesView()
 	require('view/backend/adminCommentsView.php');
 }
 
+/**
+ * Supprime un commentaire en mode admin
+ * @param  Int $id Id du commentaire à supprimer
+ */
 function adminGridDelete($id)
 {
 	$gridManager = new GridManager();
@@ -113,6 +126,10 @@ function adminGridDelete($id)
 	}
 }
 
+/**
+ * Supprime le commentaire en mode admin
+ * @param  Int $id Id du commentaire à supprimer
+ */
 function adminCommentDelete($id)
 {
 	$commentManager = new CommentManager();
@@ -131,6 +148,10 @@ function adminCommentDelete($id)
 	}
 }
 
+/**
+ * Retire un commentaire du dashbord admin
+ * @param  Int $id Id du commentaire
+ */
 function commentInvisible($id)
 {
 	$commentManager = new CommentManager();
@@ -139,6 +160,10 @@ function commentInvisible($id)
 	header('location: ' . $_SERVER['HTTP_REFERER']);
 }
 
+/**
+ * Retire une création du dashbord admin
+ * @param  Int $id Id de la création
+ */
 function gridApproval($id)
 {
 	$gridManager = new GridManager();
