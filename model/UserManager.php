@@ -103,4 +103,13 @@ class UserManager extends Manager
 			return false;
 		}
 	}
+
+	public function delete($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('DELETE FROM users WHERE id = ?');
+		$succes = $request->execute(array($id));
+
+		return $succes;
+	}
 }

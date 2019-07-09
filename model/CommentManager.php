@@ -185,4 +185,13 @@ class CommentManager extends Manager
 
 		return $comments;
 	}
+
+	public function userDelete($id)
+	{
+		$dataBase = $this->dbConnect('Projet5');
+		$request = $dataBase->prepare('DELETE FROM comments WHERE author_id = ?');
+		$succes = $request->execute(array($id));
+
+		return $succes;
+	}
 }

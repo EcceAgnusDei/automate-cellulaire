@@ -181,6 +181,19 @@ try
 				}
 			}
 			break;
+
+			case 'userdelete':
+			{
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+				{
+					userDelete($_GET['id'], $_SESSION['userid']);
+				}
+				else 
+				{
+					throw new Exception('Aucun identifiant d\'utilisateur envoyé');
+				}
+			}
+			break;
 		}
 	}
 	elseif (isset($_GET['adminaction']))

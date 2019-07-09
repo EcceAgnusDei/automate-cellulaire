@@ -171,4 +171,21 @@ class LikeManager extends Manager
 
 		return $succes;
 	}
+
+	public function userDelete($id)
+	{
+		$dataBase = $this->dbConnect('Projet5');
+		$request = $dataBase->prepare('DELETE FROM comment_dislikes WHERE user_id = ?');
+		$succes = $request->execute(array($id));
+		$request->closeCursor();
+
+		$request = $dataBase->prepare('DELETE FROM comment_likes WHERE user_id = ?');
+		$succes2 = $request->execute(array($id));
+		$request->closeCursor();
+
+		$request = $dataBase->prepare('DELETE FROM grid_likes WHERE user_id = ?');
+		$succes3 = $request->execute(array($id));
+
+		return $succes && $succes2;
+	} 
 }

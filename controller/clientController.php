@@ -438,4 +438,30 @@ function passwordForgotten($email)
 	}
 }
 
+function userDelete($id, $userId)
+{
+	$userManager = new UserManager();
+	$commentManager = new CommentManager();
+	$gridManager = new GridManager();
+	$likeManager = new LikeManager();
+
+	if ($id == $userId)
+	{
+		$succes = $userManager->delete($id);
+		$succes2 = $commentManager->userDelete($id);
+		$succes3 = $gridManager->userDelete($id);
+		$succes4 = $likeManager->userDelete($id);
+		userLogout();
+	}
+	else
+	{
+		throw new Exception('Vous n\'avez pas le droit de faire cela');
+	}
+
+	if (!($succes && $succes2 && $succes3 && $succes4))
+	{
+		throw new Exception('Le compte utilisateur n\'a pas peu être supprimé');
+	}
+}
+
 		

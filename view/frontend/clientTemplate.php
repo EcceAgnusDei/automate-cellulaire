@@ -92,7 +92,7 @@
     	</header>
         <?= $content ?>
         <footer class="client-footer">
-            <p class="footer-content grid">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <a href="index.php?action=adminlogin">Admin</a></p>
+            <p class="footer-content grid">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <?php if(isset($_SESSION['userid'])) {?><button class="link-btn" onclick='window.location.href="index.php?action=userdelete&id=<?= $_SESSION['userid'] ?>"'>Supprimer votre compte</button> . <?php }  ?><a href="index.php?action=adminlogin">Admin</a></p>
         </footer>
     </body>
     <script>
