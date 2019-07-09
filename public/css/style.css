@@ -483,3 +483,17 @@ footer a:hover
 {
 	transform: translateY(-25px);
 }
+
+/*****Page d'erreur*****/
+
+.error-img
+{
+    width: 70%;
+    align-self: center;
+}
+
+.error-section
+{
+    display: flex;
+    flex-direction: column;
+}

@@ -69,7 +69,14 @@ try
 
 			case 'userspace':
 			{
-				userSpaceView($_SESSION['userid']);
+				if (isset($_SESSION['userid']))
+				{
+					userSpaceView($_SESSION['userid']);
+				}
+				else
+				{
+					throw new Exception('Vous devez ouvrir un session pour accéder à cette page');
+				}
 			}
 			break;
 
