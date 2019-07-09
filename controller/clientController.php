@@ -4,6 +4,10 @@ require_once('model/UserManager.php');
 require_once('model/CommentManager.php');
 require_once('model/LikeManager.php');
 
+/**
+ * Renvoie à la page d'accueil
+ *   
+ */
 function home()
 {
 	$home = true;
@@ -133,6 +137,10 @@ function showGrids()
 	require('view/frontend/showGridsView.php');
 }
 
+/**
+ * Affiche les création triées par nombre de like
+ * 
+ */
 function showGridsByLikes()
 {
 	$gridManager = new GridManager();
@@ -148,6 +156,9 @@ function showGridsByLikes()
 	require('view/frontend/showGridsView.php');
 }
 
+/**
+ * Affiche le formulaire d'inscription
+ */
 function signinView()
 {
 	$userManager = new UserManager();
@@ -210,6 +221,10 @@ function userIdentifying($login, $password)
 	}
 }
 
+/**
+ * Permet l'affichage de l'espace utilisateur
+ * @param  Int $id Id de l'utilisateur
+ */
 function userSpaceView($id)
 {
 	$gridManager = new GridManager();
@@ -228,12 +243,21 @@ function userSpaceView($id)
 
 }
 
+/**
+ * Ferme la session
+ */
 function userLogout()
 {
 	session_destroy();
 	header('Location: index.php');
 }
 
+/**
+ * Supprime une création
+ * @param  Int $id     Id de la création
+ * @param  Int $userId Id de l'utilisateur qui supprime sa création
+ * @return [type]         [description]
+ */
 function gridDelete($id, $userId)
 {
 	$gridManager = new GridManager();
@@ -246,8 +270,6 @@ function gridDelete($id, $userId)
 	{
 		commentDelete($commentId);
 	}
-
-	var_dump($gridManager->getAuthorIdById($userId));
 
 	if ($userId == $gridManager->getAuthorIdById($id))
 	{
@@ -269,6 +291,10 @@ function gridDelete($id, $userId)
 	}
 }
 
+/**
+ * Supprime un commentaire
+ * @param  Int $id Id du commentaire à supprimer
+ */
 function commentDelete($id)
 {
 	$commentManager = new CommentManager();
@@ -287,6 +313,11 @@ function commentDelete($id)
 	}
 }
 
+/**
+ * Like une création
+ * @param  Int $gridId Id de la création
+ * @param  Int $userId Id de l'utilisateur qui like la création
+ */
 function gridLike($gridId, $userId)
 {
 	$gridManager = new GridManager();
@@ -304,6 +335,12 @@ function gridLike($gridId, $userId)
 	}
 }
 
+/**
+ * Ajoute un commentaire dans la base de données
+ * @param Int $gridId  Id de la création commentée
+ * @param Int $userId  Id de l'utilisateur qui commente
+ * @param String $content Contenu du commentaire
+ */
 function addComment($gridId, $userId, $content)
 {
 	$commentManager = new CommentManager();
@@ -319,6 +356,11 @@ function addComment($gridId, $userId, $content)
 	}
 }
 
+/**
+ * Like un commentaire
+ * @param  Int $commentId Id du commentaire liké
+ * @param  Int $userId    Id de l'utilisateur qui like
+ */
 function commentLike($commentId, $userId)
 {
 	$commentManager = new CommentManager();
@@ -336,6 +378,11 @@ function commentLike($commentId, $userId)
 	}
 }
 
+/**
+ * Dislike un commentaire
+ * @param  Int $commentId Id du commentaire disliké
+ * @param  Int $userId    Id de l'utilisateur qui dislike
+ */
 function commentdisLike($commentId, $userId)
 {
 	$commentManager = new CommentManager();
@@ -353,6 +400,10 @@ function commentdisLike($commentId, $userId)
 	}
 }
 
+/**
+ * Envoie un mail à l'utilisateur qui veut récupérer son mot de passe 
+ * @param  String $email mail de l'utilisateur
+ */
 function passwordForgotten($email)
 {
 	$userManager = new UserManager();
