@@ -1,17 +1,17 @@
 <?php 
-$title = 'Signin';
+$title = 'Vous inscrire';
 $head = '';
 ?>
 <?php ob_start(); ?>
 <section class="grid">
-	<h1>Inscrivez-vous</h1>
-	<form action="index.php?action=signin" method="post">
+	<h3>Inscrivez-vous</h3>
+	<form action="index.php?action=signin" method="post" class="signin-form">
 		<p style="color: red;" id="error"></p>
-		<label for="signin-login">Pseudo</label>
+		<label class="block" for="signin-login">Pseudo</label>
 		<input type="text" name="signin-login" id="signin-login" maxlength="20" required>
-		<label for="signin-password">Mot de passe</label>
+		<label class="block" for="signin-password">Mot de passe</label>
 		<input type="password" name="signin-password" id="signin-password" maxlength="20" required>
-		<label for="signin-email">Email</label>
+		<label class="block" for="signin-email">Email</label>
 		<input type="email" name="signin-email" id="signin-email" required>
 		<input type="submit" class="btn" value="S'inscrire">
 	</form>
@@ -72,11 +72,13 @@ $head = '';
 		if (exists2)
 		{
 			evt.preventDefault();
+			$('#error').css('display', 'block');
 			$('#error').text('Ce pseudo existe déjà !');
 		}
 		else if ($('#signin-password').val().length < 8)
 		{
 			evt.preventDefault();
+			$('#error').css('display', 'block');
 			$('#error').text('Mot de passe trop court');
 		}
 	});

@@ -90,6 +90,10 @@ ul, li
 	color: #f38320;
 }
 
+.block
+{
+	display: block;
+}
 
 /*****Elements*****/
 
@@ -484,6 +488,23 @@ footer a:hover
 .user-artwork-item p
 {
 	margin-bottom: 5px;
+}
+
+
+/*****Formulaire d'inscription*****/
+
+.signin-form
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 250px;
+}
+
+#error
+{
+	display: none;
 }
 
 
