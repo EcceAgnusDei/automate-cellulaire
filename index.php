@@ -277,7 +277,7 @@ try
 	}
 	else
 	{
-		require('view/frontend/homeView.php');
+		home();
 	}
 }
 catch (Exception $e)

@@ -22,11 +22,6 @@ body
 	display: none;
 }
 
-canvas
-{
-	border: 1px black solid;
-}
-
 input, textarea
 {
     font-size: 1em;
@@ -75,6 +70,34 @@ ul, li
     display: none;
 }
 
+.last-section
+{
+	padding-bottom: 80px;
+}
+
+.blue
+{
+	color: #42b0ff;
+}
+
+.red
+{
+	color: red;
+}
+
+.orange
+{
+	color: #f38320;
+}
+
+
+/*****Elements*****/
+
+canvas
+{
+	border: 1px black solid;
+}
+
 .btn
 {
 	border: none;
@@ -111,11 +134,6 @@ ul, li
 	color: #aa5409;
 }
 
-.last-section
-{
-	padding-bottom: 80px;
-}
-
 .like-btn, .dislike-btn
 {
 	background-color: rgba(0,0,0,0);
@@ -141,21 +159,6 @@ ul, li
 .dislike-btn:hover
 {
 	color: red;
-}
-
-.blue
-{
-	color: #42b0ff;
-}
-
-.red
-{
-	color: red;
-}
-
-.orange
-{
-	color: #f38320;
 }
 
 
@@ -229,9 +232,14 @@ header
 .login-error
 {
 	color: #f38320;
-	width: 350px;
+	width: 400px;
 	text-align: right;
 	margin: 0 auto;
+}
+
+.active
+{
+	color: #169608;
 }
 
 

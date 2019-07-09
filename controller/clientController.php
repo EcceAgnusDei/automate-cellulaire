@@ -4,6 +4,15 @@ require_once('model/UserManager.php');
 require_once('model/CommentManager.php');
 require_once('model/LikeManager.php');
 
+function home()
+{
+	$home = true;
+	$play = false;
+	$artwork = false;
+	$userspace = false;
+
+	require('view/frontend/homeView.php');
+}
 /**
  * Affiche la liste des articles
  * 
@@ -28,7 +37,12 @@ function save($json, $authorId, $name)
  */
 function playView()
 {
+	$home = false;
+	$play = true;
+	$artwork = false;
+	$userspace = false;
 	$script = '';
+
 	require ('view/frontend/playView.php');
 }
 
@@ -46,6 +60,11 @@ function load($id)
 	$gridIsLiked = false;
 	$commentIsLiked = false;
 	$commentIsDisliked = false;
+
+	$home = false;
+	$play = true;
+	$artwork = false;
+	$userspace = false;
 
 	$nbComments = $commentManager->countComments($id);
 
@@ -105,6 +124,12 @@ function showGrids()
 	$userManager = new UserManager();
 
 	$grids = $gridManager->getGridsByDate();
+
+	$home = false;
+	$play = false;
+	$artwork = true;
+	$userspace = false;
+
 	require('view/frontend/showGridsView.php');
 }
 
@@ -114,6 +139,12 @@ function showGridsByLikes()
 	$userManager = new UserManager();
 
 	$grids = $gridManager->getGridsByLikes();
+
+	$home = false;
+	$play = false;
+	$artwork = true;
+	$userspace = false;
+
 	require('view/frontend/showGridsView.php');
 }
 
@@ -182,6 +213,11 @@ function userSpaceView($id)
 
 	$grids = $gridManager->getGridsByAuthorId($id);
 	$comments = $commentManager->getCommentsByUserId($id);
+
+	$home = false;
+	$play = false;
+	$artwork = false;
+	$userspace = true;
 
 	require ('view/frontend/userSpaceView.php');
 
@@ -319,6 +355,12 @@ function commentdisLike($commentId, $userId)
 function adminLogin()
 {
 	$error = '';
+
+	$home = false;
+	$play = false;
+	$artwork = false;
+	$userspace = false;
+
 	require('view/backend/adminLoginView.php');
 }
 
