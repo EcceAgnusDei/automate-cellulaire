@@ -9,11 +9,52 @@ require_once('model/LikeManager.php');
  * @param  string $user     identifiant
  * @param  string $password mot de passe
  */
-function admin()
+function admin($login, $password)
 {
-	$_SESSION['admin'] = true;
-	$_SESSION['userid'] = 1;
-	header('Location: index.php?adminaction=gridsview');
+	$userManager = new UserManager;
+
+	if ($userManager->adminIdentifying($login, $password))
+	{
+		$_SESSION['admin'] = true;
+		$_SESSION['userid'] = 1;
+		header('Location: index.php?adminaction=gridsview');
+	}
+	else
+	{
+		adminLogingError();
+	}
+	
+}
+
+/**
+ * Redirige vers la page de connexion
+ * @return [type] [description]
+ */
+function adminLogin()
+{
+	$error = '';
+
+	$home = false;
+	$play = false;
+	$artwork = false;
+	$userspace = false;
+
+	require('view/backend/adminLoginView.php');
+}
+
+/**
+ * Redirige vers la page de connexion lorsque les identifiant/mot de passe ne sont pas bons.
+ */
+function adminLogingError()
+{
+	$error = "<p style='color: red'>Identifiant ou mot de passe incorrect</p>";
+
+	$home = false;
+	$play = false;
+	$artwork = false;
+	$userspace = false;
+	
+	require('view/backend/adminLoginView.php');
 }
 
 function adminGridView()

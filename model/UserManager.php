@@ -66,9 +66,26 @@ class UserManager extends Manager
 	public function getUserByEmail($email)
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->prepare('SELECT login, password FROM users WHEN email = ?');
+		$request = $dataBase->prepare('SELECT login, password FROM users WHERE email = ?');
 		$request->execute(array($email));
 
 		return $request;
+	}
+
+	public function adminIdentifying($login, $password)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->query('SELECT login, password FROM users WHERE id = 1');
+
+		$data = $request->fetch();
+
+		if ($login == $data['login'] && $password == $data['password'])
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

@@ -348,31 +348,6 @@ function commentdisLike($commentId, $userId)
 	}
 }
 
-/**
- * Redirige vers la page de connexion
- * @return [type] [description]
- */
-function adminLogin()
-{
-	$error = '';
-
-	$home = false;
-	$play = false;
-	$artwork = false;
-	$userspace = false;
-
-	require('view/backend/adminLoginView.php');
-}
-
-/**
- * Redirige vers la page de connexion lorsque les identifiant/mot de passe ne sont pas bons.
- */
-function adminLogingError()
-{
-	$error = "<p style='color: red'>Identifiant ou mot de passe incorrect</p>";
-	require('view/backend/adminLoginView.php');
-}
-
 function passwordForgotten($email)
 {
 	$userManager = new UserManager();

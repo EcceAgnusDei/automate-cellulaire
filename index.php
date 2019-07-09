@@ -165,14 +165,7 @@ try
 
 			case 'adminidentifying':
 			{
-				if ($_POST['login'] == 'admin' && $_POST['password'] == 'admin')
-				{
-					admin();
-				}
-				else
-				{
-					adminLogingError();
-				}
+				admin($_POST['login'], $_POST['password']);
 			}
 			break;
 
