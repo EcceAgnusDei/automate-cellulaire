@@ -215,6 +215,11 @@ header
 	width: 120px;
 }
 
+.signin-link
+{
+	margin-left: 15px;
+}
+
 .header-forms 
 {
 	min-height: 50px;
@@ -240,6 +245,10 @@ header
 	color: #169608;
 }
 
+.header-bottom-links
+{
+	display: flex;
+}
 
 /*****footer*****/
 
@@ -580,5 +589,10 @@ footer a:hover
 		padding: 0;
 		margin: 5px 0;
 		align-self: flex-start;
+	}
+
+	.signin-link
+	{
+		margin: 5px 15px 5px 0;
 	}
 }

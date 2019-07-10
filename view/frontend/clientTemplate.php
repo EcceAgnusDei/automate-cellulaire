@@ -77,14 +77,16 @@
                             <label for="user-password">Mot de passe</label>
                             <input type="password" name="user-password" id="user-password" required>
                             <input type="submit" value="Go" class="btn">
-                            <a href="index.php?action=signinview" class="header-forms-item">Inscription</a>
                         </form>
                         <form style="display: none;" action="index.php?action=passwordforgotten" method="POST" id="forgotten-form" class="header-forms-item">
                             <label for="forgotten-email">Votre email</label>
                             <input type="email" name="forgotten-email" id="forgotten-email">
                             <input type="submit" value="Envoyer" class="btn">
                         </form>
-                        <button id="forgotten-btn" class="header-forms-item link-btn">Mot de passe oublié</button>  
+                        <div class="header-bottom-links">
+                            <a href="index.php?action=signinview" class="signin-link">Inscription</a>
+                            <button id="forgotten-btn" class="header-forms-item link-btn">Mot de passe oublié</button>  
+                        </div>
                     </div>
                 <?php
                 }

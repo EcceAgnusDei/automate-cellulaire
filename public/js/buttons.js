@@ -5,6 +5,7 @@ function buttons()
 	$('.login-btn').click(function(){
 		$('.user-login-form').css('display','block'); 
 		$('#forgotten-form').css('display','none');
+		$('.signin-link').css('display','block');
 		if ($('.header-forms').css('display') === 'none')
 		{
 			$('.header-forms').css('display','flex');
@@ -18,6 +19,7 @@ function buttons()
 	$('#forgotten-btn').click(function(){
 		$('#forgotten-form').css('display','block');
 		$('.user-login-form').css('display','none');   
+		$('.signin-link').css('display','none');   
 	});
 
 	$("#show-artwork").click(function(){
