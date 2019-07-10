@@ -217,7 +217,7 @@ header
 
 .header-forms 
 {
-	height: 50px;
+	min-height: 50px;
 	align-items: center;
 	justify-content: flex-end;
 }
@@ -551,4 +551,34 @@ footer a:hover
 {
     display: flex;
     flex-direction: column;
+}
+
+
+/*****Responsivity*****/
+
+
+@media (max-width: 1300px)
+{
+	.grid
+	{
+		width: 95%;
+	}
+
+	.header-forms
+	{
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	.header-forms-item
+	{
+		margin: 0;
+	}
+	
+	#forgotten-btn
+	{
+		padding: 0;
+		margin: 5px 0;
+		align-self: flex-start;
+	}
 }

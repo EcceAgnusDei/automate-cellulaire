@@ -1,5 +1,5 @@
 <?php 
-$title = 'Inscription';
+$title = 'Automate cellulaire - jeu de la vie';
 $head = '';
 ?>
 <?php ob_start(); ?>
