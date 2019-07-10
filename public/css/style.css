@@ -27,13 +27,7 @@ input, textarea
     font-size: 1em;
 }
 
-h1, h2
-{
-    text-align: center;
-    color: black;
-}
-
-h3
+h1, h2, h3
 {
     color: #f38320;
     font-size: 1.4em;
@@ -252,7 +246,7 @@ header
 footer
 {
 	background-color: white;
-	height: 30px;
+	min-height: 30px;
 	display: flex;
 	align-items: center;
 	position: absolute;
@@ -276,6 +270,36 @@ footer a:hover
 }
 
 
+/*****Home*****/
+
+.home img
+{
+	width: 200px;
+}
+
+.home h1, .home h3
+{
+	font-size: 1.8em;
+	text-align: left;
+}
+
+.home p
+{
+	font-size: 1.4em;
+}
+.explanation-arrow
+{
+	font-size: 50px;
+}
+
+.explanation
+{
+	display: flex;
+	align-items: center;
+	width: 500px;
+	justify-content: space-between;
+	margin: auto;
+}
 /*****Jeu*****/
 
 #canvas

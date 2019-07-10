@@ -37,10 +37,6 @@ while ($data = $grids->fetch())
 
 		grid<?= $data['id'] ?>.grid(7, maxX<?= $data['id'] ?> +5, maxY<?= $data['id'] ?> +5);
 		grid<?= $data['id'] ?>.load(<?= $data['json'] ?>);
-
-		$("#canvas<?= $data['id'] ?>").click(function(evt){
-			evt.preventDefault();
-		});
 	</script>
 <?php
 }
