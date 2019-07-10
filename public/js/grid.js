@@ -174,6 +174,7 @@ class Grid
 	 	this.clear();
 	 	for (let coord of coords)
 	 	{
+	 		console.log(coord);
 	 		this.fillRect(coord[0]*this.squareSize, coord[1]*this.squareSize, 'black');
 	 	}
 	 }

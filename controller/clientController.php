@@ -92,11 +92,10 @@ function load($id)
 	<script>
 		save = <?= $grid['json'] ?>;
 
-		const squareCoords = <?= $grid['json'] ?>;
 		let maxX = 0;
 		let maxY = 0;
 
-		for (let coord of squareCoords)
+		for (let coord of save)
 		{
 			if (coord[0] > maxX)
 			{
@@ -111,7 +110,7 @@ function load($id)
 		setTimeout(function(){
 			grid.grid(20, maxX + 7, maxY + 7);
 			grid.load(save);
-		},10);
+		},50);
 	</script>
 	<?php $script = ob_get_clean(); ?>
 	<?php

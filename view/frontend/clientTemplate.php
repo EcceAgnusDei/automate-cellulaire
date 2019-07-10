@@ -12,6 +12,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.8.1/js/all.js" integrity="sha384-g5uSoOSBd7KkhAMlnQILrecXvzst9TdC09/VM+pjDTCM+1il8RHz5fKANTFFb+gQ" crossorigin="anonymous"></script>
+        <script src="/automate-cellulaire/public/js/buttons.js"></script>
         <?= $head ?>
     </head>
         
@@ -95,23 +96,4 @@
             <p class="footer-content grid">&copy; 2019 Antoine Mondoloni . <a href="view/frontend/rgpd.html">RGPD</a> . <a href="view/frontend/legalNotice.html">Mentions légales</a> . <?php if(isset($_SESSION['userid'])) {?><button class="link-btn" onclick='window.location.href="index.php?action=userdelete&id=<?= $_SESSION['userid'] ?>"'>Supprimer votre compte</button> . <?php }  ?><a href="index.php?action=adminlogin">Admin</a></p>
         </footer>
     </body>
-    <script>
-        $('.login-btn').click(function(){
-            $('.user-login-form').css('display','block'); 
-            $('#forgotten-form').css('display','none');
-            if ($('.header-forms').css('display') === 'none')
-            {
-                $('.header-forms').css('display','flex');
-            }
-            else
-            {
-                $('.header-forms').css('display','none');
-            }
-        });
-
-        $('#forgotten-btn').click(function(){
-            $('#forgotten-form').css('display','block');
-            $('.user-login-form').css('display','none');   
-        });
-    </script>
 </html>

@@ -26,7 +26,7 @@ class GridManager extends Manager
 	/**
 	 * Charge un création à partir de la base de données
 	 * @param  Int $id Id de la création
-	 * @return PDOStatment     Création
+	 * @return Array     Création
 	 */
 	public function load($id)
 	{
