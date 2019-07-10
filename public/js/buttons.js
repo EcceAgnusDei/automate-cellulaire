@@ -19,4 +19,14 @@ function buttons()
 		$('#forgotten-form').css('display','block');
 		$('.user-login-form').css('display','none');   
 	});
+
+	$("#show-artwork").click(function(){
+		$(".user-comments").css('display','none');
+		$(".user-artwork").css('display', 'flex');
+	});
+
+	$("#show-comments").click(function(){
+		$(".user-comments").css('display','flex');
+		$(".user-artwork").css('display', 'none');
+	});
 }
