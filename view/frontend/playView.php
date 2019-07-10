@@ -44,7 +44,7 @@ $title = 'Jouez au jeux de la vie';
 		}
 	}
 	?>
-	<canvas id="canvas"></canvas>
+	<div class="canvas-container"><canvas id="canvas"></canvas></div>
 	<div class="command">
 		<div class="command-btn">
 			<button title="Suivant" aria-label="Etape suivante" class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>

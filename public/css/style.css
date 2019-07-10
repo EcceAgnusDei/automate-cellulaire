@@ -94,7 +94,6 @@ ul, li
 canvas
 {
 	border: 1px black solid;
-	max-width: 100%;
 }
 
 .btn
@@ -309,11 +308,15 @@ footer a:hover
 	justify-content: space-between;
 	margin: auto;
 }
+
+
 /*****Jeu*****/
 
-#canvas
+.canvas-container
 {
-	margin-bottom: 10px;
+	max-width: 100%;
+	overflow: scroll;
+	margin-bottom: 15px;
 }
 
 .game
