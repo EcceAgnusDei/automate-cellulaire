@@ -94,6 +94,7 @@ ul, li
 canvas
 {
 	border: 1px black solid;
+	max-width: 100%;
 }
 
 .btn
@@ -235,9 +236,8 @@ header
 .login-error
 {
 	color: #f38320;
-	width: 400px;
 	text-align: right;
-	margin: 0 auto;
+	margin: 5px auto;
 }
 
 .active
@@ -594,5 +594,10 @@ footer a:hover
 	.signin-link
 	{
 		margin: 5px 15px 5px 0;
+	}
+
+	.login-error
+	{
+		text-align: left;
 	}
 }
