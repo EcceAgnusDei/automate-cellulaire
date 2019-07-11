@@ -96,7 +96,7 @@
             if(isset($_SESSION['userid']) && !isset($_SESSION['admin'])) 
             {
             ?>
-                <button class="link-btn" onclick='window.location.href="index.php?action=userdelete&id=<?= $_SESSION['userid'] ?>"'>Supprimer votre compte</button> . 
+                <button class="link-btn" id="delete-account">Supprimer votre compte</button> . 
             <?php 
             }  
             else if(isset($_SESSION['admin']))
@@ -109,4 +109,13 @@
             <a href="index.php?action=adminlogin">Admin</a></p>
         </footer>
     </body>
+    <script>
+        $('#delete-account').click(function(){
+        let confirmed = confirm("Êtes-vous sûr de vouloir supprimer définitivement votre compte ?");
+        if (confirmed)
+        {
+            window.location.href="index.php?action=userdelete&id=<?= $_SESSION['userid'] ?>";
+        }
+        });
+    </script>
 </html>
