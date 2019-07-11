@@ -57,12 +57,18 @@ $title = 'Jouez au jeux de la vie';
 			<button title="Sauvegarder temporairement le motif" class="command-btn-item btn" id="save">Sauvegarder</button>
 		</div>
 		<div class="command-input">
-			<label for="cols">Colonnes</label>
-			<input type="text" class="command-input-item" name="cols" id="cols" value="20">
-			<label for="rows">Lignes</label>
-			<input type="text" class="command-input-item" name="rows" id="rows" value="20">
-			<label for="square-size">Taille d'un carré</label>
-			<input type="text" class="command-input-item" name="square-size" id="square-size" value="20">
+			<div>
+				<label for="cols">Colonnes</label>
+				<input type="text" class="command-input-item" name="cols" id="cols" value="20">
+			</div>
+			<div>
+				<label for="rows">Lignes</label>
+				<input type="text" class="command-input-item" name="rows" id="rows" value="20">
+			</div>
+			<div>
+				<label for="square-size">Taille d'un carré</label>
+				<input type="text" class="command-input-item" name="square-size" id="square-size" value="20">
+			</div>
 			<button title="Réinitialiser la grille" class="btn" id="set-grid">Afficher la grille</button>
 		</div>
 		<div class="speed-selector">
