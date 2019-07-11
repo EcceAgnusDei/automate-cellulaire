@@ -110,4 +110,3 @@
         </footer>
     </body>
 </html>
-<a href="index.php?adminaction=adminlogout">Deconnexion</a>
