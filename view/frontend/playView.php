@@ -7,7 +7,7 @@ $title = 'Jouez au jeux de la vie';
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
-<section class="game grid last-section">
+<section class="game last-section">
 	<?php
 	if (!isset($gridManager))
 	{
@@ -45,7 +45,7 @@ $title = 'Jouez au jeux de la vie';
 	}
 	?>
 	<div class="canvas-container"><canvas id="canvas"></canvas></div>
-	<div class="command">
+	<div class="command grid">
 		<div class="command-btn">
 			<button title="Suivant" aria-label="Etape suivante" class="command-btn-item btn" id="next"><i class="fas fa-step-forward"></i></button>
 			<button title="Play" aria-label="Lancer" class="command-btn-item btn" id="play"><i class="fas fa-play"></i></button>
