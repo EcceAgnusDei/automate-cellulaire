@@ -109,6 +109,10 @@
             <a href="index.php?action=adminlogin">Admin</a></p>
         </footer>
     </body>
+    <?php
+    if(isset($_SESSION['userid']))
+    {
+    ?>
     <script>
         $('#delete-account').click(function(){
         let confirmed = confirm("Êtes-vous sûr de vouloir supprimer définitivement votre compte ?");
@@ -118,4 +122,7 @@
         }
         });
     </script>
+    <?php
+    }
+    ?>
 </html>
