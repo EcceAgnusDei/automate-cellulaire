@@ -230,6 +230,7 @@ header
 .header-forms-item
 {
 	margin-left: 15px;
+	align-items: center;
 }
 
 .login-error
@@ -726,6 +727,22 @@ footer a:hover
 	.comment .btn
 	{
 		font-size: 0.8em;
+	}
+
+	.header-forms-item
+	{
+		flex-direction: column;
+		min-width: 200px;
+	}
+
+	#user-login, #user-password
+	{
+		width: 100%;
+	}
+
+	.header-forms
+	{
+		align-items: center;
 	}
 }
 
