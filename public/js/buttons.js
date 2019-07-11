@@ -31,4 +31,15 @@ function buttons()
 		$(".user-comments").css('display','flex');
 		$(".user-artwork").css('display', 'none');
 	});
+
+	$('.menu-burger').click(function(){
+		if($(".menu").css("display") == "none")
+		{
+			$(".menu").css("display", "flex");
+		}
+		else
+		{
+			$(".menu").css("display", "none");
+		}	
+	});
 }

@@ -59,12 +59,9 @@
                 }
                 ?>
                 <div class="menu-burger">
-                    <input type="checkbox" class="toggler">
-                    <div class="hamburger">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
                 </div>
                 <?php
                 if(!isset($_SESSION['userid']))
