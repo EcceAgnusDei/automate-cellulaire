@@ -477,6 +477,7 @@ footer a:hover
 	font-weight: bold;
 	margin-top: 3px;
 	margin-bottom: 30px; 
+	text-align: center;
 }
 
 .grid-delete-btn
@@ -708,7 +709,11 @@ footer a:hover
 		flex-direction: column;
 		justify-content: space-between;
 	}
-
+	
+	.sort
+	{
+		text-align: center;
+	}
 }
 
 
