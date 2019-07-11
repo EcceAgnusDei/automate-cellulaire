@@ -672,7 +672,7 @@ footer a:hover
 
     .comment
     {
-    	width: 95%;
+    	width: 90%;
     }
 
     .login-form
@@ -721,6 +721,11 @@ footer a:hover
 		flex-direction: column;
 		height: 110px;
 		justify-content: space-between;
+	}
+
+	.comment .btn
+	{
+		font-size: 0.8em;
 	}
 }
 
