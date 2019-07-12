@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Classe mère permettant la connexion à une base de donnée
  */

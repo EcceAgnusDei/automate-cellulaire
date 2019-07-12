@@ -1,9 +1,4 @@
 <?php
-require_once('model/GridManager.php');
-require_once('model/UserManager.php');
-require_once('model/CommentManager.php');
-require_once('model/LikeManager.php');
-
 /**
  * Ouvre la session admin
  * @param  string $user     identifiant

@@ -3,8 +3,10 @@ if(session_status() == PHP_SESSION_NONE)
 {
     session_start();
 }
-require('controller/clientController.php');
-require('controller/adminController.php');
+require_once('model/Autoloader.php');
+Autoloader::register();
+require_once('controller/clientController.php');
+require_once('controller/adminController.php');
 
 try
 {
