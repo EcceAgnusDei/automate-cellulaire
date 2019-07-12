@@ -153,6 +153,8 @@ if (isset($gridManager, $_SESSION['userid']))
 </section>
 <?php
 }
+if (isset($gridManager))
+{
 ?>
 <script>
 	save = <?= $grid['json'] ?>;
@@ -177,6 +179,9 @@ if (isset($gridManager, $_SESSION['userid']))
 		grid.load(save);
 	},100);
 </script>
+<?php
+}
+?>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>
