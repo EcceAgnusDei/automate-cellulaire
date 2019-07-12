@@ -9,10 +9,6 @@ function main()
 {
 	grid = new Grid("canvas");
 	grid.addEvents();
-	
-	grid.canvas.width = 1000;
-	grid.canvas.height = 700;
-	
 
 	let cols = document.getElementById("cols");
 	let rows = document.getElementById("rows");
@@ -20,7 +16,6 @@ function main()
 	let speed = document.getElementById("speed");
 	grid.grid(parseInt(squareSize.value), parseInt(cols.value), parseInt(rows.value));
 	
-
 	$('#reload').click(function(){
 		console.log('reload');
 		stop();
