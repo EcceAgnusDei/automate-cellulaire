@@ -376,6 +376,11 @@ footer a:hover
 	transform: translateY(10px);
 }
 
+.saving-form
+{
+	margin-top: 20px;
+}
+
 #grid-json
 {
 	display: none;

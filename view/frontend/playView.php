@@ -80,7 +80,7 @@ $title = 'Jouez au jeux de la vie';
 		if(isset($_SESSION['userid']) && !isset($_GET['id']))
 		{
 		?>
-			<form action="index.php?action=save" method="POST">
+			<form class="saving-form" action="index.php?action=save" method="POST">
 				<label for="name">Nom de l'oeuvre</label>
 				<input type="text" name="name" id="name" maxlength="30" required>
 				<textarea name="grid-json" id="grid-json" required></textarea>
@@ -154,7 +154,29 @@ if (isset($gridManager, $_SESSION['userid']))
 <?php
 }
 ?>
-<?= $script ?>
+<script>
+	save = <?= $grid['json'] ?>;
+
+	let maxX = 0;
+	let maxY = 0;
+
+	for (let coord of save)
+	{
+		if (coord[0] > maxX)
+		{
+			maxX = coord[0];
+		}
+		if (coord[1] > maxY)
+		{
+			maxY = coord[1];
+		}
+	}
+
+	setTimeout(function(){
+		grid.grid(20, maxX + 7, maxY + 7);
+		grid.load(save);
+	},100);
+</script>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>
