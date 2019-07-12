@@ -18,7 +18,6 @@ function admin($login, $password)
 	{
 		adminLogingError();
 	}
-	
 }
 
 /**
