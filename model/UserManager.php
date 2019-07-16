@@ -18,7 +18,7 @@ class UserManager extends Manager
 	{
 		$dataBase = $this->dbConnect('projet5');
 		$request = $dataBase->prepare('INSERT INTO users(login,password,email,signin_date) VALUES (?,?,?, NOW())');
-		$succes = $request->execute(array($login, $password, $email));
+		$succes = $request->execute(array($login, password_hash($password, PASSWORD_DEFAULT), $email));
 
 		return $succes;
 	}
@@ -29,14 +29,25 @@ class UserManager extends Manager
 	 * @param  String $password Mot de passe
 	 * @return PDOStatement           Id de l'utilisateur
 	 */
-	public function getId($login, $password)
+	public function userIdentifying($login, $password)
 	{
 		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->prepare('SELECT id FROM users WHERE login = ? AND password = ?');
-		$request->execute(array($login, $password));
-		$id = $request->fetch();
-
-		return $id;
+		$request = $dataBase->prepare('SELECT password FROM users WHERE login = ?');
+		$request->execute(array($login));
+		$dbPassword = $request->fetch();
+		$dbPassword = $dbPassword['password'];
+		$request->closeCursor();
+		if (password_verify($password, $dbPassword))
+		{
+			$request = $dataBase->prepare('SELECT id FROM users WHERE login = ?');
+			$request->execute(array($login));
+			$id = $request->fetch();
+			return $id['id'];
+		}
+		else 
+		{
+			return false;
+		}
 	}
 
 	/**

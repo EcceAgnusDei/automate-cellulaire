@@ -167,7 +167,7 @@ function signin($login, $password, $email)
 function userIdentifying($login, $password)
 {
 	$userManager = new UserManager();
-	$id = $userManager->getId($login, $password);
+	$id = $userManager->userIdentifying($login, $password);
 	if(!$id)
 	{
 		$_SESSION['login'] = 'error';
@@ -182,7 +182,7 @@ function userIdentifying($login, $password)
 	}
 	else
 	{
-		$_SESSION['userid'] = (int)$id['id'];
+		$_SESSION['userid'] = (int)$id;
 		header('location: ' . $_SERVER['HTTP_REFERER']);
 	}
 }

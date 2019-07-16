@@ -7,8 +7,8 @@
 function admin($login, $password)
 {
 	$userManager = new UserManager;
-
-	if ($userManager->adminIdentifying($login, $password))
+	$id = $userManager->userIdentifying($login, $password);
+	if ($id == 1)
 	{
 		$_SESSION['admin'] = true;
 		$_SESSION['userid'] = 1;
