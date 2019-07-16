@@ -25,11 +25,11 @@ function loginVerification()
 
 		if (exists || $('#signin-login').val() == '')
 		{
-			$('#signin-login').css('background-color', 'red');
+			$('#signin-login').css('background-color', '#f35858');
 		}
 		else
 		{
-			$('#signin-login').css('background-color', 'green');
+			$('#signin-login').css('background-color', '#169608');
 		}
 	});
 
@@ -37,11 +37,11 @@ function loginVerification()
 	{
 		if ($('#signin-password').val().length < 8)
 		{
-			$('#signin-password').css('background-color', 'red');
+			$('#signin-password').css('background-color', '#f35858');
 		}
 		else
 		{
-			$('#signin-password').css('background-color', 'green');
+			$('#signin-password').css('background-color', '#169608');
 		}
 	});
 

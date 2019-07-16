@@ -86,7 +86,10 @@ function load($id)
 }
 
 /**
- * Affiche les grilles de la base de données
+ * Affiches les créations
+ * @param  Int $currentFirstGridId Id de la création affichée actuellement en premier 
+ * @param  String $direction          Direction dans laquelle on navigue
+ * @param  bool $byLikes            Booléan déterminant si le tri se fait par likes ou pas
  */
 function showGrids($currentFirstGridId, $direction, $byLikes)
 {
@@ -169,25 +172,6 @@ function showGrids($currentFirstGridId, $direction, $byLikes)
 	{
 		$displayNext = false;
 	}
-
-	require('view/frontend/showGridsView.php');
-}
-
-/**
- * Affiche les création triées par nombre de like
- * 
- */
-function showGridsByLikes()
-{
-	$gridManager = new GridManager();
-	$userManager = new UserManager();
-
-	$grids = $gridManager->getGridsByLikes();
-
-	$home = false;
-	$play = false;
-	$artwork = true;
-	$userspace = false;
 
 	require('view/frontend/showGridsView.php');
 }

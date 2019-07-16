@@ -82,7 +82,7 @@
                         </form>
                         <div class="header-bottom-links">
                             <a href="index.php?action=signinview" class="signin-link">Inscription</a>
-                            <button id="forgotten-btn" class="header-forms-item link-btn">Mot de passe oublié</button>  
+                            <!-- <button id="forgotten-btn" class="header-forms-item link-btn">Mot de passe oublié</button> -->  
                         </div>
                     </div>
                 <?php
