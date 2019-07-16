@@ -492,6 +492,19 @@ footer a:hover
 	transform: translateY(-20px);
 }
 
+.grid-page-nav
+{
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	font-size: 2em;
+}
+
+.fa-chevron-left, .fa-chevron-right
+{
+	padding: 0 10px;
+}
+
 /*****Userspace view*****/
 
 .artwork

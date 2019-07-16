@@ -55,19 +55,23 @@ foreach ($grids as $data)
 	</script>
 <?php
 }
-if ($displayNext)
-{
 ?>
-<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=next">Suivant</a>
+	<div class="grid-page-nav">
 <?php
-}
 if ($displayPrev)
 {
 ?>
-<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=prev">Precedant</a>
+	<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=prev"><i class="fas fa-chevron-left"></i></a>
+<?php
+}
+if ($displayNext)
+{
+?>
+	<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=next"><i class="fas fa-chevron-right"></i></a>
 <?php
 }
 ?>
+	</div>
 </section>
 
 <?php $content = ob_get_clean(); ?>
