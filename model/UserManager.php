@@ -92,29 +92,6 @@ class UserManager extends Manager
 		return $request;
 	}
 
-	/**
-	 * Permet d'identifier l'administrateur
-	 * @param  String $login    Identifiant
-	 * @param  String $password Mot de passe
-	 * @return Bool           Renvoie true si l'identifiant et le mot de passe sont corrects.
-	 */
-	public function adminIdentifying($login, $password)
-	{
-		$dataBase = $this->dbConnect('projet5');
-		$request = $dataBase->query('SELECT login, password FROM users WHERE id = 1');
-
-		$data = $request->fetch();
-
-		if ($login == $data['login'] && $password == $data['password'])
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	public function delete($id)
 	{
 		$dataBase = $this->dbConnect('projet5');

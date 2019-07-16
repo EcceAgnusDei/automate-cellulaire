@@ -62,6 +62,15 @@ class GridManager extends Manager
 		return $request;
 	}
 
+	public function getGridById($id)
+	{
+		$dataBase = $this->dbConnect('projet5');
+		$request = $dataBase->prepare('SELECT id, name,json, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids WHERE id = ?');
+		$request->execute(array($id));
+
+		return $request;
+	}
+
 	/**
 	 * Permet d'obtenir toutes les créations d'un même auteur
 	 * @param  Int $id Id de l'auteur

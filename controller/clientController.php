@@ -88,17 +88,87 @@ function load($id)
 /**
  * Affiche les grilles de la base de données
  */
-function showGrids()
+function showGrids($currentFirstGridId, $direction, $byLikes)
 {
 	$gridManager = new GridManager();
 	$userManager = new UserManager();
+	$gridsPerPage = 5;
+	$gridsId = [];
+	$grids = [];
 
-	$grids = $gridManager->getGridsByDate();
+	if ($byLikes)
+	{
+		$request = $gridManager->getGridsByLikes();
+	}
+	else
+	{
+		$request = $gridManager->getGridsByDate();
+	}
+	
 
+	while ($data = $request->fetch())
+	{
+		array_push($gridsId, $data['id']);
+	}
+
+	$request->closeCursor();
+
+	if($currentFirstGridId == 0)
+	{
+		$firstGridPos = $gridsPerPage;
+		for ($i = 0; $i < $gridsPerPage; $i++)
+		{
+			if ($i < count($gridsId))
+			{
+				$request = $gridManager->getGridById($gridsId[$i]);
+				array_push($grids, $request->fetch());
+				$request->closeCursor();
+			}
+		}
+	}
+	elseif($direction == 'next')
+	{
+		$firstGridPos = array_search($currentFirstGridId, $gridsId);
+		for ($i = $firstGridPos + $gridsPerPage; $i <= $firstGridPos + 2 * $gridsPerPage; $i++)
+		{
+			if ($i < count($gridsId))
+			{
+				$request = $gridManager->getGridById($gridsId[$i]);
+				array_push($grids, $request->fetch());
+				$request->closeCursor();
+			}
+		}
+	}
+	elseif($direction == 'prev')
+	{
+		$firstGridPos = array_search($currentFirstGridId, $gridsId);
+		for ($i = $firstGridPos - $gridsPerPage; $i < $firstGridPos; $i++)
+		{
+			if ($i < count($gridsId) && $i >= 0)
+			{
+				$request = $gridManager->getGridById($gridsId[$i]);
+				array_push($grids, $request->fetch());
+				$request->closeCursor();
+			}
+		}
+	}
+	
 	$home = false;
 	$play = false;
 	$artwork = true;
 	$userspace = false;
+
+	$displayNext = true;
+	$displayPrev = true;
+
+	if($firstGridPos == $gridsPerPage && $direction == 'prev')
+	{
+		$displayPrev = false;
+	}
+	if($firstGridPos + 2 * $gridsPerPage > count($gridsId) && $direction == 'next')
+	{
+		$displayNext = false;
+	}
 
 	require('view/frontend/showGridsView.php');
 }

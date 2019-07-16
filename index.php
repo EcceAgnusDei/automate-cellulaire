@@ -41,13 +41,29 @@ try
 
 			case 'showgrids':
 			{
-				showGrids();
+				if (isset($_GET['id'], $_GET['direction']) && $_GET['id'] >= 0 && ($_GET['direction'] == 'next' ||
+					$_GET['direction'] == 'prev')) 
+				{
+					showGrids($_GET['id'], $_GET['direction'], false);
+				}
+				else 
+				{
+					throw new Exception('Cet url n\'a rien de valide');
+				}
 			}
 			break;
 
 			case 'showgridsbylikes':
 			{
-				showGridsByLikes();
+				if (isset($_GET['id'], $_GET['direction']) && $_GET['id'] >= 0 && ($_GET['direction'] == 'next' ||
+					$_GET['direction'] == 'prev')) 
+				{
+					showGrids($_GET['id'], $_GET['direction'], true);
+				}
+				else 
+				{
+					throw new Exception('Cet url n\'a rien de valide');
+				}
 			}
 			break;
 

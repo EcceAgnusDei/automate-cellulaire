@@ -25,7 +25,7 @@
             			<ul class="menu">
             				<li><a class="menu-item <?php if($home){echo 'active';} ?>" href="index.php">Accueil</a></li>
                             <li><a class="menu-item <?php if($play){echo 'active';} ?>" href="index.php?action=play">Jouer</a></li>
-                            <li><a class="menu-item <?php if($artwork){echo 'active';} ?>" href="index.php?action=showgrids">Les créations</a></li>
+                            <li><a class="menu-item <?php if($artwork){echo 'active';} ?>" href="index.php?action=showgrids&amp;id=0&amp;direction=prev">Les créations</a></li>
                             <?php if(isset($_SESSION['userid']))
                             {
                             ?>

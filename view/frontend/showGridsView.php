@@ -10,12 +10,12 @@ $title = 'Admirez les créations';
 	<h3>Les créations</h3>
 	<nav>
 		<ul class="sort">
-			<li><a href="index.php?action=showgrids" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
-			<li><a href="index.php?action=showgridsbylikes" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
+			<li><a href="index.php?action=showgrids&amp;id=0&amp;direction=prev" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
+			<li><a href="index.php?action=showgridsbylikes&amp;id=0&amp;direction=prev" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
 		</ul>
 	</nav>
 <?php
-while ($data = $grids->fetch())
+foreach ($grids as $data)
 {
 	$author = $userManager->getLoginById($data['author_id']); ?>
 	<div class="artwork"><canvas id="canvas<?= $data['id'] ?>"></canvas>
@@ -53,6 +53,18 @@ while ($data = $grids->fetch())
 			evt.preventDefault();
 		});
 	</script>
+<?php
+}
+if ($displayNext)
+{
+?>
+<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=next">Suivant</a>
+<?php
+}
+if ($displayPrev)
+{
+?>
+<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=prev">Precedant</a>
 <?php
 }
 ?>
