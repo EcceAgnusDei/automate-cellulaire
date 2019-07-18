@@ -337,6 +337,11 @@ footer a:hover
 	width: 100%;
 }
 
+.command-btn .btn:active
+{
+	transform: scale(0.95);
+}
+
 #rubber
 {
 	font-size: 1.8em;

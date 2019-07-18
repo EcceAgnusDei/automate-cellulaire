@@ -92,6 +92,11 @@ class UserManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Supprime une compte utilisateur
+	 * @param  Int $id Id de l'utilisateur
+	 * @return Bool     Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function delete($id)
 	{
 		$dataBase = $this->dbConnect('projet5');

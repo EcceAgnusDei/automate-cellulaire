@@ -74,6 +74,9 @@ if ($displayNext)
 	</div>
 </section>
 
-<?php $content = ob_get_clean(); ?>
+<?php 
+$content = ob_get_clean(); 
+$metaDescription = "Venez admirer les populations du jeu de la vie créées par les autres utilisateurs ! Vous pourrez les commenter ainsi que les liker !";
+?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>

@@ -13,6 +13,9 @@
 	<?= $error ?>
 	<p><a href="index.php">Retourn à l'accueil</a></p>
 </section>
-<?php $content = ob_get_clean(); ?>
+<?php 
+$content = ob_get_clean();
+$metaDescription = "Connexion administrateur" 
+?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>

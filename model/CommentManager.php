@@ -186,6 +186,11 @@ class CommentManager extends Manager
 		return $comments;
 	}
 
+	/**
+	 * Permet de supprimer tous les commentaires d'un utilisateur
+	 * @param  Int $id Id de l'utilisateur
+	 * @return Bool     Retourne true si l'opération s'est bien effectuée
+	 */
 	public function userDelete($id)
 	{
 		$dataBase = $this->dbConnect('Projet5');

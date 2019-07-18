@@ -458,6 +458,11 @@ function passwordForgotten($email)
 	}
 }
 
+/**
+ * Supprime un utilisateur en vérifiant bien la correspondance de l'id de session avec celui de l'utilisateur à supprimer
+ * @param  Int $id     Id de l'utilisateur à supprimer
+ * @param  Int $userId Id de l'utilisateur à supprimer
+ */
 function userDelete($id, $userId)
 {
 	$userManager = new UserManager();

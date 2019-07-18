@@ -51,7 +51,8 @@ while ($data = $grids->fetch())
 </section>
 <?php
 $grids->closeCursor();
-$content = ob_get_clean(); 
+$content = ob_get_clean();
+$metaDescription = "Vous avez accès ici à votre espace personnel de manière à pouvoir gérer vos créations et commentaires"; 
 ?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>

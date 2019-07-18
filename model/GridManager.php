@@ -62,6 +62,11 @@ class GridManager extends Manager
 		return $request;
 	}
 
+	/**
+	 * Permet d'obtenir une création par son id
+	 * @param  Int $id Id de la création
+	 * @return PdoStatment     Requète obtenue
+	 */
 	public function getGridById($id)
 	{
 		$dataBase = $this->dbConnect('projet5');
@@ -152,6 +157,11 @@ class GridManager extends Manager
 		return $grids;
 	}
 
+	/**
+	 * Permet de supprimer toutes les créations d'un même utilisateur
+	 * @param  Int $id id de l'utilisateur
+	 * @return Bool     Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function userDelete($id)
 	{
 		$dataBase = $this->dbConnect('Projet5');

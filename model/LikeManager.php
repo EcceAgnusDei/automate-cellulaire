@@ -172,6 +172,11 @@ class LikeManager extends Manager
 		return $succes;
 	}
 
+	/**
+	 * Permet de supprimer tous les likes d'un utilisateur
+	 * @param  Int $id Id de l'utilisateur
+	 * @return Bool     Renvoie true si l'opération s'est bien effectuée
+	 */
 	public function userDelete($id)
 	{
 		$dataBase = $this->dbConnect('Projet5');

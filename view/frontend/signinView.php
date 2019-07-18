@@ -17,6 +17,9 @@
 		<input type="submit" class="btn" value="S'inscrire">
 	</form>
 </section>
-<?php $content = ob_get_clean(); ?>
+<?php 
+$content = ob_get_clean(); 
+$metaDescription = "Inscrivez-vous sur le site du jeu de la vie pour pouvoir profiter de toutes les fonctionnalités du site. Vous pourrez ainsi enregistrer vos créations dans une base de données, commenter celles des autres et gérer votre espace personnel !";
+?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>

@@ -182,6 +182,9 @@ if (isset($gridManager))
 <?php
 }
 ?>
-<?php $content = ob_get_clean(); ?>
+<?php
+$content = ob_get_clean(); 
+$metaDescription = "Sur cette page vous pourrez jouer au jeu de la vie. Créez votre popuplation, enregistrez-là puis avancez dans les générations grâce aux différents boutons de commande !";
+?>
 
 <?php require('view/frontend/clientTemplate.php'); ?>
