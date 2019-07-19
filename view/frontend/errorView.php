@@ -25,7 +25,7 @@
 		}
 		?>
 
-		<p>Une seule solution : revenir à l' <a href="index.php">Accueil</a></p>
+		<p>Une seule solution : revenir à l' <a href="accueil">Accueil</a></p>
 	</section>
 </body>
 </html>

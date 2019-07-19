@@ -10,8 +10,8 @@ $title = 'Admirez les créations';
 	<h3>Les créations</h3>
 	<nav>
 		<ul class="sort">
-			<li><a href="index.php?action=showgrids&amp;id=0&amp;direction=prev" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
-			<li><a href="index.php?action=showgridsbylikes&amp;id=0&amp;direction=prev" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
+			<li><a href="les-creations" <?php if($_GET['action']=='showgrids'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par date <i class="fas fa-sort-down"></i></a></li>
+			<li><a href="les-creations-par-likes" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
 		</ul>
 	</nav>
 <?php
@@ -19,7 +19,7 @@ foreach ($grids as $data)
 {
 	$author = $userManager->getLoginById($data['author_id']); ?>
 	<div class="artwork"><canvas id="canvas<?= $data['id'] ?>"></canvas>
-		<p class="grids-title"><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
+		<p class="grids-title"><a href="creation-<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
 		<?php
 		if (isset($_SESSION['admin']))
 		{
@@ -61,13 +61,13 @@ foreach ($grids as $data)
 if ($displayPrev)
 {
 ?>
-	<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=prev"><i class="fas fa-chevron-left"></i></a>
+	<a href="les-creations-<?php if($_GET['action'] == "showgrids"){echo "";}else {echo "par-likes-";} ?><?= $grids[0]['id'] ?>-prev"><i class="fas fa-chevron-left"></i></a>
 <?php
 }
 if ($displayNext)
 {
 ?>
-	<a href="index.php?action=<?= $_GET['action'] ?>&amp;id=<?= $grids[0]['id'] ?>&amp;direction=next"><i class="fas fa-chevron-right"></i></a>
+	<a href="les-creations-<?php if($_GET['action'] == "showgrids"){echo "";}else {echo "par-likes-";} ?><?= $grids[0]['id'] ?>-next"><i class="fas fa-chevron-right"></i></a>
 <?php
 }
 ?>

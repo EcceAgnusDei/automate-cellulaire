@@ -1,0 +1,15 @@
+RewriteEngine On
+
+RewriteBase /automate-cellulaire/
+
+RewriteRule ^accueil$ index.php
+RewriteRule ^play$ index.php?action=play
+RewriteRule ^creation-([0-9]+)$ index.php?action=load&id=$1
+RewriteRule ^les-creations$ index.php?action=showgrids&id=0&direction=prev
+RewriteRule ^les-creations-([0-9]+)-prev$ index.php?action=showgrids&id=$1&direction=prev
+RewriteRule ^les-creations-([0-9]+)-next$ index.php?action=showgrids&id=$1&direction=next
+RewriteRule ^les-creations-par-likes$ index.php?action=showgridsbylikes&id=0&direction=prev
+RewriteRule ^les-creations-par-likes-([0-9]+)-prev$ index.php?action=showgridsbylikes&id=$1&direction=prev
+RewriteRule ^les-creations-par-likes-([0-9]+)-next$ index.php?action=showgridsbylikes&id=$1&direction=next
+RewriteRule ^inscription$ index.php?action=signinview
+RewriteRule ^espace-perso$ index.php?action=userspace

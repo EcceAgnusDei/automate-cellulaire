@@ -20,7 +20,7 @@ while ($data = $grids->fetch())
 	<div class=user-artwork-item>
 		<p><?= $data['name'] ?><span class="blue"> <i class="fas fa-thumbs-up"></i><?= $data['likes'] ?></span></p>
 		<div>
-			<a href="index.php?action=load&amp;id=<?= $data['id'] ?>">Voir</a>
+			<a href="creation-<?= $data['id'] ?>">Voir</a>
 			<button class="btn" onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
 		</div>
 	</div>

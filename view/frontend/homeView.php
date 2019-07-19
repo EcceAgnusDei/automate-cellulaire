@@ -5,7 +5,7 @@ $head = '';
 <?php ob_start(); ?>
 <section class="home grid last-section">
 	<h1>Bienvenue sur le site du jeu de la vie !</h1>
-	<p>Ce site est dédié aux curieux avides de satisfaire leur esprit ingénieux et créatifs en concevant des automates cellulaires de <strong>John Conway</strong>. Pour cela rien de plus simple, il vous suffit de cliquer sur <a href="index.php?action=play">Jouer</a> !</p>
+	<p>Ce site est dédié aux curieux avides de satisfaire leur esprit ingénieux et créatifs en concevant des automates cellulaires de <strong>John Conway</strong>. Pour cela rien de plus simple, il vous suffit de cliquer sur <a href="play">Jouer</a> !</p>
 	<h3>Inscrivez-vous pour pouvoir sauvegarder vos chefs-d'oeuvre.</h3>
 	<p>Vous pourrez également partager vos créations avec les autres utilisateurs, les commenter et les liker !</p>
 	<p>Vous trouverez même un classement des créations les plus appréciées dans la rubrique <a href="index.php?action=showgridsbylikes">Les créations</a>. Il ne vous reste plus qu'à redoubler d'ingéniosité pour créer la population de cellules la plus ludique.</p>
