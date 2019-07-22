@@ -24,7 +24,7 @@ $title = 'Jouez au jeux de la vie';
 	}
 	if(isset($gridManager))
 	{
-		if (!$gridIsLiked)
+		if (!$gridIsLiked && isset($_SESSION['userid']))
 		{
 		?>
 			<button onclick='window.location.href="index.php?action=gridlike&id=<?= $_GET['id'] ?>"' class="like-btn grid-like-btn"><i class="fas fa-thumbs-up"></i> <?= $grid['likes'] ?></button>
@@ -59,11 +59,11 @@ $title = 'Jouez au jeux de la vie';
 		<div class="command-input">
 			<div>
 				<label for="cols">Colonnes</label>
-				<input type="text" class="command-input-item" name="cols" id="cols" value="20">
+				<input type="text" class="command-input-item" name="cols" id="cols" value="70">
 			</div>
 			<div>
 				<label for="rows">Lignes</label>
-				<input type="text" class="command-input-item" name="rows" id="rows" value="20">
+				<input type="text" class="command-input-item" name="rows" id="rows" value="40">
 			</div>
 			<div>
 				<label for="square-size">Taille d'un carré</label>
@@ -175,7 +175,7 @@ if (isset($gridManager))
 	}
 
 	setTimeout(function(){
-		grid.grid(20, maxX + 7, maxY + 7);
+		grid.grid(20, maxX + 20, maxY + 20);
 		grid.load(save);
 	},100);
 </script>

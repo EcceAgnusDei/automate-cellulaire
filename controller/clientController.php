@@ -132,7 +132,7 @@ function showGrids($currentFirstGridId, $direction, $byLikes)
 	elseif($direction == 'next')
 	{
 		$firstGridPos = array_search($currentFirstGridId, $gridsId);
-		for ($i = $firstGridPos + $gridsPerPage; $i <= $firstGridPos + 2 * $gridsPerPage; $i++)
+		for ($i = $firstGridPos + $gridsPerPage; $i < $firstGridPos + 2 * $gridsPerPage; $i++)
 		{
 			if ($i < count($gridsId))
 			{

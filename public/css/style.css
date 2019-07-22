@@ -89,7 +89,13 @@ ul, li
 	display: block;
 }
 
+
 /*****Elements*****/
+
+button
+{
+	outline: none;
+}
 
 canvas
 {
