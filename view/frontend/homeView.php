@@ -18,8 +18,9 @@ $head = '';
 	<p>Cliquer sur différents carrés de la grille pour faire apparaître des cellules. Si celles-ci ont plus de 3 voisins elles mourront de surpopulation, si elles ont moins de 2 voisins, c'est l'isolement qui les exterminera. Il vous suffit de cliquer sur suivant pour avancer d'une génération, ou sur le bouton play pour lancer l'animation. Le but du jeu ici est de créer une colonie de cellules proposant un évolution ludique, bref qui donne vie à votre écran !<strong> N'oubliez pas de sauvegarder votre création avant de passer à la génération suivant, ou l'état initial sera perdu !</strong></p>
 	<p><strong>A vous de jouer !</strong></p>
 </section>
-<?php 
+<?php
 $content = ob_get_clean();
+$home = '';
 $metaDescription = "Le site vous permettant d'expérimenter le jeu de la vie, ou encore automate cellulaire, de John Conway. Vous pourrez enregistrer vos découvertes, les partager, admirer, commenter ou encore liker celles des autres !"; 
 ?>
 

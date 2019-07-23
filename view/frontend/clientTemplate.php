@@ -24,13 +24,13 @@
                     <a href="accueil"><img class="logo" src="public/css/img/logo.png" alt=""></a>
             		<nav>
             			<ul class="menu">
-            				<li><a class="menu-item <?php if($home){echo 'active';} ?>" href="accueil">Accueil</a></li>
-                            <li><a class="menu-item <?php if($play){echo 'active';} ?>" href="play">Jouer</a></li>
-                            <li><a class="menu-item <?php if($artwork){echo 'active';} ?>" href="les-creations">Les créations</a></li>
+            				<li><a class="menu-item <?php if(isset($home)){echo 'active';} ?>" href="accueil">Accueil</a></li>
+                            <li><a class="menu-item <?php if(isset($play)){echo 'active';} ?>" href="play">Jouer</a></li>
+                            <li><a class="menu-item <?php if(isset($artwork)){echo 'active';} ?>" href="les-creations">Les créations</a></li>
                             <?php if(isset($_SESSION['userid']))
                             {
                             ?>
-                            <li><a class="menu-item <?php if($userspace){echo 'active';} ?>" href="espace-perso">Votre espace</a></li>    
+                            <li><a class="menu-item <?php if(isset($userspace)){echo 'active';} ?>" href="espace-perso">Votre espace</a></li>    
                             <?php
                             }
                             else

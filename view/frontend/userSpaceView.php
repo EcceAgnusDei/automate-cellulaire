@@ -54,6 +54,7 @@ while ($data = $grids->fetch())
 <?php
 $grids->closeCursor();
 $content = ob_get_clean();
+$userspace = '';
 $metaDescription = "Vous avez accès ici à votre espace personnel de manière à pouvoir gérer vos créations et commentaires"; 
 ?>
 

@@ -183,7 +183,8 @@ if (isset($gridManager))
 }
 ?>
 <?php
-$content = ob_get_clean(); 
+$content = ob_get_clean();
+$play = '';
 $metaDescription = "Sur cette page vous pourrez jouer au jeu de la vie. Créez votre popuplation, enregistrez-là puis avancez dans les générations grâce aux différents boutons de commande !";
 ?>
 

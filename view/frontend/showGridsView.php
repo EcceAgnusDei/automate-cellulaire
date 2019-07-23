@@ -79,7 +79,8 @@ if ($displayNext)
 </section>
 
 <?php 
-$content = ob_get_clean(); 
+$content = ob_get_clean();
+$artwork = ''; 
 $metaDescription = "Venez admirer les populations du jeu de la vie créées par les autres utilisateurs ! Vous pourrez les commenter ainsi que les liker !";
 ?>
 
