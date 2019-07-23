@@ -3,6 +3,7 @@ $title = 'Administrez les créations';
 ?>
 <?php ob_start(); ?>
 <script src="public/js/grid.js"></script>
+<script src="public/js/showMiniature.js"></script>
 <?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
@@ -21,25 +22,7 @@ while ($data = $grids->fetch())
 		</div>
 	</div>
 	<script>
-		const squareCoords<?= $data['id'] ?> = <?= $data['json'] ?>;
-		let maxX<?= $data['id'] ?> = 0;
-		let maxY<?= $data['id'] ?> = 0;
-		const grid<?= $data['id'] ?> = new Grid("canvas<?= $data['id'] ?>");
-
-		for (let coord of squareCoords<?= $data['id'] ?>)
-		{
-			if (coord[0] > maxX<?= $data['id'] ?>)
-			{
-				maxX<?= $data['id'] ?> = coord[0];
-			}
-			if (coord[1] > maxY<?= $data['id'] ?>)
-			{
-				maxY<?= $data['id'] ?> = coord[1];
-			}
-		}
-
-		grid<?= $data['id'] ?>.grid(7, maxX<?= $data['id'] ?> +5, maxY<?= $data['id'] ?> +5);
-		grid<?= $data['id'] ?>.load(<?= $data['json'] ?>);
+		showMiniature (<?= $data['json'] ?>, "canvas<?= $data['id'] ?>");
 	</script>
 <?php
 }
