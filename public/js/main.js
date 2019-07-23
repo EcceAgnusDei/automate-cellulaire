@@ -45,6 +45,7 @@ function main()
 		{
 			grid.grid(parseInt(squareSize.value), parseInt(cols.value), 
 				parseInt(rows.value));
+			grid.load(save);
 		}
 	});
 	$('#play').click(function(){
