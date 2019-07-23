@@ -8,6 +8,7 @@ $title = 'Administrez les créations';
 <?php ob_start(); ?>
 <section class="grid last-section grids-view">
 	<h3>Administration des créations</h3>
+	<div class="artwork-container">
 <?php
 while ($data = $grids->fetch())
 {
@@ -43,6 +44,7 @@ while ($data = $grids->fetch())
 <?php
 }
 ?>
+	</div>
 </section>
 
 <?php $content = ob_get_clean(); ?>
