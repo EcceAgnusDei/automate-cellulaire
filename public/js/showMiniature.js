@@ -19,8 +19,4 @@ function showMiniature (json, canvasId)
 
 		grid.grid(7, maxX +5, maxY +5);
 		grid.load(json);
-
-		$("#" + canvasId).click(function(evt){
-			evt.preventDefault();
-		});
 }

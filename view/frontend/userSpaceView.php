@@ -1,7 +1,10 @@
 <?php 
 $title = 'Votre atelier';
-$head = '';
 ?>
+<?php ob_start(); ?>
+<script src="public/js/grid.js"></script>
+<script src="public/js/showMiniature.js"></script>
+<?php $head = ob_get_clean(); ?>
 
 <?php ob_start(); ?>
 <nav class="grid">
@@ -13,18 +16,19 @@ $head = '';
 </nav>
 <section class="user-artwork last-section grid">
 	<h3>Vos oeuvres</h3>
-	<div class="user-artwork-container">
+	<div class="artwork-container">
 <?php
 while ($data = $grids->fetch())
 {
 ?>
-	<div class=user-artwork-item>
-		<p><?= $data['name'] ?><span class="blue"> <i class="fas fa-thumbs-up"></i><?= $data['likes'] ?></span></p>
-		<div>
-			<a href="creation-<?= $data['id'] ?>">Voir</a>
-			<button class="btn" onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
-		</div>
+	<div class="artwork"><canvas id="canvas<?= $data['id'] ?>"></canvas>
+		<p class="grids-title"><a href="creation-<?= $data['id'] ?>"><?= $data['name'] ?></a></p>
+		<div class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></div>
+		<button class="btn" onclick='window.location.href="index.php?action=griddelete&id=<?= $data['id']?>"'>Supprimer</button>
 	</div>
+	<script>
+		showMiniature (<?= $data['json'] ?>, "canvas<?= $data['id'] ?>");
+	</script>	
 <?php
 }
 ?>

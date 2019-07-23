@@ -568,17 +568,6 @@ footer a:hover
 	align-items: center;
 }
 
-.user-artwork-container
-{
-	width: 100%;
-	min-height: 400px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-content: space-between;
-	align-items: flex-end;
-}
-
 .user-artwork-item
 {
 	width: 200px;
