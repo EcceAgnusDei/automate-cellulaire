@@ -13,6 +13,7 @@ $head = '';
 </nav>
 <section class="user-artwork last-section grid">
 	<h3>Vos oeuvres</h3>
+	<div class="user-artwork-container">
 <?php
 while ($data = $grids->fetch())
 {
@@ -27,6 +28,7 @@ while ($data = $grids->fetch())
 <?php
 }
 ?>
+	</div>
 </section>
 <section class="user-comments last-section grid">
 	<h3>Vos commentaires</h3>

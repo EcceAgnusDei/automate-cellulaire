@@ -14,12 +14,14 @@ $title = 'Admirez les créations';
 			<li><a href="les-creations-par-likes" <?php if($_GET['action']=='showgridsbylikes'){echo "style= 'border-top: 1px solid #f38320;'";} ?> >Trier par popularité <i class="fas fa-sort-down"></i></a></li>
 		</ul>
 	</nav>
+	<div class="artwork-container">
 <?php
 foreach ($grids as $data)
 {
 	$author = $userManager->getLoginById($data['author_id']); ?>
 	<div class="artwork"><canvas id="canvas<?= $data['id'] ?>"></canvas>
-		<p class="grids-title"><a href="creation-<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
+		<p class="grids-title"><a href="creation-<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a></p>
+		<div class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></div>
 		<?php
 		if (isset($_SESSION['admin']))
 		{
@@ -27,7 +29,8 @@ foreach ($grids as $data)
 			<button class="btn grid-delete-btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
 		<?php	
 		}
-		?></div>
+		?>
+	</div>
 	<script>
 		const squareCoords<?= $data['id'] ?> = <?= $data['json'] ?>;
 		let maxX<?= $data['id'] ?> = 0;
@@ -56,6 +59,7 @@ foreach ($grids as $data)
 <?php
 }
 ?>
+	</div>
 	<div class="grid-page-nav">
 <?php
 if ($displayPrev)

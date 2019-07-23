@@ -14,8 +14,10 @@ while ($data = $grids->fetch())
 	$author = $userManager->getLoginById($data['author_id']); ?>
 	<div class="artwork"><canvas id="canvas<?= $data['id'] ?>"></canvas>
 		<p class="grids-title"><a href="index.php?action=load&amp;id=<?= $data['id'] ?>"><?= $data['name'] ?> de <?= $author?></a> <span class="blue"> <i class="fas fa-thumbs-up"></i> <?= $data['likes'] ?></span></p>
-		<button class="btn grid-approval-btn" onclick='window.location.href="index.php?adminaction=gridapproval&id=<?= $data['id']  ?>"'>Retirer de la liste</button>
-		<button class="btn grid-delete-btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
+		<div class="artwork-admin-btn">
+			<button class="btn grid-approval-btn" onclick='window.location.href="index.php?adminaction=gridapproval&id=<?= $data['id']  ?>"'>Retirer de la liste</button>
+			<button class="btn grid-delete-btn" onclick='window.location.href="index.php?adminaction=griddelete&id=<?= $data['id']  ?>"'>Supprimer</button>
+		</div>
 	</div>
 	<script>
 		const squareCoords<?= $data['id'] ?> = <?= $data['json'] ?>;

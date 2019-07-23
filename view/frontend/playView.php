@@ -33,7 +33,7 @@ $title = 'Jouez au jeux de la vie';
 		else
 		{
 		?>
-			<p class="blue"><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
+			<p class="blue grid-blue"><i class="fas fa-thumbs-up"></i> <span><?= $grid['likes'] ?></span></p>	
 		<?php
 		}
 		if (isset($_SESSION['admin']))

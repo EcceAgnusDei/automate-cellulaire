@@ -3,7 +3,7 @@
 html
 {
     height: 100%;
-    background-color: #96f98b;
+    background-color: #d1ffb3;
 }
 
 body
@@ -319,6 +319,12 @@ footer a:hover
 
 /*****Jeu*****/
 
+.grid-blue
+{
+	font-size: 1.2em;
+	margin-top: 0;
+}
+
 .canvas-container
 {
 	max-width: 100%;
@@ -476,7 +482,7 @@ footer a:hover
 
 .grids-view nav
 {
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 .sort
@@ -493,14 +499,8 @@ footer a:hover
 {
 	font-weight: bold;
 	margin-top: 3px;
-	margin-bottom: 30px; 
+	margin-bottom: 3px; 
 	text-align: center;
-}
-
-.grid-delete-btn
-{
-	margin-bottom: 30px;
-	transform: translateY(-20px);
 }
 
 .grid-page-nav
@@ -516,14 +516,33 @@ footer a:hover
 	padding: 0 10px;
 }
 
+.artwork-container
+{
+	width: 100%;
+	min-height: 500px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: space-between;
+	align-items: flex-end;
+}
+
 /*****Userspace view*****/
 
 .artwork
 {
+	width: 250px;
+	/*height: 250px;*/
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-end;
+	margin: 15px;
+}
+
+.artwork canvas
+{
+	max-height: 250px;
 }
 
 .user-comments
@@ -549,13 +568,24 @@ footer a:hover
 	align-items: center;
 }
 
-.user-artwork-item
+.user-artwork-container
 {
 	width: 100%;
+	min-height: 400px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: space-between;
+	align-items: flex-end;
+}
+
+.user-artwork-item
+{
+	width: 200px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 10px 0;
+	margin: 15px;
 }
 
 .user-artwork-item p
@@ -584,10 +614,13 @@ footer a:hover
 
 /*****Admin des création*****/
 
-.grid-approval-btn
+.artwork-admin-btn
 {
-	transform: translateY(-25px);
+	display: flex;
+	justify-content: space-between;
+	width: 250px;
 }
+
 
 /*****Page d'erreur*****/
 
@@ -772,6 +805,11 @@ footer a:hover
 	.header-forms
 	{
 		align-items: center;
+	}
+
+	.artwork
+	{
+		justify-content: center;
 	}
 }
 

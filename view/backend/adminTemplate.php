@@ -22,8 +22,8 @@
                 <a href="index.php"><img class="logo" src="public/css/img/logo.png" alt=""></a>
                 <nav>
                     <ul class="menu">
-                        <li><a class="menu-item" href="index.php?adminaction=gridsview">Les créations</a></li>
-                        <li><a class="menu-item" href="index.php?adminaction=commentsbydateview">Les commentaires</a></li>
+                        <li><a class="menu-item" href="index.php?adminaction=gridsview">Créations</a></li>
+                        <li><a class="menu-item" href="index.php?adminaction=commentsbydateview">Commentaires</a></li>
                         <li><a class="menu-item" href="index.php">Accueil</a></li>
                     </ul>
                 </nav>

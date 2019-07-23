@@ -95,7 +95,7 @@ function showGrids($currentFirstGridId, $direction, $byLikes)
 {
 	$gridManager = new GridManager();
 	$userManager = new UserManager();
-	$gridsPerPage = 5;
+	$gridsPerPage = 8;
 	$gridsId = [];
 	$grids = [];
 
