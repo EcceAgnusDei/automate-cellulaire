@@ -21,7 +21,7 @@
     	<header>
             <div class="header-content grid">
                 <div class="header-head">
-                    <a href="accueil"><img class="logo" src="public/css/img/logo.png" alt=""></a>
+                    <a href="accueil"><img class="logo" src="public/css/img/logo.png" alt="Accueil"></a>
             		<nav>
             			<ul class="menu">
             				<li><a class="menu-item <?php if(isset($home)){echo 'active';} ?>" href="accueil">Accueil</a></li>
@@ -70,7 +70,7 @@
                 ?>
                     <div class="header-forms">
                         <form action="index.php?action=useridentifying" method="POST" class="user-login-form header-forms-item">
-                            <label for="user-pseudo">Pseudo</label>
+                            <label for="user-login">Pseudo</label>
                             <input type="text" name="user-login" id="user-login" required>
                             <label for="user-password">Mot de passe</label>
                             <input type="password" name="user-password" id="user-password" required>

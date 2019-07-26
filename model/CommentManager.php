@@ -14,7 +14,7 @@ class CommentManager extends Manager
 	 */
 	public function getComments($gridId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$comments = $dataBase->prepare('SELECT id, likes, dislikes, author_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE grid_id = ? ORDER BY id DESC');
 		$comments->execute(array($gridId));
 
@@ -28,7 +28,7 @@ class CommentManager extends Manager
 	 */
 	public function getCommentById($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$comment = $dataBase->prepare('SELECT id, likes, dislikes, author_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE id = ?');
 		$comment->execute(array($id));
 
@@ -42,7 +42,7 @@ class CommentManager extends Manager
 	 */
 	public function getAllByDate()
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE visibility = 1 ORDER BY comment_date DESC');
 
 		return $comments;
@@ -55,7 +55,7 @@ class CommentManager extends Manager
 	 */
 	public function getAllByDislikes()
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$comments = $dataBase->query('SELECT id, grid_id, author_id, comment, likes, dislikes, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE dislikes > 0 AND visibility = 1 ORDER BY dislikes DESC');
 
 		return $comments;
@@ -71,7 +71,7 @@ class CommentManager extends Manager
 	 */
 	public function addComment($GridId, $authorId, $comment)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$comments = $dataBase->prepare('INSERT INTO comments(grid_id, author_id, comment, comment_date) VALUES(?,?,?, NOW())');
 		$succes = $comments->execute(array($GridId, $authorId, $comment));
 
@@ -119,7 +119,7 @@ class CommentManager extends Manager
 	 */
 	public function delete($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$del = $dataBase->prepare('DELETE FROM comments WHERE id = ?');
 		$succes = $del->execute(array($id));
 
@@ -133,7 +133,7 @@ class CommentManager extends Manager
 	 */
 	public function commentIdByGrid($gridId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT id FROM comments WHERE grid_id = ?');
 		$request->execute(array($gridId));
 		$ids = [];
@@ -153,7 +153,7 @@ class CommentManager extends Manager
 	 */
 	public function countComments($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT COUNT(*) AS nb_comments FROM comments WHERE grid_id = ?');
 		$request->execute(array($id));
 		$data = $request->fetch();
@@ -167,7 +167,7 @@ class CommentManager extends Manager
 	 */
 	public function invisible($id)
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('UPDATE comments SET visibility = 0 WHERE id = ?');
 		$request->execute(array($id));
 	}
@@ -179,7 +179,7 @@ class CommentManager extends Manager
 	 */
 	public function getCommentsByUserId($userId)
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$comments = $dataBase->prepare('SELECT id, likes, author_id, dislikes, grid_id, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin\') AS comment_date_fr FROM comments WHERE author_id = ? ORDER BY comment_date DESC');
 		$comments->execute(array($userId));
 
@@ -193,7 +193,7 @@ class CommentManager extends Manager
 	 */
 	public function userDelete($id)
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM comments WHERE author_id = ?');
 		$succes = $request->execute(array($id));
 

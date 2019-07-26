@@ -28,11 +28,6 @@ function adminLogin()
 {
 	$error = '';
 
-	$home = false;
-	$play = false;
-	$artwork = false;
-	$userspace = false;
-
 	require('view/backend/adminLoginView.php');
 }
 
@@ -43,11 +38,6 @@ function adminLogingError()
 {
 	$error = "<p style='color: red'>Identifiant ou mot de passe incorrect</p>";
 
-	$home = false;
-	$play = false;
-	$artwork = false;
-	$userspace = false;
-	
 	require('view/backend/adminLoginView.php');
 }
 

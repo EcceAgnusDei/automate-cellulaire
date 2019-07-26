@@ -15,7 +15,7 @@ class LikeManager extends Manager
 	 */
 	public function gridLike($gridId, $userId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('INSERT INTO grid_likes (grid_id, user_id) VALUES (?, ?)');
 		$succes1 = $request->execute(array($gridId, $userId));
 
@@ -33,7 +33,7 @@ class LikeManager extends Manager
 	 */
 	public function commentLike($commentId, $userId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('INSERT INTO comment_likes (comment_id, user_id) VALUES (?, ?)');
 		$succes1 = $request->execute(array($commentId, $userId));
 
@@ -51,7 +51,7 @@ class LikeManager extends Manager
 	 */
 	public function commentDislike($commentId, $userId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('INSERT INTO comment_dislikes (comment_id, user_id) VALUES (?, ?)');
 		$succes1 = $request->execute(array($commentId, $userId));
 
@@ -69,7 +69,7 @@ class LikeManager extends Manager
 	 */
 	public function gridIsLiked($gridId, $userId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT id FROM grid_likes WHERE grid_id = ? AND user_id = ?');
 		$request->execute(array($gridId, $userId));
 		$data = $request->fetch();
@@ -92,7 +92,7 @@ class LikeManager extends Manager
 	 */
 	public function commentIsLiked($commentId, $userId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT id FROM comment_likes WHERE comment_id = ? AND user_id = ?');
 		$request->execute(array($commentId, $userId));
 		$data = $request->fetch();
@@ -115,7 +115,7 @@ class LikeManager extends Manager
 	 */
 	public function commentIsDisliked($commentId, $userId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT id FROM comment_dislikes WHERE comment_id = ? AND user_id = ?');
 		$request->execute(array($commentId, $userId));
 		$data = $request->fetch();
@@ -137,7 +137,7 @@ class LikeManager extends Manager
 	 */
 	public function deleteGridLikes($gridId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM grid_likes WHERE grid_id = ?');
 		$succes = $request->execute(array($gridId));
 
@@ -151,7 +151,7 @@ class LikeManager extends Manager
 	 */
 	public function deleteCommentLikes($commentId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM comment_likes WHERE comment_id = ?');
 		$succes = $request->execute(array($commentId));
 
@@ -165,7 +165,7 @@ class LikeManager extends Manager
 	 */
 	public function deleteCommentDislikes($commentId)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM comment_dislikes WHERE comment_id = ?');
 		$succes = $request->execute(array($commentId));
 
@@ -179,7 +179,7 @@ class LikeManager extends Manager
 	 */
 	public function userDelete($id)
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM comment_dislikes WHERE user_id = ?');
 		$succes = $request->execute(array($id));
 		$request->closeCursor();

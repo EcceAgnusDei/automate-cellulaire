@@ -16,7 +16,7 @@ class GridManager extends Manager
 	 */
 	public function save($json, $id, $name)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('INSERT INTO grids(json,author_id, name,grid_date) VALUES (?,?,?, NOW())');
 		$succes = $request->execute(array($json, $id, $name));
 
@@ -30,7 +30,7 @@ class GridManager extends Manager
 	 */
 	public function load($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT * FROM grids WHERE id = ?');
 		$request->execute(array($id));
 		$grid = $request->fetch();
@@ -44,7 +44,7 @@ class GridManager extends Manager
 	 */
 	public function getGridsByDate()
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->query('SELECT id, name,json, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY grid_date DESC');
 
 		return $request;
@@ -56,7 +56,7 @@ class GridManager extends Manager
 	 */
 	public function getGridsByLikes()
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->query('SELECT id, name,json, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids ORDER BY likes DESC');
 
 		return $request;
@@ -69,7 +69,7 @@ class GridManager extends Manager
 	 */
 	public function getGridById($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT id, name,json, likes, author_id, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids WHERE id = ?');
 		$request->execute(array($id));
 
@@ -83,7 +83,7 @@ class GridManager extends Manager
 	 */
 	public function getGridsByAuthorId($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT id, name, json, likes, DATE_FORMAT(grid_date, \'%d/%m/%Y à %Hh%imin\') AS grid_date_fr FROM grids WHERE author_id = ? ORDER BY id DESC');
 		$request->execute(array($id));
 
@@ -97,7 +97,7 @@ class GridManager extends Manager
 	 */
 	public function delete($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$del = $dataBase->prepare('DELETE FROM grids WHERE id = ?');
 		$succes = $del->execute(array($id));
 
@@ -111,7 +111,7 @@ class GridManager extends Manager
 	 */
 	public function getAuthorIdById($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT author_id FROM grids WHERE id = ?');
 		$request->execute(array($id));
 
@@ -127,7 +127,7 @@ class GridManager extends Manager
 	 */
 	public function like($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('UPDATE grids SET likes=likes+1 WHERE id = ?');
 		$succes = $request->execute(array($id));
 
@@ -140,7 +140,7 @@ class GridManager extends Manager
 	 */
 	public function invisible($id)
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('UPDATE grids SET visibility = 0 WHERE id = ?');
 		$request->execute(array($id));
 	}
@@ -151,7 +151,7 @@ class GridManager extends Manager
 	 */
 	public function getVisible()
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$grids = $dataBase->query('SELECT * FROM grids WHERE visibility = 1 ORDER BY grid_date DESC');
 
 		return $grids;
@@ -164,7 +164,7 @@ class GridManager extends Manager
 	 */
 	public function userDelete($id)
 	{
-		$dataBase = $this->dbConnect('Projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM grids WHERE author_id = ?');
 		$succes = $request->execute(array($id));
 

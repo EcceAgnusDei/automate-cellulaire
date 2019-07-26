@@ -18,6 +18,6 @@ class Autoloader
 	 */
 	static function autoload($className)
 	{
-		require 'model/' . $className . '.php';
+		require './model/' . ucfirst($className) . '.php';
 	}
 }

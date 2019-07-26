@@ -19,7 +19,7 @@
     <body>
     	<header>
             <div class="header-head header-content grid">
-                <a href="index.php"><img class="logo" src="public/css/img/logo.png" alt=""></a>
+                <a href="index.php"><img class="logo" src="public/css/img/logo.png" alt="Accueil"></a>
                 <nav>
                     <ul class="menu">
                         <li><a class="menu-item" href="index.php?adminaction=gridsview">Créations</a></li>

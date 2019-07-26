@@ -16,7 +16,7 @@ class UserManager extends Manager
 	 */
 	public function saveUser($login, $password,$email)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('INSERT INTO users(login,password,email,signin_date) VALUES (?,?,?, NOW())');
 		$succes = $request->execute(array($login, password_hash($password, PASSWORD_DEFAULT), $email));
 
@@ -31,7 +31,7 @@ class UserManager extends Manager
 	 */
 	public function userIdentifying($login, $password)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT password FROM users WHERE login = ?');
 		$request->execute(array($login));
 		$dbPassword = $request->fetch();
@@ -57,7 +57,7 @@ class UserManager extends Manager
 	 */
 	public function getLoginById($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT login FROM users WHERE id = ?');
 		$request->execute(array($id));
 		$login = $request->fetch();
@@ -72,7 +72,7 @@ class UserManager extends Manager
 	 */
 	public function getUsers()
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->query('SELECT login, email FROM users');
 
 		return $request;
@@ -85,7 +85,7 @@ class UserManager extends Manager
 	 */
 	public function getUserByEmail($email)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('SELECT login, password FROM users WHERE email = ?');
 		$request->execute(array($email));
 
@@ -99,7 +99,7 @@ class UserManager extends Manager
 	 */
 	public function delete($id)
 	{
-		$dataBase = $this->dbConnect('projet5');
+		$dataBase = $this->dbConnect();
 		$request = $dataBase->prepare('DELETE FROM users WHERE id = ?');
 		$succes = $request->execute(array($id));
 

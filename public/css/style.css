@@ -3,7 +3,7 @@
 html
 {
     height: 100%;
-    background-color: #d1ffb3;
+    background-color: #BBFEA3;
 }
 
 body
@@ -475,11 +475,6 @@ footer a:hover
 	align-items: center;
 }
 
-.grids-view canvas
-{
-	max-width: 100%;
-}
-
 .grids-view nav
 {
 	margin-bottom: 20px;
@@ -543,6 +538,7 @@ footer a:hover
 .artwork canvas
 {
 	max-height: 250px;
+	max-width: 100%;
 }
 
 .user-comments
