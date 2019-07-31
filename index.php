@@ -126,6 +126,19 @@ try
 			}
 			break;
 
+			case 'commentdelete':
+			{
+				if (isset($_GET['id'], $_SESSION['userid']) && $_GET['id'] > 0)
+				{
+					commentDelete($_GET['id']);
+				}
+				else
+				{
+					throw new Exception('Id de commentaire invalide ou session non ouverte');
+				}
+			}
+			break;
+
 			case 'addcomment':
 			{
 				if (isset($_GET['id']) && $_GET['id'] > 0) 

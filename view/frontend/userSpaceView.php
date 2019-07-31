@@ -48,7 +48,7 @@ while ($data = $grids->fetch())
 				<div>
 					<i class="fas fa-thumbs-up blue"></i> <span class="blue"> <?= $data['likes'] ?></span> <i class="fas fa-thumbs-down red"></i> <span class="red"> <?= $data['dislikes'] ?></span>
 				</div>
-				<button class="btn comment-delete-btn" onclick='window.location.href="index.php?adminaction=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
+				<button class="btn comment-delete-btn" onclick='window.location.href="index.php?action=commentdelete&id=<?= $data['id'] ?>"'>Supprimer</button>
 			</div>
 		</div>
 	<?php
